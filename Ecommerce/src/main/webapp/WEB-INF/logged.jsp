@@ -49,7 +49,7 @@ and open the template in the editor.
          <span class = "icon-bar"></span>
       </button>
 		
-      <a class = "navbar-brand" href = "#">LATEST OFFERS</a>
+      <a class = "navbar-brand" href = "/Ecommerce/landing">LATEST OFFERS</a>
    </div>
    
    <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
