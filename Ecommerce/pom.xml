@@ -1,9 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.niit</groupId>
   <artifactId>Ecommerce</artifactId>
   <packaging>war</packaging>
+ 
+
   <version>0.0.1-SNAPSHOT</version>
   <properties>
 		<java-version>1.8</java-version>
@@ -14,7 +17,12 @@
 	</properties>
   <name>Ecommerce Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+
+  
   <dependencies>
+  
+ 
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -176,8 +184,5 @@
     <version>1.4.193</version>
 </dependency>
 	</dependencies>
-    
-  <build>
-    <finalName>Ecommerce</finalName>
-  </build>
+
 </project>
