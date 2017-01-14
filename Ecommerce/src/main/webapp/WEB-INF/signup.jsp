@@ -6,10 +6,14 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Sign up to Coding!!!!</title>
+    
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link  rel="stylesheet" type = "text/css" href="/Ecommerce/style_property.css" >
+      <link  rel="stylesheet" type = "text/css" href="/Ecommerce/bootstrap/css/bootstrap.min.css" >
+     <script type="text/javascript" src="/Ecommerce/bootstrap/js/jquery-3.1.0.js"></script>
+     <script type="text/javascript" src="/Ecommerce/bootstrap/js/bootstrap.min.js"></script>
+     
 <style type="text/css">
 
 .classic_button_next
@@ -39,7 +43,7 @@ and open the template in the editor.
 { 
     position: absolute; 
     right: 650px; 
-    top: 125px; 
+    top: 350px; 
 }
 
 .error{
@@ -160,73 +164,159 @@ and open the template in the editor.
    
     </script>
 
+      <div class="jumbotron text-center">
+  <h1>Welcome to Stuff Spot !!!!!!! </h1>
+  <p>Your Economy Supermarket at your convenience!!!!</p> 
+</div>
+    
+    <nav class = "navbar navbar-default" role = "navigation">
+   
+   <div class = "navbar-header">
+      <button type = "button" class = "navbar-toggle" 
+         data-toggle = "collapse" data-target = "#example-navbar-collapse">
+         <span class = "sr-only">Toggle navigation</span>
+         <span class = "icon-bar"></span>
+         <span class = "icon-bar"></span>
+         <span class = "icon-bar"></span>
+      </button>
+		
+      <a class = "navbar-brand" href = "#">LATEST OFFERS</a>
+   </div>
+   
+   <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
+	
+      <ul class = "nav navbar-nav">
+         	
+         <li class = "dropdown">
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> ELECTRONICS <b class = "caret"></b>   </a>
+            <ul class = "dropdown-menu">
+               <li><a href = "#">Desktops</a></li>
+               <li><a href = "#">Laptops</a></li>
+               <li><a href = "#">Mobiles</a></li>
+               <li class = "divider"></li>
+               <li><a href = "#">Miscellaneous</a></li>
+               <li class = "divider"></li>
+               <li><a href = "#">Imported ELectronics</a></li>
+            </ul>
+         </li>
+		
+		
+		<li class = "dropdown">
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> HOME NEEDS <b class = "caret"></b>   </a>
+            <ul class = "dropdown-menu">
+               <li><a href = "#">Kitchen</a></li>
+               <li><a href = "#">Furniture</a></li>
+               <li><a href = "#">Home Theatre</a></li>
+               <li><a href = "#">Tools</a></li>
+            </ul>
+         </li>
+		
+		<li class = "dropdown">
+            <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> BOOKS <b class = "caret"></b>   </a>
+            <ul class = "dropdown-menu">
+               <li><a href = "#">Fiction</a></li>
+               <li><a href = "#">Romance</a></li>
+               <li><a href = "#">Sci-fi</a></li>
+               <li><a href = "#">Competetive</a></li>
+               <li><a href = "#">School & College</a></li>
+            </ul>
+         </li>
+		
+			
+      </ul>
+      <ul>
+         <a class = "navbar-brand pull-right" href = "/Ecommerce/login">Login</a>
+          <a class = "navbar-brand pull-right" href = "/Ecommerce/signup">Signup</a>
+      </ul>
+     
+   </div>
+   </nav>
     
     
     
     <div style="text-align:center">
-            <h2><font color = "white"> Enter the Login Credentials </font> </h2> 
-            <h2><font color = "white"> Enter your Username and Password. </font> </h2> 
+            <h2><font color = "black"> Enter your Credentials </font> </h2> 
         <hr>
     </div>
     
-
-    <div> 
-        <img class = "img" src="./images/code-blue-landscape.jpg" alt="Smiley face" align="middle"> 
-  
-        <form class = "form" action="Script URL" method="POST">
+    <div class = "container"> 
+    <div class = "row"> 
+    <div class = "col-sm-3"></div> 
+    <div class = "col-sm-3">
+    <form class = "pull-center" action="Script URL" method="POST">
     <fieldset>        
-            <table cellpadding = "10">
-            <tr><th></th></tr>
+            <table  cellspacing="5">
+           
             
             <tr>
-            <td><font color = "white">USERNAME</font></td>
+            <td><font color = "black">USERNAME</font></td>
             <td><input type ="text" name ="_username" id = "_iusername"></td>
             </tr>
             
             <tr>
-            <td><font color = "white">FIRSTNAME</font></td>
+            <td><font color = "black">FIRSTNAME</font></td>
             <td><input type ="text" name ="_firstname" id = "_ifirstname"></td>
             </tr>
             
             <tr>
-            <td><font color = "white">LASTNAME</font></td>
+            <td><font color = "black">LASTNAME</font></td>
             <td><input type ="text" name ="_lastname" id = "_ilastname"></td>
             </tr>
             
             <tr>
-            <td><font color = "white">MIDDLENAME</font></td>
+            <td><font color = "black">MIDDLENAME</font></td>
             <td><input type ="text" name ="_middlename" id = "_imiddlename"></td>
             </tr>
             
             <tr>
-            <td><font color = "white">SEX</font></td>
-            <td><input type="radio" name="gender" value="male" id ="_iradio_male" checked> <font color = "white"> Male</font>
-                <input type="radio" name="gender" value="female" id ="_iradio_female"> <font color = "white"> Female</font>
+            <td><font color = "black">SEX</font></td>
+            <td><input type="radio" name="gender" value="male" id ="_iradio_male" checked> <font color = "black"> Male</font>
+                <input type="radio" name="gender" value="female" id ="_iradio_female"> <font color = "black"> Female</font>
             </td>
             </tr>
             
             <tr>
-            <td><font color = "white">PHONE</font></td>
+            <td><font color = "black">PHONE</font></td>
             <td><input type ="text" name ="_phone" id = "_iphone"></td>
             </tr>
             
             <tr>
-            <td><font color = "white">PASSWORD</font></td>
+            <td><font color = "black">PASSWORD</font></td>
             <td><input type ="password" name ="_password" id = "_ipassword"></td>
             </tr>
             
             <tr>
-            <td><font color = "white">CONFIRM PASSWORD</font></td>
+            <td><font color = "black">CONFIRM PASSWORD</font></td>
             <td><input type ="password" name ="_confirm_password" id = "_iconfirm_password"></td>
             </tr>
             
             <tr>
-            <td colspan = "2"> <input type ="button" class="button_large" id="inext_button" value="SUBMIT" onClick = "_validate_signup()"/> </td>
+            <td colspan = "2"> <input type ="button" class="btn btn-default" id="inext_button" value="SUBMIT" onClick = "_validate_signup()"/> </td>
             </tr>
         </table>    
     </fieldset>
     </form>
     </div>
-             <p class = "error" id = "_ioutput_message"> </p>
+    <div class = "col-sm-3"></div> 
+    
+    </div>
+    </div>
+          
+ <div>            
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">HELP</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Policies</a></li>
+    </ul>
+    <ul><a class = "navbar-brand pull-right" href="#">@Copyright</a></ul>
+  </div>
+</nav>
+</div>
     </body>
 </html>

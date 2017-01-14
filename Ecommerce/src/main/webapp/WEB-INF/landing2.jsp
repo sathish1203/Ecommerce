@@ -92,9 +92,13 @@
 		
 			
       </ul>
+      <ul>
+         <a class = "navbar-brand pull-right" href = "/Ecommerce/login">Login</a>
+          <a class = "navbar-brand pull-right" href = "/Ecommerce/signup">Signup</a>
+      </ul>
+     
    </div>
-   
-</nav>
+   </nav>
 
 
 
@@ -244,9 +248,21 @@
     </div>
   </div>
 </div>
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
+     
+     <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">HELP</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Policies</a></li>
+    </ul>
+    <ul><a class = "navbar-brand pull-right" href="#">@Copyright</a></ul>
+  </div>
+</nav>
       
    </body>
 </html>

@@ -14,5 +14,20 @@ public class landingController {
 	      model.addAttribute("message", "Hello Spring MVC Framework!");
 	      return "hello";
 	   }
+	 
+	 @RequestMapping(value = "/signup", method = RequestMethod.GET)
+	   public String printSignup(ModelMap model) {
+		  System.out.println("In printHello");
+	      model.addAttribute("message", "Hello Spring MVC Framework!");
+	      return "hello";
+	   }
+	 
+	 @RequestMapping(value = "/login", method = RequestMethod.GET)
+	   public String printLogin(ModelMap model) {
+		  System.out.println("In printHello");
+	      model.addAttribute("message", "Hello Spring MVC Framework!");
+	      return "hello";
+	   }
+	 
 
 }
