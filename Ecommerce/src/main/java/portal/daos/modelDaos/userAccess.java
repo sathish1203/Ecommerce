@@ -26,5 +26,8 @@ public class userAccess extends daoClass{
 		return model;
 	}
 	
+	public boolean addAnotherUser(User u){
+		return addUser(u);
+		}
 	
 }

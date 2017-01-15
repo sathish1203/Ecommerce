@@ -6,13 +6,16 @@
 <hibernate-mapping>
   
 <class name="com.portal.models.User" table="USER">  
-          <id name="uname" type = "string">
-          <column name = "UNAME" length = "15"/>  
-          <generator class="assigned"/>  
-          </id>  
-          <property name="password" type = "string">
-          <column name = "PASSWORD" length = "20" />
-          </property>  
+
+<id name="uname" type = "string">
+<column name = "UNAME" length = "15"/>  
+<generator class="assigned"/>  
+</id>  
+
+<property name="password" type = "string">
+<column name = "PASSWORD" length = "20" />
+</property>  
+          
 <property name = "firstname" type = "string">
 <column name = "FIRSTNAME" length = "20"/>
 </property>
@@ -25,6 +28,46 @@
 <column name = "ENABLED" />
 </property>
 
+
+<property name = "middlename" type = "string">
+<column name = "MIDDLENAME" length = "20" />
+</property>
+
+
+<property name = "sex" type = "string">
+<column name = "SEX" length = "20" />
+</property>
+
+<property name = "personalphone" type = "string">
+<column name = "PERSONALPHONE" length = "20" />
+</property>
+  
+  <property name = "addressline1" type = "string">
+<column name = "ADDRESSLINE1" length = "20" />
+</property>
+
+<property name = "addressline2" type = "string">
+<column name = "ADDRESSLINE2" length = "20" />
+</property>
+
+<property name = "state" type = "string">
+<column name = "STATE" length = "20" />
+</property>
+<property name = "emailid" type = "string">
+<column name = "EMAILID" length = "20" />
+</property>
+
+<property name = "workphone" type = "string">
+<column name = "WORKPHONE" length = "20" />
+</property>
+
+<property name = "cart" type = "string">
+<column name = "CART" length = "20" />
+</property>
+
+<property name = "cards" type = "string">
+<column name = "CARDS" length = "20" />
+</property>
 </class>  
             
 </hibernate-mapping>  
