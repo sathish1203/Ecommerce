@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -162,43 +163,54 @@ and open the template in the editor.
    </nav>
     
     <div style="text-align:center">
-            <h2><font color = "white"> Enter the Login Credentials </font> </h1> 
-            <h2><font color = "white"> Enter your Username and Password. </font> </h2> 
+            <h2><font color = "black"> Enter the Login Credentials </font> </h1> 
+            <h2><font color = "black"> Enter your Username and Password. </font> </h2> 
+       <font color = "red"> ${msg} </font>
+       
        <hr>
    </div>
     
-
+    
+    <div class = "container">
+    <div class = "row">
+    <div class = "col-sm-3"></div>
+    <div class = "col-sm-3">
     <div> 
        
-        <form class = "form" action="Script URL" method="POST">
+        <form:form method="POST" action="/Ecommerce/validateLogin">
         <fieldset>
             <table cellpadding = "10">
             <tr><th></th></tr>
             <tr>
-            <td>
-             <font color = "black">   USERNAME </font>
-            </td>
-            <td>
-                <input type ="text" id ="_iusername" name ="_username">
-            </td>
+              <td><form:label path="uname">username</form:label></td>
+              <td><form:input path="uname" /></td>
+           </tr>
+            <tr>
+              <td><form:label path="password">password</form:label></td>
+              <td><form:input path="password" /></td>
             </tr>
             <tr>
-            <td>
-               <font color = "black"> PASSWORD </font>
-            </td>
-            <td>
-                <input type ="password" id ="_ipassword" name ="_password">
-            </td>
-            </tr>
-            <tr>
-              <td colspan = "2"><input type ="button" id ="_submit" name = "_submit" class="btn btn-default" value="SUBMIT" onclick="validate_login()"/> </td>
-           <td><a href = "/Ecommerce/landing"> Back</a></td>
-            </tr>
+        <td colspan="2">
+            <input type="submit" value="Submit"/>
+        </td>
+    </tr>
         </table>    
            <p class = "white_text" id = "_ivalidate"></p>
         </fieldset>
-        </form>
+        </form:form>
 </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
      <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">

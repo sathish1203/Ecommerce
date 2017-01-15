@@ -34,7 +34,10 @@
    
 <div class="jumbotron text-center">
   <h1>Welcome to Stuff Spot !!!!!!! </h1>
-  <p>Your Economy Supermarket at your convenience!!!!</p> 
+  <p>Your Economy Supermarket at your convenience!!!! <br />
+   Hi !!!!! ${user} 
+  </p> 
+  <p color = "blue">${msg}</p>
 </div>
 
 <nav class = "navbar navbar-default" role = "navigation">

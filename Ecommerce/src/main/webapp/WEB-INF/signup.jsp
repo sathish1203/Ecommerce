@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -6,11 +8,10 @@ and open the template in the editor.
 -->
 <html>
     <head>
-    
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  rel="stylesheet" type = "text/css" href="/Ecommerce/style_property.css" >
-      <link  rel="stylesheet" type = "text/css" href="/Ecommerce/bootstrap/css/bootstrap.min.css" >
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link  rel="stylesheet" type = "text/css" href="/Ecommerce/style_property.css" >
+     <link  rel="stylesheet" type = "text/css" href="/Ecommerce/bootstrap/css/bootstrap.min.css" >
      <script type="text/javascript" src="/Ecommerce/bootstrap/js/jquery-3.1.0.js"></script>
      <script type="text/javascript" src="/Ecommerce/bootstrap/js/bootstrap.min.js"></script>
      
@@ -76,8 +77,9 @@ and open the template in the editor.
 
 <script>
     
-   function _validate_signup(){
-       document.getElementById("_ioutput_message").innerHTML = "";      
+ /*   function _validate_signup(){
+     System.out.println("In validate signup");
+	   document.getElementById("_ioutput_message").innerHTML = "";      
      var ret_value = false
      var field,pwd,validate;
      var out_text = "";
@@ -151,17 +153,17 @@ and open the template in the editor.
       {
       
        alert("Successfully Registered!");      
-       window.location = "logged.html";
+       window.location = "/Ecommerce/addUser";
             
             // Do the successful validation of form.
           
       }
       else{
            alert(out_text);      
-            document.getElementById("_ioutput_message").innerHTML = out_text;      
+           document.getElementById("_ioutput_message").innerHTML = out_text;      
         }
    }    
-   
+ */   
     </script>
 
       <div class="jumbotron text-center">
@@ -243,46 +245,44 @@ and open the template in the editor.
     <div class = "row"> 
     <div class = "col-sm-3"></div> 
     <div class = "col-sm-3">
-    <form class = "pull-center" action="Script URL" method="POST">
+   
+   
+        <form:form method="POST" action="/Ecommerce/addUser">
     <fieldset>        
             <table  cellspacing="5">
-           
-            
             <tr>
-            <td><font color = "black">USERNAME</font></td>
-            <td><input type ="text" name ="_username" id = "_iusername"></td>
+                <td><form:label path="uname">USERNAME</form:label></td>
+                <td><form:input path="uname" id ="_iusername"/></td>
             </tr>
             
             <tr>
-            <td><font color = "black">FIRSTNAME</font></td>
-            <td><input type ="text" name ="_firstname" id = "_ifirstname"></td>
+                <td><form:label path="firstname">FIRSTNAME</form:label></td>
+                <td><form:input path="firstname" id = "_ifirstname" /></td>
             </tr>
             
             <tr>
-            <td><font color = "black">LASTNAME</font></td>
-            <td><input type ="text" name ="_lastname" id = "_ilastname"></td>
+                <td><form:label path="lastname">LASTNAME</form:label></td>
+                <td><form:input path="lastname" id = "_ilastname" /></td>
             </tr>
             
             <tr>
-            <td><font color = "black">MIDDLENAME</font></td>
-            <td><input type ="text" name ="_middlename" id = "_imiddlename"></td>
+                <td><form:label path="middlename">MIDDLENAME</form:label></td>
+                <td><form:input path="middlename" id = "_imiddlename"/></td>
             </tr>
             
             <tr>
-            <td><font color = "black">SEX</font></td>
-            <td><input type="radio" name="gender" value="male" id ="_iradio_male" checked> <font color = "black"> Male</font>
-                <input type="radio" name="gender" value="female" id ="_iradio_female"> <font color = "black"> Female</font>
-            </td>
+                <td><form:label path="sex">SEX</form:label></td>
+                <td><form:input path="sex" id = "_isex"/></td>
             </tr>
             
             <tr>
-            <td><font color = "black">PHONE</font></td>
-            <td><input type ="text" name ="_phone" id = "_iphone"></td>
+                <td><form:label path="personalphone">PHONE</form:label></td>
+                <td><form:input path="personalphone" id = "_iphone"/></td>
             </tr>
             
             <tr>
-            <td><font color = "black">PASSWORD</font></td>
-            <td><input type ="password" name ="_password" id = "_ipassword"></td>
+                <td><form:label path="password">PASSWORD</form:label></td>
+                <td><form:input path="password" id = "_ipassword"/></td>
             </tr>
             
             <tr>
@@ -290,12 +290,16 @@ and open the template in the editor.
             <td><input type ="password" name ="_confirm_password" id = "_iconfirm_password"></td>
             </tr>
             
-            <tr>
-            <td colspan = "2"> <input type ="button" class="btn btn-default" id="inext_button" value="SUBMIT" onClick = "_validate_signup()"/> </td>
-            </tr>
-        </table>    
+          <tr>
+           <td colspan="2">
+           <input type="submit" value="Submit"/>
+          </td>
+          </tr>
+    
+    </table>    
     </fieldset>
-    </form>
+   </form:form>
+   
     </div>
     <div class = "col-sm-3"></div> 
     
