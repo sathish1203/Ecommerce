@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.portal.daos.HibernateSession;
-import com.portal.models.User;
+import com.portal.models.Client;
 
 import portal.daos.modelDaos.userAccess;
 
@@ -35,31 +35,31 @@ public class helloController{
    public ModelAndView triggerLogin(ModelMap model) {
 	  System.out.println("In triggerLogin method");
       model.addAttribute("message", "Hello Spring MVC Framework!");
-      return new ModelAndView("login", "command", new User());
+      return new ModelAndView("login", "command", new Client());
    }
    
   // Mapping for the signup page
    @RequestMapping(value = "/signup",method = RequestMethod.GET)
    public ModelAndView triggerSignup(ModelMap model) {
 	  System.out.println("In triggerSignup");
-      return new ModelAndView("signup", "command", new User());
+      return new ModelAndView("signup", "command", new Client());
    }
  
    
    // Mapping for the addition of user
    @RequestMapping(value = "/addUser",method = RequestMethod.POST)
-   public String addSignup(@ModelAttribute("SpringWeb")User user, 
+   public String addSignup(@ModelAttribute("SpringWeb")Client client, 
 		   ModelMap model) {
-		 System.out.println("In addUsert");
+	     	 System.out.println("In addUsert");
 			ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
 			HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
 			userAccess userAcc = new userAccess(db_session.getSessionFactory());
-			System.out.println("user is "+ user);
-			userAcc.addUser(user);
-			List<User> users = new ArrayList<User>();
-			users= userAcc.getUsers();
-			System.out.println("User is"+users);
-			for (User user_l:users)
+			System.out.println("user is "+ client);
+			userAcc.addUser(client);
+			List<Client> clients = new ArrayList<Client>();
+			clients= userAcc.getUsers();
+			System.out.println("User is"+clients);
+			for (Client user_l:clients)
 			{
 				System.out.println("User is "+ user_l.getFirstname());
 				System.out.println("Last name is "+ user_l.getLastname());
@@ -84,34 +84,34 @@ public class helloController{
    @RequestMapping(value = "/user", method = RequestMethod.GET)
    public ModelAndView student() {
 	   System.out.println("In User");
-      return new ModelAndView("user", "command", new User());
+      return new ModelAndView("user", "command", new Client());
    }
 
    
    
    
 // @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-   public String addStudent(@ModelAttribute("SpringWeb")User user, 
+   public String addStudent(@ModelAttribute("SpringWeb")Client client, 
    ModelMap model) {
 	 System.out.println("In addUsert");
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
 		HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
 		userAccess userAcc = new userAccess(db_session.getSessionFactory());
-		user.setUname("12345");
-		userAcc.addUser(user);
-		List<User> users = new ArrayList<User>();
-		users= userAcc.getUsers();
-		System.out.println("User is"+users);
-		for (User user_l:users)
+		client.setUname("12345");
+		userAcc.addUser(client);
+		List<Client> clients = new ArrayList<Client>();
+		clients= userAcc.getUsers();
+		System.out.println("User is"+clients);
+		for (Client user_l:clients)
 		{
 			System.out.println("User is "+ user_l.getFirstname());
 			System.out.println("Last name is "+ user_l.getLastname());
 			
 		}
 		((AbstractApplicationContext) context).close();
-	  model.addAttribute("firstname", user.getFirstname());
-      model.addAttribute("lastname", user.getLastname());
-      model.addAttribute("password", user.getPassword());
+	  model.addAttribute("firstname", client.getFirstname());
+      model.addAttribute("lastname", client.getLastname());
+      model.addAttribute("password", client.getPassword());
       return "result";
    }
 
@@ -119,23 +119,23 @@ public class helloController{
    
    //Mapping for validating a login request
    @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-   public ModelAndView loginUser(@ModelAttribute("SpringWeb")User user, 
+   public ModelAndView loginUser(@ModelAttribute("SpringWeb")Client client, 
 	   ModelMap model) {
 	   String ret_value = "error";
 	   ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
 	   HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
 	   userAccess userAcc = new userAccess(db_session.getSessionFactory());
-	   User foundUser = userAcc.getUserByUsername(user.getUname());
+	   Client foundUser = userAcc.getUserByUsername(client.getUname());
 	   if(foundUser == null)
 	   {
 		   ret_value = "login";
 		   model.addAttribute("user","guest");
 		   model.addAttribute("msg","User does not exist");
 		   System.out.println("User null");  
-	   }else if(user.getPassword().equals(foundUser.getPassword()))
+	   }else if(client.getPassword().equals(foundUser.getPassword()))
 	   {
 		   ret_value = "landing2";
-		   model.addAttribute("user",user.getUname());
+		   model.addAttribute("user",client.getUname());
 		   System.out.println("User validated");
 		  
 	   }else{
@@ -147,7 +147,7 @@ public class helloController{
 	   }
 	   System.out.println("In User");
 	   ((AbstractApplicationContext) context).close();
-	   return new ModelAndView(ret_value, "command", new User());
+	   return new ModelAndView(ret_value, "command", new Client());
 	  
    }
 

@@ -1,6 +1,7 @@
 package com.portal.models;
 
-public class User {
+
+public class Client {
 
 	private String uname;  
 	private String firstname;

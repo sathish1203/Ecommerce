@@ -5,7 +5,7 @@
   
 <hibernate-mapping>
   
-<class name="com.portal.models.User" table="USER">  
+<class name="com.portal.models.Client" table="USER">  
 
 <id name="uname" type = "string">
 <column name = "UNAME" length = "15"/>  

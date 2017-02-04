@@ -7,7 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
-import com.portal.models.User;
+import com.portal.models.Client;
+
 
 public class daoClass extends HibernateSession{
 
@@ -49,24 +50,24 @@ public List<Object> getData(){
 	return data;
 }
 
-public User getUserByUsername(String uname){
-	User user=null;
+public Client getUserByUsername(String uname){
+	Client client=null;
 	try{
 	Session session = mySessionFactory.openSession();
     session.beginTransaction();
-    Criteria criteria = session.createCriteria(User.class).add(Restrictions.eq("uname", uname));
-	user = (User)criteria.uniqueResult();
+    Criteria criteria = session.createCriteria(Client.class).add(Restrictions.eq("uname", uname));
+	client = (Client)criteria.uniqueResult();
     session.getTransaction().commit();
     session.close();
 	}catch(Exception e){
 		System.out.println(e.getMessage());
 		e.printStackTrace();
 	}
-	return user;
+	return client;
 }
 
 
-public boolean addUser(User u){
+public boolean addUser(Client u){
 	boolean commit = false;
 	try{
 	Session session = mySessionFactory.openSession();
@@ -83,7 +84,7 @@ public boolean addUser(User u){
 }
 
 
-public boolean UpdateUser(User u){
+public boolean UpdateUser(Client u){
 	boolean commit = false;
 	try{
 	Session session = mySessionFactory.openSession();
@@ -100,7 +101,7 @@ public boolean UpdateUser(User u){
 }
 
 
-public boolean RemoveUser(User u){
+public boolean RemoveUser(Client u){
 	boolean commit = false;
 	try{
 	Session session = mySessionFactory.openSession();

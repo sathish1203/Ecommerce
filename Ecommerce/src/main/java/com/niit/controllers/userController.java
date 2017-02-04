@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.portal.models.User;
+import com.portal.models.Client;
 
 
 public class userController {
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	   public ModelAndView student() {
-	      return new ModelAndView("user", "command", new User());
+	      return new ModelAndView("user", "command", new Client());
 	   }
 	
 	 @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	   public String addStudent(@ModelAttribute("SpringWeb")User user, 
+	   public String addStudent(@ModelAttribute("SpringWeb")Client client, 
 	   ModelMap model) {
-		  model.addAttribute("firstname", user.getFirstname());
-	      model.addAttribute("lastname", user.getLastname());
-	      model.addAttribute("password", user.getPassword());
+		  model.addAttribute("firstname", client.getFirstname());
+	      model.addAttribute("lastname", client.getLastname());
+	      model.addAttribute("password", client.getPassword());
 	      return "result";
 	   }
 
