@@ -10,6 +10,6 @@
     <bean id = "h2_db_01" class = "com.portal.daos.HibernateSession" scope = "singleton">
     <property name = "sessionFactory" ref = "sessionFactory_bn"/>
     </bean>
-
+   
 
 </beans>

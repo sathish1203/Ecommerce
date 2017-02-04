@@ -16,6 +16,8 @@
    </bean>
 
   <context:component-scan base-package="com.niit" />
+  <context:component-scan base-package="com.portal" />
+  
   <mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
   <mvc:resources mapping="/bootstrap/**" location="/WEB-INF/bootstrap/" />
   

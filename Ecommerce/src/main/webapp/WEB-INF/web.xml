@@ -6,6 +6,7 @@
     
     <display-name>Spring MVC Application</display-name>
 
+<!-- Spring Dispatcher Servlet -->
    <servlet>
       <servlet-name>HelloWeb</servlet-name>
       <servlet-class>
@@ -19,6 +20,7 @@
       <url-pattern>/</url-pattern>
    </servlet-mapping>
 
+<!-- Spring Context COnfig Location -->
 <context-param>
    <param-name>contextConfigLocation</param-name>
    <param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>
@@ -27,8 +29,19 @@
 
 <listener>
    <listener-class>
-             org.springframework.web.context.ContextLoaderListener
+          org.springframework.web.context.ContextLoaderListener
    </listener-class>
 </listener>
 
+<!-- Spring security Related Configuration -->
+<filter>
+<filter-name>springSecurityFilterChain</filter-name>
+<filter-class>
+org.springframework.web.filter.DelegatingFilterProxy
+</filter-class>
+</filter>
+ <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

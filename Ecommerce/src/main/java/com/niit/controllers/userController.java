@@ -20,11 +20,7 @@ public class userController {
 	 @RequestMapping(value = "/addUser", method = RequestMethod.POST)
 	   public String addStudent(@ModelAttribute("SpringWeb")User user, 
 	   ModelMap model) {
-		 
-		 
-		 
-		 
-	      model.addAttribute("firstname", user.getFirstname());
+		  model.addAttribute("firstname", user.getFirstname());
 	      model.addAttribute("lastname", user.getLastname());
 	      model.addAttribute("password", user.getPassword());
 	      return "result";
