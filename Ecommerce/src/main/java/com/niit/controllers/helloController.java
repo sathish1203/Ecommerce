@@ -22,16 +22,6 @@ import portal.daos.modelDaos.userAccess;
 public class helloController{
 
 	
-	// Mapping for a sample hello page
-   @RequestMapping(value = "/hello",method = RequestMethod.GET)
-   public String printHello(ModelMap model) {
-	  System.out.println("In printHello");
-      model.addAttribute("message", "Hello Spring MVC Framework!");
-      return "hello";
-   }
-   
-   
-   
    // Mapping for the landing page
    @RequestMapping(value = "/landing",method = RequestMethod.GET)
    public String printLanding(ModelMap model) {
@@ -100,12 +90,6 @@ public class helloController{
    
    
    
-   
-   
-   
-   
-   
-   
 // @RequestMapping(value = "/addUser", method = RequestMethod.POST)
    public String addStudent(@ModelAttribute("SpringWeb")User user, 
    ModelMap model) {
@@ -133,11 +117,7 @@ public class helloController{
 
    
    
-   
-   
-   
-   
- //Mapping for validating a login request
+   //Mapping for validating a login request
    @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
    public ModelAndView loginUser(@ModelAttribute("SpringWeb")User user, 
 	   ModelMap model) {
@@ -151,7 +131,6 @@ public class helloController{
 		   ret_value = "login";
 		   model.addAttribute("user","guest");
 		   model.addAttribute("msg","User does not exist");
-		   
 		   System.out.println("User null");  
 	   }else if(user.getPassword().equals(foundUser.getPassword()))
 	   {

@@ -1,2 +1,10 @@
+com\portal\daos\daoClass$Model.class
+com\niit\controllers\userController.class
+com\portal\models\User.class
+com\portal\daos\HibernateSession.class
+com\portal\daos\daoClass.class
+com\portal\daos\UserDAO.class
 com\niit\controllers\helloController.class
+portal\daos\modelDaos\userAccess.class
+com\main\program\App.class
 com\niit\controllers\landingController.class
