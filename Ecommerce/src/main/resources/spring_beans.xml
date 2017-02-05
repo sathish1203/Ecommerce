@@ -1,15 +1,34 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
-   
-    <bean id = "sessionFactory_bn"  class = "org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-    <property name = "configLocation" value = "hibernate.cfg.xml"/>
-    </bean> 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <bean id = "h2_db_01" class = "com.portal.daos.HibernateSession" scope = "singleton">
-    <property name = "sessionFactory" ref = "sessionFactory_bn"/>
-    </bean>
-   
+	<bean id="clientDAOImpl" class="com.portal.daos.ClientDAOImpl">
+		<property name="clientSessionFactory" ref="class_config" />
+	</bean>
+
+
+	<bean id="categoryDAOImpl" class="com.portal.daos.CategoryDAOImpl">
+		<property name="categorySessionFactory" ref="class_config" />
+	</bean>
+	
+
+	<bean id="productDAOImpl" class="com.portal.daos.ProductDAOImpl">
+		<property name="productSessionFactory" ref="class_config" />
+	</bean>
+
+
+	<bean id="supplierDAOImpl" class="com.portal.daos.SupplierDAOImpl">
+		<property name="supplierSessionFactory" ref="class_config" />
+	</bean>
+	
+	
+	<bean id="class_config"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="configLocation" value="hibernate.cfg.xml" />
+	</bean>
 
 </beans>

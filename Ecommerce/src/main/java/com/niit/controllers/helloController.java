@@ -3,8 +3,6 @@ package com.niit.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,23 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.portal.daos.HibernateSession;
+import com.portal.daos.ClientDAOImpl;
 import com.portal.models.Client;
 
-import portal.daos.modelDaos.userAccess;
 
 @Controller
 public class helloController{
+	ClientDAOImpl  clientDAOImpl  = (ClientDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("clientDAOImpl");	
+    
 
 	
-   // Mapping for the landing page
+
+ /*  // Mapping for the landing page
    @RequestMapping(value = "/landing",method = RequestMethod.GET)
    public String printLanding(ModelMap model) {
 	  System.out.println("In printLanding");
       model.addAttribute("message", "Hello Spring MVC Framework!");
       return "landing2";
-   }
+   }*/
 
+	 // Mapping for the login page
+	   @RequestMapping(value = "/hello",method = RequestMethod.GET)
+	   public void triggerHello(ModelMap model) {
+		  System.out.println("In triggerHello method");
+	     
+	   }
+	   
+	
    // Mapping for the login page
    @RequestMapping(value = "/login",method = RequestMethod.GET)
    public ModelAndView triggerLogin(ModelMap model) {
@@ -50,14 +58,11 @@ public class helloController{
    @RequestMapping(value = "/addUser",method = RequestMethod.POST)
    public String addSignup(@ModelAttribute("SpringWeb")Client client, 
 		   ModelMap model) {
-	     	 System.out.println("In addUsert");
-			ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
-			HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
-			userAccess userAcc = new userAccess(db_session.getSessionFactory());
+	     	System.out.println("In addUsert");
 			System.out.println("user is "+ client);
-			userAcc.addUser(client);
+			clientDAOImpl.addUser(client);
 			List<Client> clients = new ArrayList<Client>();
-			clients= userAcc.getUsers();
+			clients= clientDAOImpl.getClients();
 			System.out.println("User is"+clients);
 			for (Client user_l:clients)
 			{
@@ -65,8 +70,7 @@ public class helloController{
 				System.out.println("Last name is "+ user_l.getLastname());
 				
 			}
-	      ((AbstractApplicationContext) context).close();
-		  model.addAttribute("user", "guest");
+	       model.addAttribute("user", "guest");
 	      model.addAttribute("msg", "Registered Successfully, Please Login!!!");
 	      return "landing2";
    }
@@ -94,13 +98,10 @@ public class helloController{
    public String addStudent(@ModelAttribute("SpringWeb")Client client, 
    ModelMap model) {
 	 System.out.println("In addUsert");
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
-		HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
-		userAccess userAcc = new userAccess(db_session.getSessionFactory());
 		client.setUname("12345");
-		userAcc.addUser(client);
+		clientDAOImpl.addUser(client);
 		List<Client> clients = new ArrayList<Client>();
-		clients= userAcc.getUsers();
+		clients= clientDAOImpl.getClients();
 		System.out.println("User is"+clients);
 		for (Client user_l:clients)
 		{
@@ -108,7 +109,6 @@ public class helloController{
 			System.out.println("Last name is "+ user_l.getLastname());
 			
 		}
-		((AbstractApplicationContext) context).close();
 	  model.addAttribute("firstname", client.getFirstname());
       model.addAttribute("lastname", client.getLastname());
       model.addAttribute("password", client.getPassword());
@@ -122,10 +122,7 @@ public class helloController{
    public ModelAndView loginUser(@ModelAttribute("SpringWeb")Client client, 
 	   ModelMap model) {
 	   String ret_value = "error";
-	   ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
-	   HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
-	   userAccess userAcc = new userAccess(db_session.getSessionFactory());
-	   Client foundUser = userAcc.getUserByUsername(client.getUname());
+	   Client foundUser = clientDAOImpl.getUserByUsername(client.getUname());
 	   if(foundUser == null)
 	   {
 		   ret_value = "login";
@@ -146,7 +143,6 @@ public class helloController{
 		   System.out.println("User not validated");
 	   }
 	   System.out.println("In User");
-	   ((AbstractApplicationContext) context).close();
 	   return new ModelAndView(ret_value, "command", new Client());
 	  
    }

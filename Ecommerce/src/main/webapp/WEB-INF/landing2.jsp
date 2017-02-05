@@ -131,8 +131,9 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
+    
     <div class="item active">
-      <img src="images\homeneeds\lights_1_ecobrand.jpg" alt="ecobrand_lights">
+      <a href = "/Ecommerce/hello">   <img src="images\homeneeds\lights_1_ecobrand.jpg" alt="ecobrand_lights"> </a>
       <div class="carousel-caption">
         <h3>Power Saving Lights</h3>
         <p>These lights save lot of electricity by using LED.<br /><strike>&#8377;500</strike><br />&#8377;465</p>
@@ -258,7 +259,7 @@
       <a class="navbar-brand" href="#"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">HELP</a></li>
+      <li class="active"><a href="/Ecommerce/help">HELP</a></li>
       <li><a href="#">About</a></li>
       <li><a href="#">Contact</a></li>
       <li><a href="#">Policies</a></li>

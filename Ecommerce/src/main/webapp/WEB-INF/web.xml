@@ -20,7 +20,7 @@
       <url-pattern>/</url-pattern>
    </servlet-mapping>
 
-<!-- Spring Context COnfig Location -->
+<!-- Spring Context Config Location -->
 <context-param>
    <param-name>contextConfigLocation</param-name>
    <param-value>/WEB-INF/HelloWeb-servlet.xml</param-value>

@@ -1,32 +1,77 @@
 package com.main.program;
 
-import java.util.ArrayList;
 import java.util.List;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.portal.daos.HibernateSession;
+
+import com.portal.daos.CategoryDAOImpl;
+import com.portal.daos.ClientDAOImpl;
+import com.portal.daos.ProductDAOImpl;
+import com.portal.daos.SupplierDAOImpl;
+import com.portal.models.Category;
 import com.portal.models.Client;
-import portal.daos.modelDaos.userAccess;
+import com.portal.models.Product;
+import com.portal.models.Supplier;
 
 
 public class App {
+	static ClientDAOImpl clientDAOImpl  = (ClientDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("clientDAOImpl");	
+	static CategoryDAOImpl categoryDAOImpl  = (CategoryDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("categoryDAOImpl");	
+	static ProductDAOImpl productDAOImpl  = (ProductDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("productDAOImpl");	
+	static SupplierDAOImpl supplierDAOImpl  = (SupplierDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("supplierDAOImpl");	
+	   
 	
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring_beans.xml");
-		HibernateSession db_session = (HibernateSession) context.getBean("h2_db_01");
-		userAccess userAcc = new userAccess(db_session.getSessionFactory());
-		List<Client> clients = new ArrayList<Client>();
-		clients= userAcc.getUsers();
+		System.out.println("In app.java");
+		System.out.println(clientDAOImpl);
 		
+		
+		List<Client> clients;
+		clients= clientDAOImpl.getClients();
 		System.out.println("User is"+clients);
 		for (Client client:clients)
 		{
-			System.out.println("User is "+ client.getUname());
+			System.out.println("Client is "+ client.getUname());
 			System.out.println("Last name is "+ client.getLastname());
 			
 		}
 		
-		((AbstractApplicationContext) context).close();
+		
+		List<Category> categories;
+		categories= categoryDAOImpl.getCategories();
+		System.out.println("category is"+categories);
+		for (Category category:categories)
+		{
+			System.out.println("Category is "+ category.getId());
+			System.out.println("name is "+ category.getName());
+			System.out.println("description is "+ category.getDescription());
+		}
+		
+		
+		List<Product> products;
+		products= productDAOImpl.getProducts();
+		System.out.println("product is"+products);
+		for (Product product:products)
+		{
+			System.out.println("Product is "+ product.getId());
+			System.out.println("name is "+ product.getName());
+			System.out.println("description is "+ product.getDescription());
+		}
+		
+		
+		List<Supplier> suppliers;
+		suppliers= supplierDAOImpl.getSuppliers();
+		System.out.println("supplier is"+suppliers);
+		for (Supplier supplier:suppliers)
+		{
+			System.out.println("Supplier is "+ supplier.getId());
+			System.out.println("name is "+ supplier.getName());
+			System.out.println("description is "+ supplier.getDescription());
+		}
+		
+		
+		
+		
+		
 	}
 }

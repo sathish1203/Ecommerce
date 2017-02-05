@@ -1,0 +1,18 @@
+CREATE TABLE CATEGORY(ID VARCHAR(255) PRIMARY KEY, NAME VARCHAR(255), DESCRIPTION VARCHAR(255));
+CREATE TABLE SUPPLIER(ID VARCHAR(255) PRIMARY KEY, NAME VARCHAR(255), DESCRIPTION VARCHAR(255));
+
+private String id;  
+	private String name;
+	private String supplierid;
+	private String categoryid;
+	private String description;
+	private String mrp;
+	private String OfferPrice;
+	private String quantity;
+	private String imagepath;
+	
+CREATE TABLE PRODUCT(ID VARCHAR(255) PRIMARY KEY, NAME VARCHAR(255), SUPPLIERID VARCHAR(255), CATEGORYID VARCHAR(255), DESCRIPTION VARCHAR(255), MRP VARCHAR(255),OFFERPRICE VARCHAR(255),QUANTITY VARCHAR(255), IMAGEPATH VARCHAR(255));
+
+INSERT INTO CATEGORY VALUES('1','Normal','All Normal Products');
+INSERT INTO SUPPLIER VALUES('1','Local','All Local Products');
+INSERT INTO PRODUCT VALUES('1','Local','1','1','First local product','100','80','10','images\homeneeds\saucer_rajdhan_1.jpg');

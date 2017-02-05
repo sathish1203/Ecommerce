@@ -1,46 +1,34 @@
 package com.portal.daos;
 
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
-
 import com.portal.models.Client;
 
+public class ClientDAOImpl{
 
-public class daoClass extends HibernateSession{
-
-	public static class Model{
-		static Class model;
+SessionFactory clientSessionFactory;
 	
-		public static void setModel(Class modelName){
-			Model.model = modelName;
-			
-		}	
-	}
-	
-	
-	SessionFactory mySessionFactory;
-	
-	public void setModel(Class model){
-		Model.setModel(model);
-	}
-	
-public daoClass(SessionFactory mySessionFactory, Class model){
-	new Configuration().configure();
-	this.mySessionFactory = mySessionFactory;
-	setModel(model);
+public SessionFactory getClientSessionFactory() {
+	return clientSessionFactory;
 }
 
-public List<Object> getData(){
-	List<Object> data=null;
+public void setClientSessionFactory(SessionFactory clientSessionFactory) {
+	this.clientSessionFactory = clientSessionFactory;
+}
+
+@SuppressWarnings("unchecked")
+public List<Client> getClients(){
+	List<Client> data=null;
 	try{
-	Session session = mySessionFactory.openSession();
+	Session session = clientSessionFactory.openSession();
     session.beginTransaction();
-    Criteria criteria = session.createCriteria(Model.model);
-    data= (List<Object>)criteria.list();
+    @SuppressWarnings("deprecation")
+	Criteria criteria = session.createCriteria(Client.class);
+    data= (List<Client>)criteria.list();
     session.getTransaction().commit();
     session.close();
 	}catch(Exception e){
@@ -53,9 +41,10 @@ public List<Object> getData(){
 public Client getUserByUsername(String uname){
 	Client client=null;
 	try{
-	Session session = mySessionFactory.openSession();
+	Session session = clientSessionFactory.openSession();
     session.beginTransaction();
-    Criteria criteria = session.createCriteria(Client.class).add(Restrictions.eq("uname", uname));
+    @SuppressWarnings("deprecation")
+	Criteria criteria = session.createCriteria(Client.class).add(Restrictions.eq("uname", uname));
 	client = (Client)criteria.uniqueResult();
     session.getTransaction().commit();
     session.close();
@@ -70,7 +59,7 @@ public Client getUserByUsername(String uname){
 public boolean addUser(Client u){
 	boolean commit = false;
 	try{
-	Session session = mySessionFactory.openSession();
+	Session session = clientSessionFactory.openSession();
     session.beginTransaction();
     session.save(u);
     session.getTransaction().commit();
@@ -87,7 +76,7 @@ public boolean addUser(Client u){
 public boolean UpdateUser(Client u){
 	boolean commit = false;
 	try{
-	Session session = mySessionFactory.openSession();
+	Session session = clientSessionFactory.openSession();
     session.beginTransaction();
     session.update(u);
     session.getTransaction().commit();
@@ -104,7 +93,7 @@ public boolean UpdateUser(Client u){
 public boolean RemoveUser(Client u){
 	boolean commit = false;
 	try{
-	Session session = mySessionFactory.openSession();
+	Session session = clientSessionFactory.openSession();
     session.beginTransaction();
     session.remove(u);
     session.getTransaction().commit();
