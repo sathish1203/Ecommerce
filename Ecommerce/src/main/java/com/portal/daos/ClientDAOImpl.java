@@ -38,6 +38,22 @@ public List<Client> getClients(){
 	return data;
 }
 
+/**
+ * checkUsernamePassword method will validate the username with the stored user details. 
+ * @param uname
+ *          - Username that is gotten from the website
+ * @param password
+ *          - Password that is gotten from the website
+ * @return
+ *          - Boolean value that is true if the username and password matches
+ */
+public boolean checkUsernamePassword(String uname, String password){
+	boolean ret_value = false;
+	Client client = getUserByUsername(uname);
+	if(client != null && password.equals(client.getPassword()))ret_value = true;
+	return ret_value;
+}
+
 public Client getUserByUsername(String uname){
 	Client client=null;
 	try{

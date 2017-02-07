@@ -32,6 +32,7 @@ public class App {
 		for (Client client:clients)
 		{
 			System.out.println("Client is "+ client.getUname());
+			System.out.println("Password is "+ client.getPassword());
 			System.out.println("Last name is "+ client.getLastname());
 			
 		}
