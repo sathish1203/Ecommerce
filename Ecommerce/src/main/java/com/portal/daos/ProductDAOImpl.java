@@ -63,7 +63,7 @@ public boolean addProduct(Product u){
 	try{
 	Session session = productSessionFactory.openSession();
     session.beginTransaction();
-    session.save(u);
+    session.saveOrUpdate(u);
     session.getTransaction().commit();
     session.close();
     commit = true;
@@ -92,7 +92,7 @@ public boolean UpdateProduct(Product u){
 }
 
 
-public boolean RemoveUser(Product u){
+public boolean RemoveProduct(Product u){
 	boolean commit = false;
 	try{
 	Session session = productSessionFactory.openSession();

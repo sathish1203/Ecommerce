@@ -7,7 +7,7 @@ public class Product {
 	private String categoryid;
 	private String description;
 	private String mrp;
-	private String OfferPrice;
+	private String offerprice;
 	private String quantity;
 	private String imagepath;
 	public String getId() {
@@ -46,11 +46,11 @@ public class Product {
 	public void setMrp(String mrp) {
 		this.mrp = mrp;
 	}
-	public String getOfferPrice() {
-		return OfferPrice;
+	public String getOfferprice() {
+		return offerprice;
 	}
-	public void setOfferPrice(String offerPrice) {
-		OfferPrice = offerPrice;
+	public void setOfferprice(String offerprice) {
+		this.offerprice = offerprice;
 	}
 	public String getQuantity() {
 		return quantity;

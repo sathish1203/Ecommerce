@@ -32,7 +32,7 @@
 <column name = "MRP" length = "20" />
 </property>
 
-<property name = "OfferPrice" type = "string">
+<property name = "offerprice" type = "string">
 <column name = "OFFERPRICE" length = "20" />
 </property>
   
