@@ -62,7 +62,7 @@ public boolean addSupplier(Supplier u){
 	try{
 	Session session = supplierSessionFactory.openSession();
     session.beginTransaction();
-    session.save(u);
+    session.saveOrUpdate(u);
     session.getTransaction().commit();
     session.close();
     commit = true;

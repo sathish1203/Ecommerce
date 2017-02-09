@@ -1,8 +1,5 @@
 package com.niit.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
