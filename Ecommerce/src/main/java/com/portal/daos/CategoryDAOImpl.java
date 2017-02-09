@@ -63,7 +63,7 @@ public boolean addCategory(Category u){
 	try{
 	Session session = categorySessionFactory.openSession();
     session.beginTransaction();
-    session.save(u);
+    session.saveOrUpdate(u);
     session.getTransaction().commit();
     session.close();
     commit = true;
