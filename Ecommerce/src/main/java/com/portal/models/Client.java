@@ -18,6 +18,13 @@ public class Client {
 	private String cart;
 	private String cards;
 	private boolean enabled;
+	private boolean admin;
+	public boolean isAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 	public String getUname() {
 		return uname;
 	}

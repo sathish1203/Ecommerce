@@ -2,13 +2,11 @@ package com.niit.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.portal.daos.CategoryDAOImpl;
 import com.portal.models.Category;
 
 /**
@@ -20,10 +18,7 @@ import com.portal.models.Category;
  */
 
 @Controller
-public class AdminCategoryController {
-	CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("categoryDAOImpl");
-
+public class AdminCategoryController extends BasicController {
 	/**
 	 * This method will add or update categories. It would first list all the
 	 * categories and then allow user to add or update the categories. 
@@ -36,6 +31,7 @@ public class AdminCategoryController {
 	@RequestMapping(value = "/admin_add_category", method = RequestMethod.GET)
 	public ModelAndView add_category(@ModelAttribute("command") Category category) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		model.put("categories", categoryDAOImpl.getCategories());
 		return new ModelAndView("add_category", model);
 	}
@@ -71,6 +67,7 @@ public class AdminCategoryController {
 	@RequestMapping(value = "/admin_edit_category", method = RequestMethod.GET)
 	public ModelAndView edit_category(@ModelAttribute("command") Category category) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		model.put("category", categoryDAOImpl.getCategoryById(category.getId()));
 		model.put("categories", categoryDAOImpl.getCategories());
 		return new ModelAndView("add_category", model);
@@ -91,6 +88,7 @@ public class AdminCategoryController {
 	public ModelAndView delete_category(@ModelAttribute("command") Category category) {
 		categoryDAOImpl.RemoveCategory(category);
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		model.put("category", null);
 		model.put("categories", categoryDAOImpl.getCategories());
 		return new ModelAndView("add_category", model);

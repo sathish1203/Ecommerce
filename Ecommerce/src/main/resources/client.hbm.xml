@@ -68,6 +68,11 @@
 <property name = "cards" type = "string">
 <column name = "CARDS" length = "20" />
 </property>
+
+<property name = "admin" type = "boolean">
+<column name = "ADMIN" />
+</property>
+
 </class>  
             
 </hibernate-mapping>  

@@ -1,24 +1,26 @@
 package com.niit.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.portal.models.Client;
+
 
 
 @Controller
-public class FooterController{
+public class FooterController extends BasicController{
 
 	
 
 	// Mapping for the signup page
 	   @RequestMapping(value = "/help",method = RequestMethod.GET)
-	   public ModelAndView triggerSignup(ModelMap model) {
-		  System.out.println("In triggerSignup");
-	      return new ModelAndView("/misc/help", "command", new Client());
+	   public ModelAndView triggerSignup() {
+	      Map<String, Object> model = new HashMap<String, Object>();
+			model.put("currentUser",get_current_user());
+		  return new ModelAndView("/misc/help",model);
 	   }
 	 
    

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
    <%
@@ -35,7 +36,7 @@
 <div class="jumbotron text-center">
   <h1>Welcome to Stuff Spot !!!!!!! </h1>
   <p>Your Economy Supermarket at your convenience!!!! <br />
-   Hi !!!!! ${user} 
+   Hi !!!!! ${currentUser} 
   </p> 
   <p color = "blue">${msg}</p>
 </div>
@@ -96,8 +97,17 @@
 			
       </ul>
       <ul>
-         <a class = "navbar-brand pull-right" href = "/Ecommerce/login">Login</a>
+          <c:if test="${currentUser == 'Guest'}">
+          <a class = "navbar-brand pull-right" href = "/Ecommerce/login">Login</a>
           <a class = "navbar-brand pull-right" href = "/Ecommerce/signup">Signup</a>
+          </c:if>
+          <c:if test="${currentUser != 'Guest'}">
+          <a class = "navbar-brand pull-right" href = "#">Logout</a>
+          </c:if>
+          <c:if test="${isAdmin == true}">
+          <a class = "navbar-brand pull-right" href = "/Ecommerce/admin_add_supplier">Admin</a>
+          </c:if>
+          
       </ul>
      
    </div>

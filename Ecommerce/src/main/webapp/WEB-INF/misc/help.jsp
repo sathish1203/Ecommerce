@@ -31,7 +31,7 @@
 <div class="jumbotron text-center">
   <h1>Welcome to Stuff Spot !!!!!!! </h1>
   <p>Your Economy Supermarket at your convenience!!!! <br />
-   Hi !!!!! ${user} 
+   Hi !!!!! ${currentUser} 
   </p> 
   <p color = "blue">${msg}</p>
 </div>

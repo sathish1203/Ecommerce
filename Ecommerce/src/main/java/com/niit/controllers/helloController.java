@@ -1,73 +1,59 @@
 package com.niit.controllers;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.portal.daos.ClientDAOImpl;
 import com.portal.models.Client;
 
 @Controller
-public class helloController {
-	ClientDAOImpl clientDAOImpl = (ClientDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("clientDAOImpl");
-
+public class helloController extends BasicController {
+	
 	// Mapping for the login page
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView triggerLogin(ModelMap model) {
+	public ModelAndView triggerLogin() {
+		Map<String, Object> model = new HashMap<String, Object>();
 		System.out.println("In Login method");
-		model.addAttribute("message", "Hello Spring MVC Framework!");
-		return new ModelAndView("login", "command", new Client());
+		model.put("currentUser", get_current_user());
+		return new ModelAndView("login", model);
 	}
 
-	// Mapping for validating a login request
-	@RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-	public ModelAndView loginUser(@ModelAttribute("SpringWeb") Client client, ModelMap model) {
-		String view = "error";
-		boolean foundUser = clientDAOImpl.checkUsernamePassword(client.getUname(), client.getPassword());
-		if (foundUser) {
-			view = "landing2";
-			model.addAttribute("user", client.getUname());
-			System.out.println("User validated");
-		} else {
-			view = "login";
-			model.addAttribute("user", "guest");
-			model.addAttribute("msg", "Credentials Invalid. Either username or password is wrong.");
-			System.out.println("User null");
-		}
-		return new ModelAndView(view, "command", new Client());
-	}
-
+	
 	// Mapping for the signup page
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public ModelAndView triggerSignup(ModelMap model) {
+	public ModelAndView triggerSignup() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		System.out.println("In triggerSignup");
 		return new ModelAndView("signup", "command", new Client());
 	}
 
 	// Mapping for the addition of user
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public String addSignup(@ModelAttribute("SpringWeb") Client client, ModelMap model) {
-		System.out.println("In addUsert");
+	public ModelAndView addSignup(@ModelAttribute("SpringWeb") Client client) {
+		System.out.println("In addUser");
 		System.out.println("user is " + client);
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		clientDAOImpl.addUser(client);
-		model.addAttribute("user", "guest");
-		model.addAttribute("msg", "Registered Successfully, Please Login!!!");
-		return "landing2";
+	    model.put("msg", "Registered Successfully, Please Login!!!");
+		return new ModelAndView("landing2", model);
 	}
 
 	// Mapping for the logged in user
 	@RequestMapping(value = "/logged", method = RequestMethod.GET)
-	public String triggerLogged(ModelMap model) {
+	public ModelAndView triggerLogged() {
 		System.out.println("In printLanding");
-		model.addAttribute("message", "Hello Spring MVC Framework!");
-		return "logged";
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
+		return new ModelAndView("logged", model);
 	}
-	
+}	
 	
 	
 	
@@ -127,5 +113,22 @@ public class helloController {
 	 * model.addAttribute("password", client.getPassword()); return "result"; }
 	 * 
 	 */
-
-}
+	// Mapping for validating a login request
+		/*@RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
+		public ModelAndView loginUser(@ModelAttribute("SpringWeb") Client client, ModelMap model) {
+			String view = "error";
+			boolean foundUser = clientDAOImpl.checkUsernamePassword(client.getUname(), client.getPassword());
+			if (foundUser) {
+				view = "landing2";
+				model.addAttribute("user", client.getUname());
+			
+				System.out.println("User validated");
+			} else {
+				view = "login";
+				model.addAttribute("user", "guest");
+				model.addAttribute("msg", "Credentials Invalid. Either username or password is wrong.");
+				System.out.println("User null");
+			}
+			return new ModelAndView(view, "command", new Client());
+		}
+*/

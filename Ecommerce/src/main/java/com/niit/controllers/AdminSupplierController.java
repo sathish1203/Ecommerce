@@ -2,13 +2,11 @@ package com.niit.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.portal.daos.SupplierDAOImpl;
 import com.portal.models.Supplier;
 
 /**
@@ -20,10 +18,7 @@ import com.portal.models.Supplier;
  */
 
 @Controller
-public class AdminSupplierController {
-	SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("supplierDAOImpl");
-
+public class AdminSupplierController extends BasicController {
 	/**
 	 * This method will add or update suppliers. It would first list all the
 	 * suppliers and then allow user to add or update the suppliers. 
@@ -36,6 +31,7 @@ public class AdminSupplierController {
 	@RequestMapping(value = "/admin_add_supplier", method = RequestMethod.GET)
 	public ModelAndView add_supplier(@ModelAttribute("command") Supplier supplier) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		return new ModelAndView("add_supplier", model);
 	}
@@ -71,6 +67,7 @@ public class AdminSupplierController {
 	@RequestMapping(value = "/admin_edit_supplier", method = RequestMethod.GET)
 	public ModelAndView edit_supplier(@ModelAttribute("command") Supplier supplier) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		model.put("supplier", supplierDAOImpl.getSupplierById(supplier.getId()));
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		return new ModelAndView("add_supplier", model);
@@ -91,6 +88,7 @@ public class AdminSupplierController {
 	public ModelAndView delete_supplier(@ModelAttribute("command") Supplier supplier) {
 		supplierDAOImpl.RemoveSupplier(supplier);
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
 		model.put("supplier", null);
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		return new ModelAndView("add_supplier", model);

@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -169,25 +171,29 @@ and open the template in the editor.
        
        <hr>
    </div>
-    
-    
+     <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+      <font color="red">
+        Your login attempt was not successful due to <br/><br/>
+        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+    </font>
+    </c:if>
     <div class = "container">
     <div class = "row">
     <div class = "col-sm-3"></div>
     <div class = "col-sm-3">
     <div> 
-       
-        <form:form method="POST" action="/Ecommerce/validateLogin">
+       <!-- /Ecommerce/validateLogin -->
+        <form:form method="POST" action='/Ecommerce/j_spring_security_check'>
         <fieldset>
             <table cellpadding = "10">
             <tr><th></th></tr>
             <tr>
-              <td><form:label path="uname">username</form:label></td>
-              <td><form:input path="uname" /></td>
+              <td>Username:</td>
+              <td><input type='text' name='username'></td>
            </tr>
             <tr>
-              <td><form:label path="password">password</form:label></td>
-              <td><form:input path="password" /></td>
+              <td>Password:</td>
+              <td><input type='password' name='password' /></td>
             </tr>
             <tr>
         <td colspan="2">

@@ -1,14 +1,14 @@
-package com.portal.config;
+package com.portal.security;
 
-	import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.
 	configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.
 	configuration.WebSecurityConfigurerAdapter;
-
-import com.portal.security.EcommUserService;
 
 	@Configuration
 	@EnableWebSecurity
@@ -21,12 +21,14 @@ import com.portal.security.EcommUserService;
 			http
 	            .authorizeRequests()
 		            .antMatchers("/landing").hasRole("USER")
-		            .antMatchers("/admin").hasRole("ADMIN")
+		            .antMatchers("/admin*").hasRole("ADMIN")
 		            .anyRequest().permitAll()
 	                .and()
 	            .formLogin()
 	                .loginPage("/login")
-	                .permitAll()
+	                .loginProcessingUrl("/j_spring_security_check")
+	                .defaultSuccessUrl("/landing")
+	                .failureUrl("/login")
 	                .and()
 	            .csrf()
 	            	.disable();
@@ -36,8 +38,15 @@ import com.portal.security.EcommUserService;
 		@Override
 		protected void configure(AuthenticationManagerBuilder auth)
 		throws Exception {
-			   System.out.println("In configure Auth of Security COnfig");
-		auth
-		.userDetailsService(new EcommUserService());
+		System.out.println("In configure AuthenticationManagerBuilder of Security Config");
+		auth.parentAuthenticationManager(authenticator());
+	    super.configure(auth);
+	
 		}
+		
+		 @Bean
+		  public AuthenticationManager authenticator() {
+		    return new CustomAuthenticationManager();
+		  }
+		
 	}
