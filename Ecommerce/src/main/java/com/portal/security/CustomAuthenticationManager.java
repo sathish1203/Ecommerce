@@ -13,6 +13,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import com.niit.controllers.BasicController;
 import com.portal.daos.ClientDAOImpl;
 
 import com.portal.models.Client;
@@ -23,8 +24,7 @@ import com.portal.models.Client;
  * Otherwise, throw a {@link BadCredentialsException}
  */
 public class CustomAuthenticationManager implements AuthenticationManager {
-	ClientDAOImpl clientDAOImpl = (ClientDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("clientDAOImpl");
+	ClientDAOImpl clientDAOImpl = (ClientDAOImpl) BasicController.application_context.getBean("clientDAOImpl");
  
  // Our custom DAO layer
   

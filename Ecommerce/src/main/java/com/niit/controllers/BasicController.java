@@ -12,15 +12,11 @@ import com.portal.daos.ProductDAOImpl;
 import com.portal.daos.SupplierDAOImpl;
 
 public class BasicController {
-	ClientDAOImpl clientDAOImpl = (ClientDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("clientDAOImpl");
-	CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("categoryDAOImpl");
-	ProductDAOImpl productDAOImpl = (ProductDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("productDAOImpl");
-	SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml")
-			.getBean("supplierDAOImpl");
-	
+	ClientDAOImpl clientDAOImpl = (ClientDAOImpl) application_context.getBean("clientDAOImpl");
+	CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) application_context.getBean("categoryDAOImpl");
+	ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("productDAOImpl");
+	SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
+	public static ClassPathXmlApplicationContext application_context = new ClassPathXmlApplicationContext("spring_beans.xml");
 	public String get_current_user(){
 		   String user = "";
 		   Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
