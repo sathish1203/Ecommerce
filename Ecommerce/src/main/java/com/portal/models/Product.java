@@ -10,9 +10,19 @@ public class Product {
 	private String offerprice;
 	private String quantity;
 	private String imagepath;
+	private String image_upload_path;
+	public String getImage_upload_path() {
+		return image_upload_path;
+	}
+
+	public void setImage_upload_path(String image_upload_path) {
+		this.image_upload_path = image_upload_path;
+	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}

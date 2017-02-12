@@ -1,11 +1,16 @@
 package com.niit.controllers;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.portal.models.Product;
 
@@ -19,6 +24,8 @@ import com.portal.models.Product;
 
 @Controller
 public class AdminProductController extends BasicController {
+	
+	String productPath = "C:\\Users\\Sathish1203\\git\\Ecommerce\\Ecommerce\\src\\main\\webapp\\WEB-INF\\images\\products";
 	/**
 	 * This method will add or update products. It would first list all the
 	 * products and then allow user to add or update the products. 
@@ -51,11 +58,44 @@ public class AdminProductController extends BasicController {
 	 *          -- Model and view data object 
 	 */
 	@RequestMapping(value = "/admin_save_product", method = RequestMethod.POST)
-	public ModelAndView save_product(@ModelAttribute("command") Product product) {
+	public ModelAndView save_product(@ModelAttribute("command") Product product,@RequestParam("productImage") MultipartFile file) {
+		String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir using System:" +currentDir);
+        System.out.println("file:" +file);
+        System.out.println(AdminProductController.class.getProtectionDomain().getCodeSource().getLocation());
+        System.out.println("getImagepath:" +product.getImagepath());
+        System.out.println("file.getName:" +file.getName());
+		
 		productDAOImpl.addProduct(product);
+		
+		
+		String path= productPath+"\\"+String.valueOf(product.getId())+".jpg"; 
+		
+		if(!file.isEmpty()){
+			File output_file = new File(path);
+			try
+			{
+			  byte[] bytes=file.getBytes();
+			  System.out.println(bytes.length);
+			  FileOutputStream fos=new FileOutputStream(output_file);
+              BufferedOutputStream bs=new BufferedOutputStream(fos);
+              			bs.write(bytes);
+              			bs.close();
+             			 System.out.println("File Uploaded Successfully");
+			}
+			catch(Exception e)
+			{
+				System.out.println("Exception Arised"+e);
+			}
+			
+			
+		}
+		
+		
 		return new ModelAndView("redirect:/admin_add_product");
 	}
 
+	
 	
 	/**
 	 * This method will be used to edit the product. This controller method

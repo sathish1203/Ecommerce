@@ -50,7 +50,7 @@
 </ul>
     
 <ul>
-	<a class="navbar-brand pull-right" href="/Ecommerce/landing">Logout</a>
+	<a class="navbar-brand pull-right" href="/Ecommerce/j_spring_security_logout">Logout</a>
 </ul>
 </div>
 </nav>

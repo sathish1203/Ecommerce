@@ -50,7 +50,7 @@
 </ul>
     
 <ul>
-	<a class="navbar-brand pull-right" href="/Ecommerce/landing">Logout</a>
+	<a class="navbar-brand pull-right" href="/Ecommerce/j_spring_security_logout">Logout</a>
 </ul>
 </div>
 </nav>
@@ -68,9 +68,9 @@
 <!-- ****************Start of the form**********************-->
 	<div class="col-md-11">
 		<h2>Add Product Data</h2>
-		<form:form method="POST" action="/Ecommerce/admin_save_product">
+		<form:form method="POST" action="/Ecommerce/admin_save_product"  enctype="multipart/form-data">
 		<table>
-		<tr>
+		<tr> 
 			<td><form:label path="id">Product ID:</form:label></td>
 			<td><form:input path="id" value="${product.id}" /></td>
 		</tr>
@@ -103,8 +103,9 @@
 			<td><form:input path="quantity" value="${product.quantity}" /></td>
 		</tr>
 		<tr>
-			<td><form:label path="imagepath">Product Image Path:</form:label></td>
-			<td><form:input path="imagepath" value="${product.imagepath}" /></td>
+		    <td><form:label path="imagepath">Image Upload</form:label></td>
+			<td><input name = "productImage" type = "file" id="productImage" path = "imagepath" /></td>
+			
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" value="Submit" /></td>

@@ -48,8 +48,6 @@
          data-toggle = "collapse" data-target = "#example-navbar-collapse">
          <span class = "sr-only">Toggle navigation</span>
          <span class = "icon-bar"></span>
-         <span class = "icon-bar"></span>
-         <span class = "icon-bar"></span>
       </button>
 		
       <a class = "navbar-brand" href = "#">LATEST OFFERS</a>
@@ -102,7 +100,7 @@
           <a class = "navbar-brand pull-right" href = "/Ecommerce/signup">Signup</a>
           </c:if>
           <c:if test="${currentUser != 'Guest'}">
-          <a class = "navbar-brand pull-right" href = "#">Logout</a>
+          <a class = "navbar-brand pull-right" href = "/Ecommerce/j_spring_security_logout">Logout</a>
           </c:if>
           <c:if test="${isAdmin == true}">
           <a class = "navbar-brand pull-right" href = "/Ecommerce/admin_add_supplier">Admin</a>

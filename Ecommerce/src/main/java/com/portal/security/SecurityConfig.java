@@ -30,6 +30,10 @@ import org.springframework.security.config.annotation.web.
 	                .defaultSuccessUrl("/landing")
 	                .failureUrl("/login")
 	                .and()
+	            .logout()
+	                .logoutUrl("/j_spring_security_logout")
+	                .logoutSuccessUrl("/login")
+	                .and()
 	            .csrf()
 	            	.disable();
 			}
