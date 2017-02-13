@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.portal.models.Client;
+import com.portal.models.Product;
 
 @Controller
 public class helloController extends BasicController {
@@ -26,22 +27,22 @@ public class helloController extends BasicController {
 	
 	// Mapping for the signup page
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public ModelAndView triggerSignup() {
+	public ModelAndView triggerSignup(@ModelAttribute("command") Client client) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("currentUser", get_current_user());
 		System.out.println("In triggerSignup");
-		return new ModelAndView("signup", "command", new Client());
+		return new ModelAndView("signup", model);
 	}
 
 	// Mapping for the addition of user
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public ModelAndView addSignup(@ModelAttribute("SpringWeb") Client client) {
+	public ModelAndView addSignup(@ModelAttribute("command") Client client) {
 		System.out.println("In addUser");
 		System.out.println("user is " + client);
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("currentUser", get_current_user());
 		clientDAOImpl.addUser(client);
-	    model.put("msg", "Registered Successfully, Please Login!!!");
+	    model.put("msg", "Registered Successfully, Please Login!");
 		return new ModelAndView("landing2", model);
 	}
 
