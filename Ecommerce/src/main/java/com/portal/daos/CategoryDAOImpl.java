@@ -40,6 +40,9 @@ public List<Category> getCategories(){
 	return data;
 }
 
+
+
+
 public Category getCategoryById(String id){
 	Category client=null;
 	try{

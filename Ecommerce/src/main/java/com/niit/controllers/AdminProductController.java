@@ -46,6 +46,8 @@ public class AdminProductController extends BasicController {
 	}
 	
 
+
+	
 	
 	/**
 	 * This method will be used to save the product. This controller method
@@ -65,12 +67,8 @@ public class AdminProductController extends BasicController {
         System.out.println(AdminProductController.class.getProtectionDomain().getCodeSource().getLocation());
         System.out.println("getImagepath:" +product.getImagepath());
         System.out.println("file.getName:" +file.getName());
-		
-		productDAOImpl.addProduct(product);
-		
-		
+     	productDAOImpl.addProduct(product);
 		String path= productPath+"\\"+String.valueOf(product.getId())+".jpg"; 
-		
 		if(!file.isEmpty()){
 			File output_file = new File(path);
 			try

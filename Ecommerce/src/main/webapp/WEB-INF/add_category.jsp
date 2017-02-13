@@ -23,6 +23,10 @@
 <td><form:input path="name" value="${category.name}" /></td>
 </tr>
 <tr>
+<td><form:label path="subcategory">Sub-category Name:</form:label></td>
+<td><form:input path="subcategory" value="${category.subcategory}" /></td>
+</tr>
+<tr>
 <td><form:label path="description">Category Description:</form:label></td>
 <td><form:input path="description" value="${category.description}" /></td>
 </tr>
@@ -48,6 +52,7 @@
 <tr>
 <th>Category ID</th>
 <th>Category Name</th>
+<th>Sub-Category Description</th>
 <th>Category Description</th>
 </tr>
 
@@ -55,11 +60,11 @@
 <tr>
 <td><c:out value="${category.id}" /></td>
 <td><c:out value="${category.name}" /></td>
+<td><c:out value="${category.subcategory}" /></td>
 <td><c:out value="${category.description}" /></td>
 <td align="center"><a href="/Ecommerce/admin_edit_category?id=${category.id}">Edit</a>
 |<a href="/Ecommerce/admin_delete_category?id=${category.id}">Delete</a></td>
 </tr>
-
 </c:forEach>
 </table>
 </c:if>

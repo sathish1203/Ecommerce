@@ -12,9 +12,17 @@
 <generator class="assigned"/>  
 </id>  
 
+
+
+<property name="subcategory" type = "string">
+<column name = "SUBCATEGORY" length = "30" />
+</property>  
+     
+     
 <property name="name" type = "string">
 <column name = "NAME" length = "30" />
-</property>  
+</property> 
+
           
 <property name = "description" type = "string">
 <column name = "DESCRIPTION" length = "200"/>

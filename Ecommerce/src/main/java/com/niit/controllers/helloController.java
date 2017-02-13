@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.portal.models.Client;
-import com.portal.models.Product;
+
 
 @Controller
 public class helloController extends BasicController {

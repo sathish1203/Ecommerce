@@ -5,7 +5,16 @@ public class Category {
 
 	private String id;  
 	private String name;
+	private String subcategory;
 	private String description;
+
+	public String getSubcategory() {
+		return subcategory;
+	}
+	public void setSubcategory(String subcategory) {
+		this.subcategory = subcategory;
+	}
+
 	public String getId() {
 		return id;
 	}
