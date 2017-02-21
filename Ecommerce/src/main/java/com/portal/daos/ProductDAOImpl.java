@@ -23,6 +23,24 @@ public void setProductSessionFactory(SessionFactory productSessionFactory) {
 }
 
 @SuppressWarnings("unchecked")
+public List<Product> getProductsByCategory(String CategoryId){
+	List<Product> data=null;
+	try{
+		Session session = productSessionFactory.openSession();
+	    session.beginTransaction();
+	    @SuppressWarnings("deprecation")
+		Criteria criteria = session.createCriteria(Product.class).add(Restrictions.eq("categoryid", CategoryId));
+	    data= (List<Product>)criteria.list();
+	    session.getTransaction().commit();
+	    session.close();
+	}catch(Exception e){
+		System.out.println(e.getMessage());
+		e.printStackTrace();
+	}
+	return data;
+}
+
+@SuppressWarnings("unchecked")
 public List<Product> getProducts(){
 	List<Product> data=null;
 	try{

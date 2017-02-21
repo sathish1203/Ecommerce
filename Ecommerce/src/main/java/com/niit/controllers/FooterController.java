@@ -19,6 +19,7 @@ public class FooterController extends BasicController{
 	   @RequestMapping(value = "/help",method = RequestMethod.GET)
 	   public ModelAndView triggerSignup() {
 	      Map<String, Object> model = new HashMap<String, Object>();
+	        model = getCategoriesForLanding(model);
 			model.put("currentUser",get_current_user());
 		  return new ModelAndView("/misc/help",model);
 	   }

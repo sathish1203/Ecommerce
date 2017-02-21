@@ -44,7 +44,7 @@
 <hr />
 <div class="row">
 <!-- ****************Start of the Table to list**********************-->
-<div class="col-sm-5">
+<div class="col-sm-12">
 <c:if test="${!empty categories}">
 <h2>List Categories</h2>
 <table align="left" border="1">

@@ -20,7 +20,7 @@
 	<p>Browse More latest Deals</p>
 	<div class = "carousel-caption">
 	<img src="/Ecommerce/images/offers.png"/>
-	<p><br /><h3>The place for getting the best deals of the season.</h3></p>
+	<br /><h3>The place for getting the best deals of the season.</h3>
 	</div>
 </div>
 <!--  End of the latest deals div -->
@@ -56,7 +56,7 @@ Details of the item.
   <a href = "/Ecommerce/hello">   <img src="images\homeneeds\lights_1_ecobrand.jpg" alt="ecobrand_lights"> </a>
   <div class="carousel-caption">
     <h3>Power Saving Lights</h3>
-    <p>These lights save lot of electricity by using LED.<br /><strike>&#8377;500</strike><br />&#8377;465</p>
+    <p>These lights save lot of electricity by using LED.<br /><del>&#8377;500</del><br />&#8377;465</p>
   </div>
   <div >
   </div>
@@ -73,7 +73,7 @@ Details of the item.
   <img src="images\homeneeds\mixie_1.jpg" alt="mixie">
   <div class="carousel-caption">
     <h3>Mixer</h3>
-    <p>Mixer of high quality at affordable price..<br /><strike>&#8377;950</strike><br />&#8377;820</p>
+    <p>Mixer of high quality at affordable price..<br /><del>&#8377;950</del><br />&#8377;820</p>
   </div>
 </div>
 
@@ -88,7 +88,7 @@ Details of the item.
   <img src="images\homeneeds\saucer_rajdhan_1.jpg" alt="saucer">
   <div class="carousel-caption">
     <h3>Cup and Saucer set</h3>
-    <p>A Cup and Saucer set with decorative designs.<br /><strike>&#8377;2100</strike><br />&#8377;1900</p>
+    <p>A Cup and Saucer set with decorative designs.<br /><del>&#8377;2100</del><br />&#8377;1900</p>
   </div>
 </div>
 
@@ -103,7 +103,7 @@ Details of the item.
     <img src="images\homeneeds\mosqBat_1.jpg" alt="mosquitobat">
     <div class="carousel-caption">
       <h3>Mosquito Bat</h3>
-      <p>Avoid diseases, eradicate mosquito with this easy to use product.<br /><strike>&#8377;300</strike><br />&#8377;260</p>
+      <p>Avoid diseases, eradicate mosquito with this easy to use product.<br /><del>&#8377;300</del><br />&#8377;260</p>
     </div>
   </div>
 </div>
@@ -159,7 +159,7 @@ Details of the item.
   <img src="images\electronics\desktop_1.jpg" alt="ecobrand_lights">
   <div class="carousel-caption">
     <h3>Desktop LP 4WA01</h3>
-    <p>Desktop all basic level functionality.<br /><strike>&#8377;43500</strike><br />&#8377;41000</p>
+    <p>Desktop all basic level functionality.<br /><del>&#8377;43500</del><br />&#8377;41000</p>
   </div>
   <div >
   </div>
@@ -176,7 +176,7 @@ Details of the item.
   <img src="images\electronics\desktop_2.jpg" alt="mixie">
   <div class="carousel-caption">
     <h3>Desktop BELL 7CY81</h3>
-    <p>Affordable Desktop for education purposes.<br /><strike>&#8377;31950</strike><br />&#8377;30820</p>
+    <p>Affordable Desktop for education purposes.<br /><del>&#8377;31950</del><br />&#8377;30820</p>
   </div>
 </div>
 
@@ -191,7 +191,7 @@ Details of the item.
   <img src="images\electronics\laptop_1.jpg" alt="saucer">
   <div class="carousel-caption">
     <h3>Laptop LP PF1000</h3>
-    <p>Laptop for Professional Use.<br /><strike>&#8377;2100</strike><br />&#8377;1900</p>
+    <p>Laptop for Professional Use.<br /><del>&#8377;2100</del><br />&#8377;1900</p>
   </div>
 </div>
 
@@ -206,7 +206,7 @@ Details of the item.
   <img src="images\electronics\mobile_1.jpg" alt="mosquitobat">
   <div class="carousel-caption">
     <h3>Rokia A200</h3>
-    <p>A great Camera mobile with great build quality.<br /><strike>&#8377;8300</strike><br />&#8377;7260</p>
+    <p>A great Camera mobile with great build quality.<br /><del>&#8377;8300</del><br />&#8377;7260</p>
   </div>
 </div>
 

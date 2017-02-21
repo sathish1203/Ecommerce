@@ -19,6 +19,7 @@ public class helloController extends BasicController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView triggerLogin() {
 		Map<String, Object> model = new HashMap<String, Object>();
+		 model = getCategoriesForLanding(model);
 		System.out.println("In Login method");
 		model.put("currentUser", get_current_user());
 		return new ModelAndView("login", model);
@@ -29,6 +30,7 @@ public class helloController extends BasicController {
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public ModelAndView triggerSignup(@ModelAttribute("command") Client client) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		 model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		System.out.println("In triggerSignup");
 		return new ModelAndView("signup", model);
@@ -40,6 +42,7 @@ public class helloController extends BasicController {
 		System.out.println("In addUser");
 		System.out.println("user is " + client);
 		Map<String, Object> model = new HashMap<String, Object>();
+		 model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		clientDAOImpl.addUser(client);
 	    model.put("msg", "Registered Successfully, Please Login!");
@@ -51,6 +54,7 @@ public class helloController extends BasicController {
 	public ModelAndView triggerLogged() {
 		System.out.println("In printLanding");
 		Map<String, Object> model = new HashMap<String, Object>();
+		 model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		return new ModelAndView("logged", model);
 	}

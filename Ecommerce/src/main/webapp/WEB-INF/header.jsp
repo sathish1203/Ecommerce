@@ -115,7 +115,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <span class = "sr-only">Toggle navigation</span>
 <span class = "icon-bar"></span>
 </button>
-<a class = "navbar-brand" href = "#">LATEST OFFERS</a>
+<a class = "navbar-brand" href = "/Ecommerce/landing">HOME</a>
 </div>
 <!-- End of the navigation bar header -->
 
@@ -127,43 +127,55 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <ul class = "nav navbar-nav">
   
 <!-- A drop down list to have various sub elements in it.  -->       	
+<c:if test="${!empty category1}">
 <li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> ELECTRONICS <b class = "caret"></b>   </a>
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category1Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
-<li><a href = "#">Desktops</a></li>
-<li><a href = "#">Laptops</a></li>
-<li><a href = "#">Mobiles</a></li>
-<li class = "divider"></li>
-<li><a href = "#">Miscellaneous</a></li>
-<li class = "divider"></li>
-<li><a href = "#">Imported ELectronics</a></li>
+<c:forEach items="${category1}" var="categoryOne">
+<li><a href = "#"><c:out value="${categoryOne}" /></a></li>
+</c:forEach>
 </ul>
 </li>
+</c:if>
 
-<!-- A drop down list to have various sub elements in it.  -->   		
-<li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> HOME NEEDS <b class = "caret"></b>   </a>
-<ul class = "dropdown-menu">
-<li><a href = "#">Kitchen</a></li>
-<li><a href = "#">Furniture</a></li>
-<li><a href = "#">Home Theatre</a></li>
-<li><a href = "#">Tools</a></li>
-</ul>
-</li>
 
-<!-- A drop down list to have various sub elements in it.  -->   			
+<!-- A drop down list to have various sub elements in it.  -->       	
+<c:if test="${!empty category2}">
 <li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> BOOKS <b class = "caret"></b>   </a>
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category2Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
-<li><a href = "#">Fiction</a></li>
-<li><a href = "#">Romance</a></li>
-<li><a href = "#">Sci-fi</a></li>
-<li><a href = "#">Competetive</a></li>
-<li><a href = "#">School & College</a></li>
+<c:forEach items="${category2}" var="categoryTwo">
+<li><a href = "#"><c:out value="${categoryTwo}" /></a></li>
+</c:forEach>
 </ul>
 </li>
+</c:if>
 		
+<!-- A drop down list to have various sub elements in it.  -->       	
+<c:if test="${!empty category3}">
+<li class = "dropdown">
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category3Name}" /> <b class = "caret"></b>   </a>
+<ul class = "dropdown-menu">
+<c:forEach items="${category3}" var="categoryThree">
+<li><a href = "#"><c:out value="${categoryThree}" /></a></li>
+</c:forEach>
+</ul>
+</li>
+</c:if>
 			
+<!-- A drop down list to have various sub elements in it.  -->       	
+<c:if test="${!empty othercategory}">
+<li class = "dropdown">
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> OTHER CATEGORIES <b class = "caret"></b>   </a>
+<ul class = "dropdown-menu">
+<c:forEach items="${othercategory}" var="categoryOther">
+<li><a href = "#"><c:out value="${categoryOther}" /></a></li>
+</c:forEach>
+</ul>
+</li>
+</c:if>
+
+
 </ul>
 <!-- End of the navbar class lists to be added in the navigation bar-->
 
@@ -186,6 +198,5 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <!-- End of the navigation bar body -->
 
 </nav>
-
 </body>
 </html>

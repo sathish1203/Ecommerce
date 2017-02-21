@@ -25,7 +25,6 @@ import com.portal.models.Product;
 @Controller
 public class AdminProductController extends BasicController {
 	
-	String productPath = "C:\\Users\\Sathish1203\\git\\Ecommerce\\Ecommerce\\src\\main\\webapp\\WEB-INF\\images\\products";
 	/**
 	 * This method will add or update products. It would first list all the
 	 * products and then allow user to add or update the products. 
