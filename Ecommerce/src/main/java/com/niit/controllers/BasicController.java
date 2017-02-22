@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.portal.daos.CartDAOImpl;
 import com.portal.daos.CategoryDAOImpl;
 import com.portal.daos.ClientDAOImpl;
 import com.portal.daos.ProductDAOImpl;
@@ -25,6 +26,7 @@ public class BasicController {
 	CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) application_context.getBean("categoryDAOImpl");
 	ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("productDAOImpl");
 	SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
+	CartDAOImpl cartDAOImpl = (CartDAOImpl)application_context.getBean("cartDAOImpl");
 	public static ClassPathXmlApplicationContext application_context = new ClassPathXmlApplicationContext("spring_beans.xml");
 	public String get_current_user(){
 		   String user = "";
@@ -83,23 +85,25 @@ public Map<String,Object> getProductsLanding(Map<String, Object> model){
 public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 	
 	 Category category;
+	
+	 HashMap<String, ArrayList<Category>> categories_map = new HashMap<String,ArrayList<Category>>();
+	 HashMap<String, ArrayList<Category>> other_categories_map = null;
+	 ArrayList<Category> values;
 	 List<Category> list_categories =  categoryDAOImpl.getCategories();
-	 HashMap<String, ArrayList<String>> categories_map = new HashMap<String,ArrayList<String>>();
-	 ArrayList<String> values;
-	 ArrayList<String> othercategories = new ArrayList<String>();
 	 Iterator<Category> iterator = list_categories.iterator();
 	 String key;
 	 String value;
 	 int i =0;
+	 /**
+	  * The below while loop would store all the categories in the format { categoryName => [categories] }
+	  */
 	 while (iterator.hasNext()) {
 		 category = iterator.next();
 	     key = category.getName();
-		 value = category.getSubcategory();
 		 values = categories_map.get(key);
-		 if(!(values instanceof ArrayList<?>))values = new ArrayList<String>();
-		 values.add(value);
+		 if(!(values instanceof ArrayList<?>))values = new ArrayList<Category>();
+		 values.add(category);
 		 categories_map.put(key, values);
-		 System.out.println("key,value being added now is"+key+","+value+".");
 	 }
 	 Iterator<String> keySetIterator = categories_map.keySet().iterator();
 	 while(keySetIterator.hasNext()){
@@ -109,17 +113,12 @@ public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 		   model.put("category"+i,categories_map.get(key_category));
 		   model.put("category"+i+"Name",key_category);
 	   } 
-	   if(i>=4) othercategories.add(key_category);
+	   if(i>=4) {
+		if(!(other_categories_map instanceof HashMap<?,?>)) other_categories_map = new HashMap<String,ArrayList<Category>>();
+		other_categories_map.put(key_category,categories_map.get(key_category));
+	   }
 	  }	
-	 //The below code is only for displaying the model.
-	 model.put("othercategory",othercategories); 
-	 System.out.println("Category 1 is "+ model.get("category1"));
-	 System.out.println("Category 2 is "+ model.get("category2"));
-	 System.out.println("Category 3 is "+ model.get("category3"));
-	 System.out.println("Other Category is ");
-	 for(String disp: (ArrayList<String>) model.get("othercategory")){
-   	System.out.println("Other category value -> "+ disp );
-	 }
+	  model.put("othercategory",other_categories_map);
 	  return model;
 	 }
 	 

@@ -132,7 +132,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category1Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${category1}" var="categoryOne">
-<li><a href = "#"><c:out value="${categoryOne}" /></a></li>
+<li><a href = "/Ecommerce/show_sub_category?id=${categoryOne.id}"><c:out value="${categoryOne.subcategory}" /></a></li>
 </c:forEach>
 </ul>
 </li>
@@ -145,7 +145,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category2Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${category2}" var="categoryTwo">
-<li><a href = "#"><c:out value="${categoryTwo}" /></a></li>
+<li><a href = "/Ecommerce/show_sub_category?id=${categoryTwo.id}"><c:out value="${categoryTwo.subcategory}" /></a></li>
 </c:forEach>
 </ul>
 </li>
@@ -157,7 +157,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category3Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${category3}" var="categoryThree">
-<li><a href = "#"><c:out value="${categoryThree}" /></a></li>
+<li><a href = "/Ecommerce/show_sub_category?id=${categoryThree.id}"><c:out value="${categoryThree.subcategory}" /></a></li>
 </c:forEach>
 </ul>
 </li>
@@ -169,7 +169,10 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> OTHER CATEGORIES <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${othercategory}" var="categoryOther">
-<li><a href = "#"><c:out value="${categoryOther}" /></a></li>
+<li>  <c:out value="${categoryOther.key}" /></li>
+<c:forEach items="${categoryOther.value}" var="category_sub">
+<li><a href = "/Ecommerce/show_sub_category?id=${category_sub.id}"><c:out value="${category_sub.subcategory}" /></a></li>
+</c:forEach>
 </c:forEach>
 </ul>
 </li>

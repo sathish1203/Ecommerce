@@ -29,7 +29,9 @@
 		<property name="supplierSessionFactory" ref="class_config" />
 	</bean>
 	
-	
+	<bean id="cartDAOImpl" class="com.portal.daos.CartDAOImpl" scope="singleton">
+		<property name="cartSessionFactory" ref="class_config" />
+	</bean>
 	
 
 </beans>

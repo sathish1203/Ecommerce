@@ -43,14 +43,15 @@
 
 
 	  <!-- ****************Start of the Table to list**********************-->
-<div class="col-sm-5">
+<div class="col-sm-12">
 	<c:if test="${!empty suppliers}">
 <h2>List Suppliers</h2>
-<table align="left" border="1">
+<table class = "table">
 <tr>
   		<th>Supplier ID</th>
 	<th>Supplier Name</th>
 	<th>Supplier Description</th>
+	<th>Action</th>
 </tr>
 <c:forEach items="${suppliers}" var="supplier">
 <tr>

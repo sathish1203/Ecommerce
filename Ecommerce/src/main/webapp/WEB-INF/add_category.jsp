@@ -47,25 +47,27 @@
 <div class="col-sm-12">
 <c:if test="${!empty categories}">
 <h2>List Categories</h2>
-<table align="left" border="1">
-
+<table class = "table">
+<thead>
 <tr>
 <th>Category ID</th>
 <th>Category Name</th>
 <th>Sub-Category Description</th>
 <th>Category Description</th>
+<th>Action</th>
 </tr>
-
+</thead>
+<tbody>
 <c:forEach items="${categories}" var="category">
 <tr>
 <td><c:out value="${category.id}" /></td>
 <td><c:out value="${category.name}" /></td>
 <td><c:out value="${category.subcategory}" /></td>
 <td><c:out value="${category.description}" /></td>
-<td align="center"><a href="/Ecommerce/admin_edit_category?id=${category.id}">Edit</a>
-|<a href="/Ecommerce/admin_delete_category?id=${category.id}">Delete</a></td>
+<td align="center"><a href="/Ecommerce/admin_edit_category?id=${category.id}">Edit</a>|<a href="/Ecommerce/admin_delete_category?id=${category.id}">Delete</a></td>
 </tr>
 </c:forEach>
+</tbody>
 </table>
 </c:if>
 </div>

@@ -78,7 +78,7 @@
 <div class="col-sm-12">
 <c:if test="${!empty products}">
 <h2>List Products</h2>
-<table align="left" border="1">
+<table class = "table">
 <tr>
 <th>Product ID</th>
 <th>Product Name</th>
@@ -88,7 +88,7 @@
 <th>Product MRP</th>
 <th>Product OfferPrice</th>
 <th>Product Quantity</th>
-<th>Product Image Path</th>
+<th>Action</th>
 </tr>
 <c:forEach items="${products}" var="product">
 <tr>
@@ -100,7 +100,6 @@
 <td><c:out value="${product.mrp}" /></td>
 <td><c:out value="${product.offerprice}" /></td>
 <td><c:out value="${product.quantity}" /></td>
-<td><c:out value="${product.imagepath}" /></td>
 <td align="center"><a href="/Ecommerce/admin_edit_product?id=${product.id}">Edit</a>
 | <a href="/Ecommerce/admin_delete_product?id=${product.id}">Delete</a></td>
 </tr>

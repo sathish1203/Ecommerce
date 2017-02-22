@@ -17,5 +17,6 @@ EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <mapping resource = "category.hbm.xml"/>
 <mapping resource = "product.hbm.xml"/>
 <mapping resource = "supplier.hbm.xml"/>
+<mapping resource = "cart.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
