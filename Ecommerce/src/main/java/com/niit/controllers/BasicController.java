@@ -21,34 +21,45 @@ import com.portal.models.Category;
 import com.portal.models.Product;
 
 public class BasicController {
-	String productPath = "C:\\Users\\Sathish1203\\git\\Ecommerce\\Ecommerce\\src\\main\\webapp\\WEB-INF\\images\\products";
-	ClientDAOImpl clientDAOImpl = (ClientDAOImpl) application_context.getBean("clientDAOImpl");
-	CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) application_context.getBean("categoryDAOImpl");
-	ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("productDAOImpl");
-	SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
-	CartDAOImpl cartDAOImpl = (CartDAOImpl)application_context.getBean("cartDAOImpl");
-	public static ClassPathXmlApplicationContext application_context = new ClassPathXmlApplicationContext("spring_beans.xml");
-	public String get_current_user(){
-		   String user = "";
-		   Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		   System.out.println("principal"+principal);
-		   user = principal.toString();
-		   if(user.isEmpty() || user.equals("anonymousUser"))user = "Guest";
-		   return user;
-		   }
 	
+String productPath = "C:\\Users\\Sathish1203\\git\\Ecommerce\\Ecommerce\\src\\main\\webapp\\WEB-INF\\images\\products";
+ClientDAOImpl clientDAOImpl = (ClientDAOImpl) application_context.getBean("clientDAOImpl");
+CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) application_context.getBean("categoryDAOImpl");
+ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("productDAOImpl");
+SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
+CartDAOImpl cartDAOImpl = (CartDAOImpl)application_context.getBean("cartDAOImpl");
+public static ClassPathXmlApplicationContext application_context = new ClassPathXmlApplicationContext("spring_beans.xml");
+
+/**
+ * This method will get the current user from the spring security. 
+ * @return -- String value, user name of the user. 
+ */
+public String get_current_user(){
+	   String user = "";
+   Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+   System.out.println("principal"+principal);
+   user = principal.toString();
+   if(user.isEmpty() || user.equals("anonymousUser"))user = "Guest";
+   return user;
+   }
+
+/**
+ * This method would check if the user is admin and would return the value. 
+ * @return
+ * 	-- Boolean value, true if user is admin. 
+ */
 public boolean isAdmin(){
 	boolean admin = false;
 	@SuppressWarnings("unchecked")
-	Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)    SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-    for (SimpleGrantedAuthority authority : authorities){
-    	System.out.println("authority is " + authority.toString());
-	if(authority.toString().equals("ROLE_ADMIN")){
+Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)    SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+for (SimpleGrantedAuthority authority : authorities){
+	System.out.println("authority is " + authority.toString());
+if(authority.toString().equals("ROLE_ADMIN")){
 		admin = true;
 	    break;
-	}
-	}
-    return admin;
+}
+}
+return admin;
 }
 	
 /**
@@ -68,19 +79,27 @@ public Map<String,Object> getProductsLanding(Map<String, Object> model){
 	 Collections.shuffle(list_product);
 	 for(i=0;i<length;i++) prodFeatureList.add(list_product.get(i));
 	 model.put("productsDealsList", prodDealList);
-	 model.put("productsFeatureList", prodFeatureList);
-	 for(Product disp: (ArrayList<Product>) model.get("productsDealsList")){
-	    	System.out.println("productsDealsList__Id -> "+ disp.getId());
-	    	System.out.println("productsDealsList__Name -> "+ disp.getName());
-		 }
-	 for(Product disp: (ArrayList<Product>) model.get("productsFeatureList")){
-	    	System.out.println("productsFeatureList__Id -> "+ disp.getId());
-	    	System.out.println("productsFeatureListt__Name -> "+ disp.getName());
+ model.put("productsFeatureList", prodFeatureList);
+ for(Product disp: (ArrayList<Product>) model.get("productsDealsList")){
+System.out.println("productsDealsList__Id -> "+ disp.getId());
+System.out.println("productsDealsList__Name -> "+ disp.getName());
+	 }
+ for(Product disp: (ArrayList<Product>) model.get("productsFeatureList")){
+System.out.println("productsFeatureList__Id -> "+ disp.getId());
+System.out.println("productsFeatureListt__Name -> "+ disp.getName());
 		 }
 	 
 	 return model;
 }
 
+
+/**
+ * This method would get the list of categories to be populated in the navigation bar. 
+ * @param model
+ * 		-- The model in which the categories have to be stored. 
+ * @return
+ *       -- The model, after populating the categories. 
+ */
 @SuppressWarnings("unchecked")
 public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 	
@@ -95,30 +114,30 @@ public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 	 String value;
 	 int i =0;
 	 /**
-	  * The below while loop would store all the categories in the format { categoryName => [categories] }
-	  */
-	 while (iterator.hasNext()) {
-		 category = iterator.next();
-	     key = category.getName();
-		 values = categories_map.get(key);
-		 if(!(values instanceof ArrayList<?>))values = new ArrayList<Category>();
-		 values.add(category);
-		 categories_map.put(key, values);
-	 }
-	 Iterator<String> keySetIterator = categories_map.keySet().iterator();
-	 while(keySetIterator.hasNext()){
-	   String key_category = keySetIterator.next();
-	   i = i + 1;
-	   if(i>=1 && i<=3){ 
-		   model.put("category"+i,categories_map.get(key_category));
-		   model.put("category"+i+"Name",key_category);
-	   } 
-	   if(i>=4) {
-		if(!(other_categories_map instanceof HashMap<?,?>)) other_categories_map = new HashMap<String,ArrayList<Category>>();
-		other_categories_map.put(key_category,categories_map.get(key_category));
-	   }
-	  }	
-	  model.put("othercategory",other_categories_map);
+  * The below while loop would store all the categories in the format { categoryName => [categories] }
+  */
+ while (iterator.hasNext()) {
+	 category = iterator.next();
+     key = category.getName();
+	 values = categories_map.get(key);
+	 if(!(values instanceof ArrayList<?>))values = new ArrayList<Category>();
+	 values.add(category);
+	 categories_map.put(key, values);
+ }
+ Iterator<String> keySetIterator = categories_map.keySet().iterator();
+ while(keySetIterator.hasNext()){
+   String key_category = keySetIterator.next();
+   i = i + 1;
+   if(i>=1 && i<=3){ 
+	   model.put("category"+i,categories_map.get(key_category));
+   model.put("category"+i+"Name",key_category);
+   } 
+   if(i>=4) {
+	if(!(other_categories_map instanceof HashMap<?,?>)) other_categories_map = new HashMap<String,ArrayList<Category>>();
+	other_categories_map.put(key_category,categories_map.get(key_category));
+   }
+  }	
+  model.put("othercategory",other_categories_map);
 	  return model;
 	 }
 	 

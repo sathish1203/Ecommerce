@@ -1,5 +1,7 @@
 package com.portal.daos;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -12,7 +14,6 @@ public class CartDAOImpl{
 
 SessionFactory cartSessionFactory;
 	
-
 public SessionFactory getCartSessionFactory() {
 	return cartSessionFactory;
 }
@@ -108,5 +109,54 @@ public boolean RemoveCart(Cart u){
 }
 
 
-	
+/**
+ * This method would return the product cart from the cart_string sent to database.
+ * @param id
+ * 		-- Cart ID
+ * @return
+ *      -- Hash map <pdt_id,qty>
+ */
+public HashMap<String,String> parse_product_cart(String id){
+	HashMap<String,String> product_cart = new HashMap<String,String>();
+	Cart cart = getCartById(id);
+	String cart_details = cart.getCart();
+	String[] pdt_qty = cart_details.split(";");
+	for(String pdt:pdt_qty){
+		product_cart.put(pdt.split(",")[0],pdt.split(",")[1]);
+		}
+	return product_cart;
+}	
+
+
+/**
+ * This method would get the cart string that has to be added to database. 
+ * @param id
+ *     -- Id of the cart.
+ * @param pdt_id
+ *     -- Product ID that has to be added. 
+ * @param qty
+ *     -- Quantity of the product.
+ * @return
+ *     -- The cart String.
+ */
+public  String get_product_cart_string(String id, String pdt_id, String qty){
+	HashMap<String,String> product_cart = new HashMap<String,String>();
+	String cart_string = "";
+	String pdt_key = "";
+	Cart cart = getCartById(id);
+	String cart_details = cart.getCart();
+	String[] pdt_qty = cart_details.split(";");
+	for(String pdt:pdt_qty){
+		product_cart.put(pdt.split(",")[0],pdt.split(",")[1]);
+	}
+	product_cart.put(pdt_id,qty);
+	Iterator<String> keySetIterator = product_cart.keySet().iterator();
+	while(keySetIterator.hasNext()){
+		pdt_key = keySetIterator.next();
+		cart_string += pdt_key +",";
+		cart_string += product_cart.get(pdt_key);
+		cart_string += ";";
+     }
+	return cart_string;
+}	
 }
