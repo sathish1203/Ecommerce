@@ -11,10 +11,10 @@
 <div class="row">
 
 
-<!-- ****************Start of the form**********************-->
+<!-- ****************Start of the User Details**********************-->
 <div class="col-md-12">
 	<h2>Add To Cart Data</h2>
-	<form:form method="POST" action="/Ecommerce/save_cart">
+	<form:form method="POST" action="/Ecommerce/save_checkout">
 <table>
 <tr>
 <td><form:label path="productId">Product ID:</form:label></td>

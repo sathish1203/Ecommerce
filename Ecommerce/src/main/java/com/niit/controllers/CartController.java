@@ -1,6 +1,7 @@
 package com.niit.controllers;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,7 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.portal.models.Cart;
 import com.portal.models.CartProduct;
-import com.portal.models.Supplier;
+import com.portal.models.Product;
+
 
 /**
  * This controller class will hold all the request methods for the CRUD
@@ -19,7 +21,6 @@ import com.portal.models.Supplier;
  * @author Sathish1203
  *
  */
-
 @Controller
 public class CartController extends BasicController {
 	/**
@@ -39,9 +40,11 @@ public class CartController extends BasicController {
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
 		model.put("currentUser", userName);
 		model.put("cartpdt", cart_pdt);
-	    model.put("cartpdts", cartDAOImpl.parse_product_cart(userName));
+	    model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 	    return new ModelAndView("add_cart", model);
 	}
+	
+	
 	
 	/**
 	 * This method would prepare a cart to be sent to the Cart View.
@@ -106,7 +109,7 @@ public class CartController extends BasicController {
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
 		model.put("cartpdt", cart_pdt);
-	    model.put("cartpdts", cartDAOImpl.parse_product_cart(get_current_user()));
+		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 		return new ModelAndView("add_cart", model);
 	}
 
@@ -130,7 +133,7 @@ public class CartController extends BasicController {
 		cart_pdt.setCart(cart);
 		cart.setCart(cartDAOImpl.get_product_cart_string_delete(userName,cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
-	    model.put("cartpdts", cartDAOImpl.parse_product_cart(get_current_user()));
+		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 		return new ModelAndView("add_cart", model);
 	}
 

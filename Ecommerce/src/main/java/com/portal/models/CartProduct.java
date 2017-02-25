@@ -5,6 +5,36 @@ public class CartProduct {
     private Cart Cart;    
     private String productId;
     private String quantity;
+    private String productName;
+    private String productPrice;
+    private String productMrp;
+    private String totalCost;
+    
+    
+	public String getTotalCost() {
+		return totalCost;
+	}
+	public void setTotalCost(String totalCost) {
+		this.totalCost = totalCost;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductPrice() {
+		return productPrice;
+	}
+	public void setProductPrice(String productPrice) {
+		this.productPrice = productPrice;
+	}
+	public String getProductMrp() {
+		return productMrp;
+	}
+	public void setProductMrp(String productMrp) {
+		this.productMrp = productMrp;
+	}
 	public Cart getCart() {
 		return Cart;
 	}

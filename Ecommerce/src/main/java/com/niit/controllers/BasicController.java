@@ -17,6 +17,7 @@ import com.portal.daos.CategoryDAOImpl;
 import com.portal.daos.ClientDAOImpl;
 import com.portal.daos.ProductDAOImpl;
 import com.portal.daos.SupplierDAOImpl;
+import com.portal.models.CartProduct;
 import com.portal.models.Category;
 import com.portal.models.Product;
 
@@ -141,7 +142,35 @@ public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 	  return model;
 	 }
 	 
-	 
+
+/**
+ * This method will add product related details to the model and would return it. Thr Object in the model
+ * has to be a <b> CartProduct </b> object.
+ * @param model
+ * @return
+ */
+public Map<String, Object> addProductDetailsToCart(Map<String, Object> model,HashMap<String,String> cartMap){
+	Map<String,CartProduct> cartpdts = new HashMap<String,CartProduct>();
+	String ProductId;
+	CartProduct cart_pdt = null;
+    Product pdt;
+	Iterator<String> iterator_obj = cartMap.keySet().iterator();
+	while (iterator_obj.hasNext())
+	{   
+		ProductId = iterator_obj.next();
+		pdt = productDAOImpl.getProductById(ProductId);
+    	cart_pdt = new CartProduct();
+    	cart_pdt.setProductId(ProductId);
+    	cart_pdt.setProductMrp(pdt.getMrp());
+    	cart_pdt.setProductName(pdt.getName());
+    	cart_pdt.setProductPrice(pdt.getOfferprice());
+    	cart_pdt.setQuantity(cartMap.get(ProductId));
+    	cartpdts.put(ProductId,cart_pdt);
+	}
+	model.put("cartpdts",cartpdts);
+	
+	return model;
+} 
 	 
 	 	
 }
