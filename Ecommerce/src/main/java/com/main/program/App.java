@@ -85,7 +85,5 @@ public class App {
 			System.out.println("Cart is "+ cart.getCart());
 			System.out.println("Count is "+ cart.getCount());
 		}
-		
-		
 	}
 }

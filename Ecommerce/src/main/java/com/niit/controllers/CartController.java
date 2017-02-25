@@ -35,7 +35,21 @@ public class CartController extends BasicController {
 	public ModelAndView add_Cart(@ModelAttribute("command") CartProduct cart_pdt) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
+		cart_pdt.setCart(prepareEmptyCart(userName));
+		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
 		model.put("currentUser", userName);
+		model.put("cartpdt", cart_pdt);
+	    model.put("cartpdts", cartDAOImpl.parse_product_cart(userName));
+	    return new ModelAndView("add_cart", model);
+	}
+	
+	/**
+	 * This method would prepare a cart to be sent to the Cart View.
+	 * @param userName
+	 *           -- The user name. The cart id would be the same as userid so that every user gets a cart.
+	 */
+	public Cart prepareEmptyCart(String userName){
+		
 		Cart cart = cartDAOImpl.getCartById(userName);
 		  if(cart == null){
 		    	cart = new Cart();
@@ -46,18 +60,16 @@ public class CartController extends BasicController {
 		    	cartDAOImpl.addCart(cart);
 		    	cart = cartDAOImpl.getCartById(userName);
 		    }
-		  model.put("cartpdt", cart_pdt);
-	      model.put("cartpdts", cartDAOImpl.parse_product_cart(userName));
-	      return new ModelAndView("add_cart", model);
+		  return cart;
 	}
 	
 	/**
-	 * This method will be used to save the supplier. This controller method
-	 * would be invoked to save the admin supplier and then the add method would
+	 * This method will be used to save the cart. This controller method
+	 * would be invoked to save the cart and then the add method would
 	 * be called.
 	 * 
-	 * @param Supplier
-	 *          -- The supplier value that is tagged to the model. The model form data object is passed to this method.
+	 * @param Cart
+	 *          -- The cart value that is tagged to the model. The model form data object is passed to this method.
 	 * @return 
 	 *          -- Model and view data object 
 	 */
@@ -76,8 +88,8 @@ public class CartController extends BasicController {
 
 	
 	/**
-	 * This method will be used to edit the supplier. This controller method
-	 * would be invoked to save the admin supplier and then the add method would
+	 * This method will be used to edit the cart. This controller method
+	 * would be invoked to save the  cart and then the add method would
 	 * be called.
 	 * 
 	 * @param Supplier
@@ -88,31 +100,38 @@ public class CartController extends BasicController {
 	@RequestMapping(value = "/edit_cart", method = RequestMethod.GET)
 	public ModelAndView edit_cart(@ModelAttribute("command") CartProduct cart_pdt) {
 		Map<String, Object> model = new HashMap<String, Object>();
-	     model.put("currentUser", get_current_user());
-		  model.put("cartpdt", cart_pdt);
-	      model.put("cartpdts", cartDAOImpl.parse_product_cart(get_current_user()));
-		return new ModelAndView("add_supplier", model);
+		String userName = get_current_user();
+		Cart cart = cartDAOImpl.getCartById(userName);
+		cart_pdt.setCart(cart);
+		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
+		model.put("currentUser", get_current_user());
+		model.put("cartpdt", cart_pdt);
+	    model.put("cartpdts", cartDAOImpl.parse_product_cart(get_current_user()));
+		return new ModelAndView("add_cart", model);
 	}
 
 	
 	/**
-	 * This method will be used to delete the supplier. This controller method
-	 * would be invoked to save the admin supplier and then the add page method
+	 * This method will be used to delete the cart. This controller method
+	 * would be invoked to save the admin cart and then the add page method
 	 * would be called.
 	 * 
-	 * @param Supplier
-	 *          -- The supplier value that is tagged to the model. The model form data object is passed to this method.
+	 * @param Cart
+	 *          -- The cart value that is tagged to the model. The model form data object is passed to this method.
 	 * @return 
 	 *          -- Model and view data object 
 	 */
 	@RequestMapping(value = "/delete_cart", method = RequestMethod.GET)
-	public ModelAndView delete_cart(@ModelAttribute("command") Supplier supplier) {
-		supplierDAOImpl.RemoveSupplier(supplier);
+	public ModelAndView delete_cart(@ModelAttribute("command")CartProduct cart_pdt) {
+		System.out.println(cart_pdt.getProductId());
 		Map<String, Object> model = new HashMap<String, Object>();
+		String userName = get_current_user();
+		Cart cart = cartDAOImpl.getCartById(userName);
+		cart_pdt.setCart(cart);
+		cart.setCart(cartDAOImpl.get_product_cart_string_delete(userName,cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
-		model.put("supplier", null);
-		model.put("suppliers", supplierDAOImpl.getSuppliers());
-		return new ModelAndView("add_supplier", model);
+	    model.put("cartpdts", cartDAOImpl.parse_product_cart(get_current_user()));
+		return new ModelAndView("add_cart", model);
 	}
 
 	

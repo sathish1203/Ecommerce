@@ -45,19 +45,26 @@
 <h2>Product Cart</h2>
 <table class = "table">
 <tr>
-  		<th>Product</th>
+  	<th>Product</th>
 	<th>Quantity</th>
 	<th>Price/Product</th>
 	<th>Action</th>
 </tr>
 <c:forEach items="${cartpdts}" var="cart_pdt">
 <tr>
-	<td><c:out value="${cart_pdt.key}" /></td>
-<td><c:out value="${cart_pdt[key]}" /></td>
-<td align="center"><a href="/Ecommerce/edit_cart?productId=${cart_pdt.key},quantity=${cart_pdt[key]}">Edit</a>
-| <a href="/Ecommerce/delete_cart?productId=${cart_pdt.key}">Delete</a></td>
+<td><c:out value="${cart_pdt.key}" /></td>
+<td><c:out value="${cart_pdt.value}" /></td>
+<td><c:out value="WIP" /></td>
+<td align="center">
+  <a href="/Ecommerce/edit_cart?productId=${cart_pdt.key}">Edit</a>
+| <a href="/Ecommerce/delete_cart?productId=${cart_pdt.key}">Delete</a>
+</td>
 </tr>
 </c:forEach>
+<tr>
+	<td colspan="2"><a href = "/Ecommerce/landing"><button type="button" class="btn btn-default">Continue Shopping</button></a></td>
+	<td colspan="2"><a href = "/Ecommerce/landing"><button type="button" class="btn btn-default">Checkout</button></a></td>
+</tr>
 </table>
 </c:if>
 </div>

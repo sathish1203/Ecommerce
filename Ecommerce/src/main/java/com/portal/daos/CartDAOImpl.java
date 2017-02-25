@@ -119,10 +119,19 @@ public boolean RemoveCart(Cart u){
 public HashMap<String,String> parse_product_cart(String id){
 	HashMap<String,String> product_cart = new HashMap<String,String>();
 	Cart cart = getCartById(id);
+	
 	String cart_details = cart.getCart();
-	if(cart_details == null || cart_details.isEmpty()) return product_cart;
+	System.out.println("cart_details -> "+ cart_details);
+	if(cart_details == null || cart_details.isEmpty()) 
+		{
+		System.out.println("Returning cart details empty");
+		return product_cart;
+		}
 	String[] pdt_qty = cart_details.split(";");
 	for(String pdt:pdt_qty){
+		System.out.println("key -> " + pdt.split(",")[0]);
+		System.out.println("value -> "+ pdt.split(",")[1]);
+		
 		product_cart.put(pdt.split(",")[0],pdt.split(",")[1]);
 		}
 	return product_cart;
@@ -162,4 +171,62 @@ public  String get_product_cart_string(String id, String pdt_id, String qty){
      }
 	return cart_string;
 }	
+
+
+/**
+ * This method would get the cart string that has to be added to database. 
+ * @param id
+ *     -- Id of the cart.
+ * @param pdt_id
+ *     -- Product ID that has to be added. 
+ * @param qty
+ *     -- Quantity of the product.
+ * @return
+ *     -- The cart String.
+ */
+public  String get_product_cart_string_delete(String id, String pdt_id){
+	HashMap<String,String> product_cart = new HashMap<String,String>();
+	String cart_string = "";
+	String pdt_key = "";
+	Cart cart = getCartById(id);
+	String cart_details = cart.getCart();
+	System.out.println("cart_details -> "+ cart_details);
+	System.out.println("pdt_id -> "+ pdt_id);
+	if(cart_details!=null && !cart_details.isEmpty())
+	{	
+	String[] pdt_qty = cart_details.split(";");
+	for(String pdt:pdt_qty){
+		System.out.println("pdt-> "+ pdt);
+		if(pdt.isEmpty() || pdt.startsWith(",")) 
+			{
+			System.out.println("product empty in continue");
+			continue; 
+			}
+		     System.out.println("split ->"+ pdt);
+		     product_cart.put(pdt.split(",")[0],pdt.split(",")[1]);
+	}
+    }
+	System.out.println("Removing->"+pdt_id);
+	product_cart.remove(pdt_id);
+	System.out.println("Removed");
+	Iterator<String> keySetIterator = product_cart.keySet().iterator();
+	System.out.println("Iterator got");
+	while(keySetIterator.hasNext()){
+		System.out.println("In while");
+		pdt_key = keySetIterator.next();
+		cart_string += pdt_key +",";
+		cart_string += product_cart.get(pdt_key);
+		cart_string += ";";
+		System.out.println("cart_string->"+cart_string);
+     }
+	cart.setCart(cart_string);
+	addCart(cart);
+    System.out.println("After Deletion, returning "+ cart_string);
+    
+	return cart_string;
+}	
+
+
+
+
 }
