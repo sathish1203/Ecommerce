@@ -33,7 +33,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
    throws AuthenticationException {
  
    System.out.println("Performing custom authentication");
-   
+ 
   // Init a database user object
   Client client = null;
   client = clientDAOImpl.getUserByUsername((auth.getName()));

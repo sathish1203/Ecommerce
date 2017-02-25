@@ -25,7 +25,7 @@
 
           
 <property name = "count" type = "int">
-<column name = "INT"/>
+<column name = "COUNT"/>
 </property>
 
 </class>  

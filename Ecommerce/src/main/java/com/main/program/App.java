@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.portal.daos.CartDAOImpl;
 import com.portal.daos.CategoryDAOImpl;
 import com.portal.daos.ClientDAOImpl;
 import com.portal.daos.ProductDAOImpl;
 import com.portal.daos.SupplierDAOImpl;
+import com.portal.models.Cart;
 import com.portal.models.Category;
 import com.portal.models.Client;
 import com.portal.models.Product;
@@ -19,7 +21,8 @@ public class App {
 	static CategoryDAOImpl categoryDAOImpl  = (CategoryDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("categoryDAOImpl");	
 	static ProductDAOImpl productDAOImpl  = (ProductDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("productDAOImpl");	
 	static SupplierDAOImpl supplierDAOImpl  = (SupplierDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("supplierDAOImpl");	
-	   
+	static CartDAOImpl cartDAOImpl  = (CartDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("cartDAOImpl");	
+	  
 	
 	public static void main(String[] args) {
 		System.out.println("In app.java");
@@ -60,6 +63,7 @@ public class App {
 		}
 		
 		
+		
 		List<Supplier> suppliers;
 		suppliers= supplierDAOImpl.getSuppliers();
 		System.out.println("supplier is"+suppliers);
@@ -71,7 +75,16 @@ public class App {
 		}
 		
 		
-		
+		List<Cart> carts;
+		carts= cartDAOImpl.getCarts();
+		System.out.println("carts is"+carts);
+		for (Cart cart:carts)
+		{
+			System.out.println("Cart id is "+ cart.getId());
+			System.out.println("name is "+ cart.getName());
+			System.out.println("Cart is "+ cart.getCart());
+			System.out.println("Count is "+ cart.getCount());
+		}
 		
 		
 	}

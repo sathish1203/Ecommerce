@@ -120,6 +120,7 @@ public HashMap<String,String> parse_product_cart(String id){
 	HashMap<String,String> product_cart = new HashMap<String,String>();
 	Cart cart = getCartById(id);
 	String cart_details = cart.getCart();
+	if(cart_details == null || cart_details.isEmpty()) return product_cart;
 	String[] pdt_qty = cart_details.split(";");
 	for(String pdt:pdt_qty){
 		product_cart.put(pdt.split(",")[0],pdt.split(",")[1]);
@@ -145,10 +146,12 @@ public  String get_product_cart_string(String id, String pdt_id, String qty){
 	String pdt_key = "";
 	Cart cart = getCartById(id);
 	String cart_details = cart.getCart();
-	String[] pdt_qty = cart_details.split(";");
+	if(cart_details!=null && !cart_details.isEmpty())
+	{	String[] pdt_qty = cart_details.split(";");
 	for(String pdt:pdt_qty){
 		product_cart.put(pdt.split(",")[0],pdt.split(",")[1]);
 	}
+}
 	product_cart.put(pdt_id,qty);
 	Iterator<String> keySetIterator = product_cart.keySet().iterator();
 	while(keySetIterator.hasNext()){
