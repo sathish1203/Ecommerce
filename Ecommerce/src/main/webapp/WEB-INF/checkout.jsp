@@ -1,4 +1,3 @@
-
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file = "header_admin.jsp"  %>
@@ -12,8 +11,8 @@
 
 
 <!-- ****************Start of the User Details**********************-->
-<div class="col-md-12">
-	<h2>Add To Cart Data</h2>
+<div class="col-md-6">
+	<h2>Check User Details</h2>
 	<form:form method="POST" action="/Ecommerce/save_checkout">
 <table>
 <tr>
@@ -36,12 +35,10 @@
      
 </div>
 <hr />
-<div class="row">
-
 
 	  <!-- ****************Start of the Table to list**********************-->
-<div class="col-sm-12">
-	<c:if test="${!empty cartpdts}">
+<div class="col-sm-6">
+<c:if test= "${!empty cartpdts}" >
 <h2>Product Cart</h2>
 <table class = "table">
 <tr>
@@ -72,7 +69,7 @@
 	  
 	  
 </div>
-</div>
+
   <!-- ****************End of the container**********************-->
 <hr />
 
