@@ -14,25 +14,22 @@ import org.springframework.security.config.annotation.web.
 	@EnableWebSecurity
 	public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
-
-		
-		
 		protected void configure(HttpSecurity http) throws Exception {
 			http
 	            .authorizeRequests()
-		            .antMatchers("/landing").hasRole("USER")
+		            .antMatchers("/user*").hasRole("USER")
 		            .antMatchers("/admin*").hasRole("ADMIN")
-		            .anyRequest().permitAll()
+		            .antMatchers("/all.*").permitAll()
 	                .and()
 	            .formLogin()
-	                .loginPage("/login")
+	                .loginPage("/all_login")
 	                .loginProcessingUrl("/j_spring_security_check")
-	                .defaultSuccessUrl("/landing")
-	                .failureUrl("/login")
+	                .defaultSuccessUrl("/all_landing")
+	                .failureUrl("/all_login")
 	                .and()
 	            .logout()
 	                .logoutUrl("/j_spring_security_logout")
-	                .logoutSuccessUrl("/login")
+	                .logoutSuccessUrl("/all_login")
 	                .and()
 	            .csrf()
 	            	.disable();

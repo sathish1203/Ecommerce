@@ -36,7 +36,7 @@
   <!-- ****************End of the table to list**********************-->
 <div class="col-md-6">
 <h2>Add To Cart Data</h2>
-<form:form method="POST" action="/Ecommerce/save_check_out">
+<form:form method="POST" action="/Ecommerce/user_save_check_out">
 <table>
 <tr>
 <td><form:label path="addressline1">User AddressLine1</form:label></td>
@@ -57,10 +57,10 @@
 
 <tr>
 <td>
-<a href="/Ecommerce/landing"><button class = "button">Cancel Purchase</button></a>
+<a href="/Ecommerce/all_landing"><button class = "button">Cancel Purchase</button></a>
 </td>
 <td>
-<a href="/Ecommerce/save_check_out"><button class = "button">Confirm and Checkout</button></a>
+<a href="/Ecommerce/user_save_check_out"><button class = "button">Confirm and Checkout</button></a>
 </td>
 </tr>
 </table>

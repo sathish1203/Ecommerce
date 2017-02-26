@@ -21,7 +21,7 @@
 
 
 <div class = "col-sm-4">
-<a href = "/Ecommerce/show_product?id=${product.id}"><img src = "images\products\<c:out value="${product.id}" />.jpg" alt = "${product.name}"></a>
+<a href = "/Ecommerce/all_show_product?id=${product.id}"><img src = "images\products\<c:out value="${product.id}" />.jpg" alt = "${product.name}"></a>
 <p class = "text-center"><c:out value="${product.name}" /></p>
 </div>
 

@@ -115,7 +115,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <span class = "sr-only">Toggle navigation</span>
 <span class = "icon-bar"></span>
 </button>
-<a class = "navbar-brand" href = "/Ecommerce/landing">HOME</a>
+<a class = "navbar-brand" href = "/Ecommerce/all_landing">HOME</a>
 </div>
 <!-- End of the navigation bar header -->
 
@@ -132,7 +132,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category1Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${category1}" var="categoryOne">
-<li><a href = "/Ecommerce/show_sub_category?id=${categoryOne.id}"><c:out value="${categoryOne.subcategory}" /></a></li>
+<li><a href = "/Ecommerce/all_show_sub_category?id=${categoryOne.id}"><c:out value="${categoryOne.subcategory}" /></a></li>
 </c:forEach>
 </ul>
 </li>
@@ -145,7 +145,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category2Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${category2}" var="categoryTwo">
-<li><a href = "/Ecommerce/show_sub_category?id=${categoryTwo.id}"><c:out value="${categoryTwo.subcategory}" /></a></li>
+<li><a href = "/Ecommerce/all_show_sub_category?id=${categoryTwo.id}"><c:out value="${categoryTwo.subcategory}" /></a></li>
 </c:forEach>
 </ul>
 </li>
@@ -157,7 +157,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${category3Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
 <c:forEach items="${category3}" var="categoryThree">
-<li><a href = "/Ecommerce/show_sub_category?id=${categoryThree.id}"><c:out value="${categoryThree.subcategory}" /></a></li>
+<li><a href = "/Ecommerce/all_show_sub_category?id=${categoryThree.id}"><c:out value="${categoryThree.subcategory}" /></a></li>
 </c:forEach>
 </ul>
 </li>
@@ -171,7 +171,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <c:forEach items="${othercategory}" var="categoryOther">
 <li>  <c:out value="${categoryOther.key}" /></li>
 <c:forEach items="${categoryOther.value}" var="category_sub">
-<li><a href = "/Ecommerce/show_sub_category?id=${category_sub.id}"><c:out value="${category_sub.subcategory}" /></a></li>
+<li><a href = "/Ecommerce/all_show_sub_category?id=${category_sub.id}"><c:out value="${category_sub.subcategory}" /></a></li>
 </c:forEach>
 </c:forEach>
 </ul>
@@ -185,8 +185,8 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <!-- A list to add more buttons in Nav bar depending on some conditions. -->
 <ul>
 <c:if test="${currentUser == 'Guest'}">
-<a class = "navbar-brand pull-right" href = "/Ecommerce/login">Login</a>
-<a class = "navbar-brand pull-right" href = "/Ecommerce/signup">Signup</a>
+<a class = "navbar-brand pull-right" href = "/Ecommerce/all_login">Login</a>
+<a class = "navbar-brand pull-right" href = "/Ecommerce/all_signup">Signup</a>
 </c:if>
 <c:if test="${currentUser != 'Guest'}">
 <a class = "navbar-brand pull-right" href = "/Ecommerce/j_spring_security_logout">Logout</a>

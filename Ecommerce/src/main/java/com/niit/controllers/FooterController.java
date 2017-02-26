@@ -16,7 +16,7 @@ public class FooterController extends BasicController{
 	
 
 	// Mapping for the signup page
-	   @RequestMapping(value = "/help",method = RequestMethod.GET)
+	   @RequestMapping(value = "/all_help",method = RequestMethod.GET)
 	   public ModelAndView triggerSignup() {
 	      Map<String, Object> model = new HashMap<String, Object>();
 	        model = getCategoriesForLanding(model);

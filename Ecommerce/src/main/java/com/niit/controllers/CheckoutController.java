@@ -33,7 +33,7 @@ public class CheckoutController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object  
 	 */
-	@RequestMapping(value = "/check_out", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_check_out", method = RequestMethod.GET)
 	public ModelAndView add_checkout(@ModelAttribute("command") Client user) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
@@ -54,7 +54,7 @@ public class CheckoutController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object  
 	 */
-	@RequestMapping(value = "/save_check_out", method = RequestMethod.POST)
+	@RequestMapping(value = "/user_save_check_out", method = RequestMethod.POST)
 	public ModelAndView save_checkout(@ModelAttribute("command") Client user) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();

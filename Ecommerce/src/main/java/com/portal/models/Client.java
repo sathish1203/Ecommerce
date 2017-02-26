@@ -10,6 +10,7 @@ public class Client {
 	private String sex;
 	private String personalphone;
 	private String password;
+	private String confirmpassword;
 	private String addressline1;
 	private String addressline2;
 	private String state;
@@ -19,6 +20,12 @@ public class Client {
 	private String cards;
 	private boolean enabled;
 	private boolean admin;
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
 	public boolean isAdmin() {
 		return admin;
 	}

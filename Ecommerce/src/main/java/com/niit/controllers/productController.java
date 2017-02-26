@@ -28,7 +28,7 @@ public class productController extends BasicController{
 	 * @return 
 	 *          -- Model and view data object 
 	 */
-	@RequestMapping(value = "/show_product", method = RequestMethod.GET)
+	@RequestMapping(value = "/all_show_product", method = RequestMethod.GET)
 	public ModelAndView edit_category(@ModelAttribute("command") Product product) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		System.out.println("Product is "+product);
@@ -56,7 +56,7 @@ public class productController extends BasicController{
 	 * @return 
 	 *          -- Model and view data object 
 	 */
-	@RequestMapping(value = "/show_sub_category", method = RequestMethod.GET)
+	@RequestMapping(value = "/all_show_sub_category", method = RequestMethod.GET)
 	public ModelAndView edit_category(@ModelAttribute("command") Category category) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		System.out.println("Category is "+category);

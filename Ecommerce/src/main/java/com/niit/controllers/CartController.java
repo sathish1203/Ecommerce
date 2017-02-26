@@ -31,7 +31,7 @@ public class CartController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object  
 	 */
-	@RequestMapping(value = "/add_cart", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_add_cart", method = RequestMethod.GET)
 	public ModelAndView add_Cart(@ModelAttribute("command") CartProduct cart_pdt) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
@@ -78,7 +78,7 @@ public class CartController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object 
 	 */
-	@RequestMapping(value = "/save_cart", method = RequestMethod.POST)
+	@RequestMapping(value = "/user_save_cart", method = RequestMethod.POST)
 	public ModelAndView save_cart(@ModelAttribute("command") CartProduct cart_pdt) {
 		String userName = get_current_user();
 	    Cart cart;    
@@ -88,7 +88,7 @@ public class CartController extends BasicController {
 	    System.out.println(cart_new);
 	    cart.setCart(cart_new);
 	    cartDAOImpl.addCart(cart);
-	    return new ModelAndView("redirect:/add_cart");
+	    return new ModelAndView("redirect:/user_add_cart");
 	}
 
 	
@@ -102,7 +102,7 @@ public class CartController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object 
 	 */
-	@RequestMapping(value = "/edit_cart", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_edit_cart", method = RequestMethod.GET)
 	public ModelAndView edit_cart(@ModelAttribute("command") CartProduct cart_pdt) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
@@ -128,7 +128,7 @@ public class CartController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object 
 	 */
-	@RequestMapping(value = "/delete_cart", method = RequestMethod.GET)
+	@RequestMapping(value = "/user_delete_cart", method = RequestMethod.GET)
 	public ModelAndView delete_cart(@ModelAttribute("command")CartProduct cart_pdt) {
 		System.out.println(cart_pdt.getProductId());
 		Map<String, Object> model = new HashMap<String, Object>();

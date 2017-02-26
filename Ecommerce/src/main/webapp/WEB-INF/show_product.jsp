@@ -11,8 +11,8 @@
 <table class = "table">
 <tbody>
 <tr>
-<td><a href = "/Ecommerce/landing"><input type = "submit" value = "CONTINUE SHOPPING"></a></td>
-<td><a href = "/Ecommerce/add_cart?productId=${product.id}"><input type = "submit" value = "ADD TO CART"></a> </td>
+<td><a href = "/Ecommerce/all_landing"><input type = "submit" value = "CONTINUE SHOPPING"></a></td>
+<td><a href = "/Ecommerce/user_add_cart?productId=${product.id}"><input type = "submit" value = "ADD TO CART"></a> </td>
 </tr>
 </tbody>
 </table>

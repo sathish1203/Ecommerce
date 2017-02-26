@@ -8,10 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.niit.validator.SignupFormValidator;
 import com.portal.daos.CartDAOImpl;
 import com.portal.daos.CategoryDAOImpl;
 import com.portal.daos.ClientDAOImpl;
@@ -30,7 +32,8 @@ ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("pr
 SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
 CartDAOImpl cartDAOImpl = (CartDAOImpl)application_context.getBean("cartDAOImpl");
 public static ClassPathXmlApplicationContext application_context = new ClassPathXmlApplicationContext("spring_beans.xml");
-
+@Autowired
+SignupFormValidator signupFormValidator;
 /**
  * This method will get the current user from the spring security. 
  * @return -- String value, user name of the user. 

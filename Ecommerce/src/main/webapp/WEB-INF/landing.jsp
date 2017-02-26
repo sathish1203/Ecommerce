@@ -65,7 +65,7 @@ Details of the item.
 
 <c:if test="${i.index == '0'}">
 <div class="item active">
-<a href = "/Ecommerce/show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
+<a href = "/Ecommerce/all_show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
 <div class="carousel-caption">
 <h3><c:out value="${productDeal.name}" /></h3>
 <p><c:out value="${productDeal.description}" /> <br /><strike>&#8377;<c:out value="${productDeal.mrp}" /></strike><br />&#8377;<c:out value="${productDeal.offerprice}" /></p>
@@ -76,7 +76,7 @@ Details of the item.
 </c:if>
 <c:if test="${i.index != '0'}">
 <div class="item">
-<a href = "/Ecommerce/show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
+<a href = "/Ecommerce/all_show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
 <div class="carousel-caption">
 <h3><c:out value="${productDeal.name}" /></h3>
 <p><c:out value="${productDeal.description}" /> <br /><strike>&#8377;<c:out value="${productDeal.mrp}" /></strike><br />&#8377;<c:out value="${productDeal.offerprice}" /></p>
@@ -152,7 +152,7 @@ Details of the item.
 
 <c:if test="${i.index == '0'}">
 <div class="item active">
-<a href = "/Ecommerce/show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
+<a href = "/Ecommerce/all_show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
 <div class="carousel-caption">
 <h3><c:out value="${productDeal.name}" /></h3>
 <p><c:out value="${productDeal.description}" /> <br /><strike>&#8377;<c:out value="${productDeal.mrp}" /></strike><br />&#8377;<c:out value="${productDeal.offerprice}" /></p>
@@ -163,7 +163,7 @@ Details of the item.
 </c:if>
 <c:if test="${i.index != '0'}">
 <div class="item">
-<a href = "/Ecommerce/show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
+<a href = "/Ecommerce/all_show_product?id=${productDeal.id}"><img src="images\products\<c:out value="${productDeal.id}" />.jpg" alt="${productDeal.name}"> </a>
 <div class="carousel-caption">
 <h3><c:out value="${productDeal.name}" /></h3>
 <p><c:out value="${productDeal.description}" /> <br /><del>&#8377;<c:out value="${productDeal.mrp}" /></del><br />&#8377;<c:out value="${productDeal.offerprice}" /></p>

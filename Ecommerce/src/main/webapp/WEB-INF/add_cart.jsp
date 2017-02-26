@@ -14,7 +14,7 @@
 <!-- ****************Start of the form**********************-->
 <div class="col-md-12">
 	<h2>Add To Cart Data</h2>
-	<form:form method="POST" action="/Ecommerce/save_cart">
+	<form:form method="POST" action="/Ecommerce/user_save_cart">
 <table>
 <tr>
 <td><form:label path="productId">Product ID:</form:label></td>
@@ -58,14 +58,14 @@
 <td><c:out value="${cart_pdt.value.productPrice}" /></td>
 <td><c:out value="${cart_pdt.value.totalCost}" /></td>
 <td>
-  <a href="/Ecommerce/edit_cart?productId=${cart_pdt.key}">Edit</a>
-| <a href="/Ecommerce/delete_cart?productId=${cart_pdt.key}">Delete</a>
+  <a href="/Ecommerce/user_edit_cart?productId=${cart_pdt.key}">Edit</a>
+| <a href="/Ecommerce/user_delete_cart?productId=${cart_pdt.key}">Delete</a>
 </td>
 </tr>
 </c:forEach>
 <tr>
-	<td colspan="2"><a href = "/Ecommerce/landing"><button type="button" class="btn btn-default">Continue Shopping</button></a></td>
-	<td colspan="2"><a href = "/Ecommerce/check_out"><button type="button" class="btn btn-default">Checkout</button></a></td>
+	<td colspan="2"><a href = "/Ecommerce/all_landing"><button type="button" class="btn btn-default">Continue Shopping</button></a></td>
+	<td colspan="2"><a href = "/Ecommerce/user_check_out"><button type="button" class="btn btn-default">Checkout</button></a></td>
 </tr>
 </table>
 </c:if>
