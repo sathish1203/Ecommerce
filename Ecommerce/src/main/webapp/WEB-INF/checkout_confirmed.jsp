@@ -8,7 +8,8 @@
 
 <div class="container">
 <div class="row">
-
+<h2>Thank You for purchasing Products from our website. 
+<br/>Our Representative would contact you soon!!!!</h2>
 <hr />
 
 	  <!-- ****************Start of the Table to list**********************-->
@@ -30,46 +31,32 @@
 </c:forEach>
 </table>
 </c:if>
-</div>
-</div>
-<div class = "row">
-  <!-- ****************End of the table to list**********************-->
-<div class="col-md-6">
-<h2>Add To Cart Data</h2>
-<form:form method="POST" action="/Ecommerce/save_check_out">
-<table>
+<c:if test= "${!empty userDetails}">
+<h2>Delivery Address for the User</h2>
+<table class = "table">
 <tr>
-<td><form:label path="addressline1">User AddressLine1</form:label></td>
-<td><form:input path="addressline1" value="${userDetails.addressline1}"></form:input></td>
+  	<th>UserName</th>
+	<th>Address Line 1</th>
+	<th>Address Line 2</th>
+	<th>State</th>
+	<th>Email ID</th>
+	<th>Phone Number</th>
 </tr>
 <tr>
-<td><form:label path="addressline2">User AddressLine2</form:label></td>
-<td><form:input path="addressline2" value="${userDetails.addressline2}" /></td>
-</tr>
-<tr>
-<td><form:label path="state">State</form:label></td>
-<td><form:input path="state" value="${userDetails.state}" /></td>
-</tr>
-<tr>
-<td><form:label path="emailid">Email Id</form:label></td>
-<td><form:input path="emailid" value="${userDetails.emailid}" /></td>
-</tr>
+<td><c:out value="${userDetails.uname}" /></td>
+<td><c:out value="${userDetails.addressline1}" /></td>
+<td><c:out value="${userDetails.addressline2}" /></td>
+<td><c:out value="${userDetails.state}" /></td>
+<td><c:out value="${userDetails.emailid}" /></td>
+<td><c:out value="${userDetails.personalphone}" /></td>
 
-<tr>
-<td>
-<a href="/Ecommerce/landing"><button class = "button">Cancel Purchase</button></a>
-</td>
-<td>
-<a href="/Ecommerce/save_check_out"><button class = "button">Confirm and Checkout</button></a>
-</td>
 </tr>
 </table>
-</form:form>
+</c:if>
+
+</div>
 </div>
 	  
-</div>
-
-
 </div>
 
   <!-- ****************End of the container**********************-->

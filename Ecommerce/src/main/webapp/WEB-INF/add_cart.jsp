@@ -1,7 +1,7 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@include file = "header_admin.jsp"  %>
+<%@include file = "header.jsp"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -48,6 +48,7 @@
   	<th>Product</th>
 	<th>Quantity</th>
 	<th>Price/Product</th>
+	<th>Total Cost</th>
 	<th>Action</th>
 </tr>
 <c:forEach items="${cartpdts}" var="cart_pdt">
@@ -55,6 +56,7 @@
 <td><c:out value="${cart_pdt.value.productName}" /></td>
 <td><c:out value="${cart_pdt.value.quantity}" /></td>
 <td><c:out value="${cart_pdt.value.productPrice}" /></td>
+<td><c:out value="${cart_pdt.value.totalCost}" /></td>
 <td>
   <a href="/Ecommerce/edit_cart?productId=${cart_pdt.key}">Edit</a>
 | <a href="/Ecommerce/delete_cart?productId=${cart_pdt.key}">Delete</a>
@@ -63,7 +65,7 @@
 </c:forEach>
 <tr>
 	<td colspan="2"><a href = "/Ecommerce/landing"><button type="button" class="btn btn-default">Continue Shopping</button></a></td>
-	<td colspan="2"><a href = "/Ecommerce/landing"><button type="button" class="btn btn-default">Checkout</button></a></td>
+	<td colspan="2"><a href = "/Ecommerce/check_out"><button type="button" class="btn btn-default">Checkout</button></a></td>
 </tr>
 </table>
 </c:if>

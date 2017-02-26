@@ -42,7 +42,7 @@ public class helloController extends BasicController {
 		System.out.println("In addUser");
 		System.out.println("user is " + client);
 		Map<String, Object> model = new HashMap<String, Object>();
-		 model = getCategoriesForLanding(model);
+		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		clientDAOImpl.addUser(client);
 	    model.put("msg", "Registered Successfully, Please Login!");

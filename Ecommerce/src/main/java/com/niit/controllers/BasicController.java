@@ -54,10 +54,10 @@ public boolean isAdmin(){
 	@SuppressWarnings("unchecked")
 Collection<SimpleGrantedAuthority> authorities = (Collection<SimpleGrantedAuthority>)    SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 for (SimpleGrantedAuthority authority : authorities){
-	System.out.println("authority is " + authority.toString());
+System.out.println("authority is " + authority.toString());
 if(authority.toString().equals("ROLE_ADMIN")){
-		admin = true;
-	    break;
+admin = true;
+ break;
 }
 }
 return admin;
@@ -68,6 +68,7 @@ return admin;
  * @param model
  * @return
  */
+@SuppressWarnings("unchecked")
 public Map<String,Object> getProductsLanding(Map<String, Object> model){
 	 ArrayList<Product> prodDealList = new ArrayList<Product>();
 	 ArrayList<Product> prodFeatureList = new ArrayList<Product>();
@@ -80,15 +81,15 @@ public Map<String,Object> getProductsLanding(Map<String, Object> model){
 	 Collections.shuffle(list_product);
 	 for(i=0;i<length;i++) prodFeatureList.add(list_product.get(i));
 	 model.put("productsDealsList", prodDealList);
- model.put("productsFeatureList", prodFeatureList);
- for(Product disp: (ArrayList<Product>) model.get("productsDealsList")){
-System.out.println("productsDealsList__Id -> "+ disp.getId());
-System.out.println("productsDealsList__Name -> "+ disp.getName());
+	 model.put("productsFeatureList", prodFeatureList);
+	 for(Product disp: (ArrayList<Product>) model.get("productsDealsList")){
+	 System.out.println("productsDealsList__Id -> "+ disp.getId());
+ 	 System.out.println("productsDealsList__Name -> "+ disp.getName());
 	 }
- for(Product disp: (ArrayList<Product>) model.get("productsFeatureList")){
-System.out.println("productsFeatureList__Id -> "+ disp.getId());
-System.out.println("productsFeatureListt__Name -> "+ disp.getName());
-		 }
+	 for(Product disp: (ArrayList<Product>) model.get("productsFeatureList")){
+	 System.out.println("productsFeatureList__Id -> "+ disp.getId());
+	 System.out.println("productsFeatureListt__Name -> "+ disp.getName());
+	 }
 	 
 	 return model;
 }
@@ -101,7 +102,6 @@ System.out.println("productsFeatureListt__Name -> "+ disp.getName());
  * @return
  *       -- The model, after populating the categories. 
  */
-@SuppressWarnings("unchecked")
 public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 	
 	 Category category;
@@ -112,7 +112,7 @@ public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
 	 List<Category> list_categories =  categoryDAOImpl.getCategories();
 	 Iterator<Category> iterator = list_categories.iterator();
 	 String key;
-	 String value;
+	 
 	 int i =0;
 	 /**
   * The below while loop would store all the categories in the format { categoryName => [categories] }
@@ -150,6 +150,7 @@ public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
  * @return
  */
 public Map<String, Object> addProductDetailsToCart(Map<String, Object> model,HashMap<String,String> cartMap){
+	int cost =0;
 	Map<String,CartProduct> cartpdts = new HashMap<String,CartProduct>();
 	String ProductId;
 	CartProduct cart_pdt = null;
@@ -165,7 +166,11 @@ public Map<String, Object> addProductDetailsToCart(Map<String, Object> model,Has
     	cart_pdt.setProductName(pdt.getName());
     	cart_pdt.setProductPrice(pdt.getOfferprice());
     	cart_pdt.setQuantity(cartMap.get(ProductId));
+    	cost = cost + (Integer.parseInt(pdt.getOfferprice())*Integer.parseInt(cartMap.get(ProductId)));
+    	cart_pdt.setTotalCost(String.valueOf(cost));
+    	System.out.println("Cost is "+ cost);
     	cartpdts.put(ProductId,cart_pdt);
+    	
 	}
 	model.put("cartpdts",cartpdts);
 	

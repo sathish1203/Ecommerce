@@ -39,6 +39,9 @@ public class CartController extends BasicController {
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
 		model.put("currentUser", userName);
 		model.put("cartpdt", cart_pdt);
+		model = getCategoriesForLanding(model);
+		model.put("currentUser", get_current_user());
+		
 	    model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 	    return new ModelAndView("add_cart", model);
 	}
@@ -108,6 +111,8 @@ public class CartController extends BasicController {
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
 		model.put("cartpdt", cart_pdt);
+		model = getCategoriesForLanding(model);
+		model.put("currentUser", get_current_user());
 		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 		return new ModelAndView("add_cart", model);
 	}
@@ -133,6 +138,9 @@ public class CartController extends BasicController {
 		cart.setCart(cartDAOImpl.get_product_cart_string_delete(userName,cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
 		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
+		model = getCategoriesForLanding(model);
+		model.put("currentUser", get_current_user());
+		
 		return new ModelAndView("add_cart", model);
 	}
 

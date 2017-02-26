@@ -34,12 +34,14 @@ public class CheckoutController extends BasicController {
 	 *          -- Model and view data object  
 	 */
 	@RequestMapping(value = "/check_out", method = RequestMethod.GET)
-	public ModelAndView add_checkout(@ModelAttribute("command") CartProduct cart_pdt) {
+	public ModelAndView add_checkout(@ModelAttribute("command") Client user) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
 		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
-		Client user = clientDAOImpl.getUserByUsername(userName);
+		user = clientDAOImpl.getUserByUsername(userName);
 		model.put("userDetails",user);
+		model = getCategoriesForLanding(model);
+		model.put("currentUser", get_current_user());
 		return new ModelAndView("checkout", model);
 	}
 	
@@ -52,14 +54,16 @@ public class CheckoutController extends BasicController {
 	 * @return 
 	 *          -- Model and view data object  
 	 */
-	@RequestMapping(value = "/save_check_out", method = RequestMethod.GET)
-	public ModelAndView save_checkout(@ModelAttribute("command") CartProduct cart_pdt) {
+	@RequestMapping(value = "/save_check_out", method = RequestMethod.POST)
+	public ModelAndView save_checkout(@ModelAttribute("command") Client user) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
-		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
-		Client user = clientDAOImpl.getUserByUsername(userName);
+		clientDAOImpl.addUser(user);
 		model.put("userDetails",user);
-		return new ModelAndView("checkout", model);
+		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
+		model = getCategoriesForLanding(model);
+		model.put("currentUser", get_current_user());
+		return new ModelAndView("checkout_confirmed", model);
 	}
 	
 }// End of the class

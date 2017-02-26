@@ -31,6 +31,17 @@ public class landingController extends BasicController{
 	      model.put("message", "Hello Spring MVC Framework!");
 	      return new ModelAndView("landing", model);
 	   }
+	 @RequestMapping(value = "/landing", method = RequestMethod.POST)
+	   public ModelAndView postLanding() {
+	      Map<String, Object> model = new  HashMap<String, Object>();
+	      model = getCategoriesForLanding(model);
+	      model = getProductsLanding(model);
+	      model.put("currentUser", get_current_user());
+		  model.put("isAdmin", isAdmin());
+		  System.out.println("In printHello");
+	      model.put("message", "Hello Spring MVC Framework!");
+	      return new ModelAndView("landing", model);
+	   }
 	 
 	
 		
