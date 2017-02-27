@@ -44,7 +44,6 @@ public class helloController extends BasicController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		System.out.println("In addUser");
 		signupFormValidator.validate(client,result);
-		
 		if(result.hasErrors())
 		{   
 			model = getCategoriesForLanding(model);
@@ -53,7 +52,7 @@ public class helloController extends BasicController {
 			return new ModelAndView("signup", model);
 		}
 		System.out.println("user is " + client);
-	
+		model = getProductsLanding(model);
 		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		clientDAOImpl.addUser(client);

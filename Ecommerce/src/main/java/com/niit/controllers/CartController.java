@@ -41,7 +41,7 @@ public class CartController extends BasicController {
 		model.put("cartpdt", cart_pdt);
 		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
-		
+		model.put("isAdmin", isAdmin());
 	    model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 	    return new ModelAndView("add_cart", model);
 	}

@@ -8,15 +8,10 @@ import org.springframework.validation.ValidationUtils;
 
 import com.portal.models.Client;
  
-/**
- * TO DO
- * 1. Check if the username is already present. 
- * @author irzaai
- *
- */
+
 
 @Component
-public class SignupFormValidator {
+public class CardValidator {
 
 	   public boolean supports(Class<?> clazz) {
 	        return Client.class.isAssignableFrom(clazz);
@@ -39,6 +34,7 @@ public class SignupFormValidator {
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "uname", "error.uname", "User name name is required.");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstname", "error.firstname", "First name is required.");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastname", "error.lastname", "Last name is required.");
+		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "middlename", "error.middlename", "Middle name is required.");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sex", "error.sex", "Sex is required.");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "personalphone", "error.personalphone", "Personal phone is required.");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "error.password", "Password is required.");
@@ -47,11 +43,11 @@ public class SignupFormValidator {
 		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
 		  Pattern notNumber = Pattern.compile("[^0-9]");
 		  
-		  if(notAlphaNumeric.matcher(uname).find() || uname.length()<3 || uname.length()>15) errors.rejectValue("uname", "uname.incorrect","Username should be Alpha Numeric and 3-15 characters.");		
+		  if(notAlphaNumeric.matcher(uname).find() || uname.length()<3 || uname.length()>10) errors.rejectValue("uname", "uname.incorrect","Username should be Alpha Numeric and 3-10 characters.");		
 		  if(notAlphaNumeric.matcher(firstname).find()) errors.rejectValue("firstname", "firstname.incorrect","firstname should be Alpha Numeric.");
 		  if(notAlphaNumeric.matcher(lastname).find()) errors.rejectValue("lastname", "lastname.incorrect","lastname should be Alpha Numeric.");
 		  if(notAlphaNumeric.matcher(middlename).find()) errors.rejectValue("middlename", "middlename.incorrect","middlename should be Alpha Numeric.");
-		  if((!sex.equals("Male") && !sex.equals("Female"))) errors.rejectValue("sex", "sex.incorrect","sex should only be Male or Female");
+		  if(!sex.equals("Male")||!sex.equals("Female")) errors.rejectValue("sex", "sex.incorrect","sex should only be Male or Female");
 		  if(notNumber.matcher(personalphone).find()||!(personalphone.length()==10)) errors.rejectValue("personalphone", "personalphone.incorrect","Phone Number should be a 10 digit Number only.");
 		  if(password.length()<=3 || password.length()>=11) errors.rejectValue("password", "password.incorrect","Password should be from 4 - 10 characters.");
 		  if (!password.equals(confirmpassword)) {errors.rejectValue("confirmpassword", "password.mismatch","Passwords dont match."); }  

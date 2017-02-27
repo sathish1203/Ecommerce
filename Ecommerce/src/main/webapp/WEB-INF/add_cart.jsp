@@ -23,8 +23,16 @@
 <tr>
 	<td><form:label path="quantity">Quantity</form:label></td>
 <td><form:input path="quantity" value="${cartpdt.quantity}" /></td>
+<td><form:select path="quantity" value="${cartpdt.quantity}" >
+	<option value = "1"> 1 </option>
+	<option value = "2"> 2 </option>
+	<option value = "3"> 3 </option>
+	<option value = "4"> 4 </option>
+	<option value = "5"> 5 </option>
+	<option value = "6"> 6 </option>
+</form:select>
+</td>
 </tr>
-
 <tr>
 	<td colspan="2"><input type="submit" value="Submit" /></td>
 </tr>
