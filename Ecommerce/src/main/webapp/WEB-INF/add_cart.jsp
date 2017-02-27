@@ -17,12 +17,14 @@
 	<form:form method="POST" action="/Ecommerce/user_save_cart">
 <table>
 <tr>
-<td><form:label path="productId">Product ID:</form:label></td>
-<td><form:input path="productId" value="${cartpdt.productId}"></form:input></td>
+<td><form:label path="productId">Product Id:</form:label></td>
+<td><form:input path="productId" value="${cartpdt.productId}" readonly = "true"></form:input></td>
 </tr>
+
+
 <tr>
 	<td><form:label path="quantity">Quantity</form:label></td>
-<td><form:input path="quantity" value="${cartpdt.quantity}" /></td>
+
 <td><form:select path="quantity" value="${cartpdt.quantity}" >
 	<option value = "1"> 1 </option>
 	<option value = "2"> 2 </option>

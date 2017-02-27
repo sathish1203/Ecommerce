@@ -34,15 +34,18 @@ public class CartController extends BasicController {
 	@RequestMapping(value = "/user_add_cart", method = RequestMethod.GET)
 	public ModelAndView add_Cart(@ModelAttribute("command") CartProduct cart_pdt) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		HashMap<String, String> pdt_id = new HashMap<String, String>();
 		String userName = get_current_user();
 		cart_pdt.setCart(prepareEmptyCart(userName));
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
+		
 		model.put("currentUser", userName);
 		model.put("cartpdt", cart_pdt);
 		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		model.put("isAdmin", isAdmin());
-	    model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
+		pdt_id = cartDAOImpl.parse_product_cart(userName);
+	    model = addProductDetailsToCart(model,pdt_id);
 	    return new ModelAndView("add_cart", model);
 	}
 	
@@ -108,6 +111,7 @@ public class CartController extends BasicController {
 		String userName = get_current_user();
 		Cart cart = cartDAOImpl.getCartById(userName);
 		cart_pdt.setCart(cart);
+		cart_pdt.setProductName(productDAOImpl.getProductById(cart_pdt.getProductId()).getName());
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
 		model.put("cartpdt", cart_pdt);
@@ -134,13 +138,13 @@ public class CartController extends BasicController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		String userName = get_current_user();
 		Cart cart = cartDAOImpl.getCartById(userName);
+		cart_pdt.setProductName(productDAOImpl.getProductById(cart_pdt.getProductId()).getName());
 		cart_pdt.setCart(cart);
 		cart.setCart(cartDAOImpl.get_product_cart_string_delete(userName,cart_pdt.getProductId()));
 		model.put("currentUser", get_current_user());
 		model = addProductDetailsToCart(model,cartDAOImpl.parse_product_cart(userName));
 		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
-		
 		return new ModelAndView("add_cart", model);
 	}
 

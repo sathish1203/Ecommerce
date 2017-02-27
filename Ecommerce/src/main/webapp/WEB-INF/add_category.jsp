@@ -17,18 +17,22 @@
 <tr>
 <td><form:label path="id">Category ID:</form:label></td>
 <td><form:input path="id" value="${category.id}" /></td>
+<td><form:errors path="id" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="name">Category Name:</form:label></td>
 <td><form:input path="name" value="${category.name}" /></td>
+<td><form:errors path="name" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="subcategory">Sub-category Name:</form:label></td>
 <td><form:input path="subcategory" value="${category.subcategory}" /></td>
+<td><form:errors path="subcategory" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="description">Category Description:</form:label></td>
 <td><form:input path="description" value="${category.description}" /></td>
+<td><form:errors path="description" style="color:red"/></td>
 </tr>
 <tr>
 <td colspan="2"><input type="submit" value="Submit" /></td>

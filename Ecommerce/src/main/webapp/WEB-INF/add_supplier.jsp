@@ -19,14 +19,17 @@
 <tr>
 	<td><form:label path="id">Supplier ID:</form:label></td>
 <td><form:input path="id" value="${supplier.id}" /></td>
+<td><form:errors path="id" style="color:red"/></td>
 </tr>
 <tr>
 	<td><form:label path="name">Supplier Name:</form:label></td>
 <td><form:input path="name" value="${supplier.name}" /></td>
+<td><form:errors path="name" style="color:red"/></td>
 </tr>
 <tr>
 	<td><form:label path="description">Supplier Description:</form:label></td>
 <td><form:input path="description" value="${supplier.description}" /></td>
+<td><form:errors path="description" style="color:red"/></td>
 </tr>
 <tr>
 	<td colspan="2"><input type="submit" value="Submit" /></td>

@@ -27,38 +27,47 @@
 <tr> 
 <td><form:label path="id">Product ID:</form:label></td>
 <td><form:input path="id" value="${product.id}" /></td>
+<td><form:errors path="id" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="name">Product Name:</form:label></td>
 <td><form:input path="name" value="${product.name}" /></td>
+<td><form:errors path="name" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="supplierid">Product Supplier:</form:label></td>
 <td><form:select  path="supplierid" items="${suppliers}" itemValue="id" itemLabel="name" /></td>
+<td><form:errors path="supplierid" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="categoryid">Product Category:</form:label></td>
 <td><form:select path="categoryid" items="${categories}" itemValue="id" itemLabel="subcategory" /></td>
+<td><form:errors path="categoryid" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="description">Product Description:</form:label></td>
 <td><form:input path="description" value="${product.description}" /></td>
+<td><form:errors path="description" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="mrp">Product MRP:</form:label></td>
 <td><form:input path="mrp" value="${product.mrp}" /></td>
+<td><form:errors path="mrp" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="offerprice">Product Offer Price:</form:label></td>
 <td><form:input path="offerprice" value="${product.offerprice}" /></td>
+<td><form:errors path="offerprice" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="quantity">Product Quantity:</form:label></td>
 <td><form:input path="quantity" value="${product.quantity}" /></td>
+<td><form:errors path="quantity" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="imagepath">Image Upload</form:label></td>
 <td><input name = "productImage" type = "file" id="productImage" path = "imagepath" /></td>
+<td><form:errors path="image_upload_path" style="color:red"/></td>
 </tr>
 <tr>
 <td colspan="2"><input type="submit" value="Submit" /></td>

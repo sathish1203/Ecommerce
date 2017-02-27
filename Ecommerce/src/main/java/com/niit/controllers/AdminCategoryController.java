@@ -2,11 +2,17 @@ package com.niit.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.niit.validator.AdminCategoryValidator;
 import com.portal.models.Category;
 
 /**
@@ -19,6 +25,9 @@ import com.portal.models.Category;
 
 @Controller
 public class AdminCategoryController extends BasicController {
+	@Autowired
+	AdminCategoryValidator adminCategoryValidator;
+	
 	/**
 	 * This method will add or update categories. It would first list all the
 	 * categories and then allow user to add or update the categories. 
@@ -48,7 +57,16 @@ public class AdminCategoryController extends BasicController {
 	 *          -- Model and view data object 
 	 */
 	@RequestMapping(value = "/admin_save_category", method = RequestMethod.POST)
-	public ModelAndView save_category(@ModelAttribute("command") Category category) {
+	public ModelAndView save_category(@ModelAttribute("command") Category category,BindingResult result, SessionStatus status) {
+		  adminCategoryValidator.validate(category,result);
+			if(result.hasErrors())
+			{   		
+				Map<String, Object> model = new HashMap<String, Object>();
+			model.put("currentUser", get_current_user());
+			model.put("categories", categoryDAOImpl.getCategories());
+			return new ModelAndView("add_category", model);
+			}
+	        
 		categoryDAOImpl.addCategory(category);
 		return new ModelAndView("redirect:/admin_add_category");
 	}

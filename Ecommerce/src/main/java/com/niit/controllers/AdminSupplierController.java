@@ -2,11 +2,17 @@ package com.niit.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.niit.validator.AdminSupplierValidator;
 import com.portal.models.Supplier;
 
 /**
@@ -19,6 +25,9 @@ import com.portal.models.Supplier;
 
 @Controller
 public class AdminSupplierController extends BasicController {
+	@Autowired
+	AdminSupplierValidator adminSupplierValidator;
+	
 	/**
 	 * This method will add or update suppliers. It would first list all the
 	 * suppliers and then allow user to add or update the suppliers. 
@@ -48,8 +57,17 @@ public class AdminSupplierController extends BasicController {
 	 *          -- Model and view data object 
 	 */
 	@RequestMapping(value = "/admin_save_supplier", method = RequestMethod.POST)
-	public ModelAndView save_supplier(@ModelAttribute("command") Supplier supplier) {
+	public ModelAndView save_supplier(@ModelAttribute("command") Supplier supplier,BindingResult result, SessionStatus status) {
+		adminSupplierValidator.validate(supplier,result);
+		if(result.hasErrors())
+		{   	
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("currentUser", get_current_user());
+		model.put("suppliers", supplierDAOImpl.getSuppliers());
+		return new ModelAndView("add_supplier", model);
+		}
 		supplierDAOImpl.addSupplier(supplier);
+		 
 		return new ModelAndView("redirect:/admin_add_supplier");
 	}
 

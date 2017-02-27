@@ -12,7 +12,9 @@ import com.portal.models.Client;
 
 @Component
 public class AddressValidator {
-
+	private static final String EMAIL_PATTERN =
+			"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	   public boolean supports(Class<?> clazz) {
 	        return Client.class.isAssignableFrom(clazz);
 	    }	
@@ -33,17 +35,13 @@ public class AddressValidator {
 		           
 		  // Additional validations on length and type. 
 		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
-		  Pattern notNumber = Pattern.compile("[^0-9]");
+		  Pattern email = Pattern.compile(EMAIL_PATTERN);
 		  
-		  if(notAlphaNumeric.matcher(uname).find() || uname.length()<3 || uname.length()>10) errors.rejectValue("uname", "uname.incorrect","Username should be Alpha Numeric and 3-10 characters.");		
-		  if(notAlphaNumeric.matcher(firstname).find()) errors.rejectValue("firstname", "firstname.incorrect","firstname should be Alpha Numeric.");
-		  if(notAlphaNumeric.matcher(lastname).find()) errors.rejectValue("lastname", "lastname.incorrect","lastname should be Alpha Numeric.");
-		  if(notAlphaNumeric.matcher(middlename).find()) errors.rejectValue("middlename", "middlename.incorrect","middlename should be Alpha Numeric.");
-		  if(!sex.equals("Male")||!sex.equals("Female")) errors.rejectValue("sex", "sex.incorrect","sex should only be Male or Female");
-		  if(notNumber.matcher(personalphone).find()||!(personalphone.length()==10)) errors.rejectValue("personalphone", "personalphone.incorrect","Phone Number should be a 10 digit Number only.");
-		  if(password.length()<=3 || password.length()>=11) errors.rejectValue("password", "password.incorrect","Password should be from 4 - 10 characters.");
-		  if (!password.equals(confirmpassword)) {errors.rejectValue("confirmpassword", "password.mismatch","Passwords dont match."); }  
-			 
+		  if(notAlphaNumeric.matcher(addressline1).find() || addressline1.length()<3 || addressline1.length()>20) errors.rejectValue("addressline1", "addressline1.incorrect","addressline1 should be Alpha Numeric and 3-20 characters.");		
+		  if(notAlphaNumeric.matcher(addressline2).find()) errors.rejectValue("addressline2", "addressline2.incorrect","addressline2 should be Alpha Numeric.");
+		  if(!email.matcher(emailid).find()) errors.rejectValue("emailid", "emailid.incorrect","emailid should be a valid email address.");
+		  if(notAlphaNumeric.matcher(state).find()) errors.rejectValue("state", "state.incorrect","state should be Alpha Numeric.");
+		 	 
 	   }
 	
 	
