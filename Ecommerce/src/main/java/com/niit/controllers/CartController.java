@@ -33,6 +33,7 @@ public class CartController extends BasicController {
 	 */
 	@RequestMapping(value = "/user_add_cart", method = RequestMethod.GET)
 	public ModelAndView add_Cart(@ModelAttribute("command") CartProduct cart_pdt) {
+		
 		Map<String, Object> model = new HashMap<String, Object>();
 		HashMap<String, String> pdt_id = new HashMap<String, String>();
 		String userName = get_current_user();
@@ -44,6 +45,7 @@ public class CartController extends BasicController {
 		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		model.put("isAdmin", isAdmin());
+		
 		pdt_id = cartDAOImpl.parse_product_cart(userName);
 	    model = addProductDetailsToCart(model,pdt_id);
 	    return new ModelAndView("add_cart", model);

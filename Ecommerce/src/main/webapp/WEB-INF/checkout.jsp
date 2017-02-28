@@ -41,18 +41,23 @@
 <tr>
 <td><form:label path="addressline1">User AddressLine1</form:label></td>
 <td><form:input path="addressline1" value="${userDetails.addressline1}"></form:input></td>
+<td><form:errors path="addressline1" style="color:red"/></td>
+
 </tr>
 <tr>
 <td><form:label path="addressline2">User AddressLine2</form:label></td>
 <td><form:input path="addressline2" value="${userDetails.addressline2}" /></td>
+<td><form:errors path="addressline2" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="state">State</form:label></td>
 <td><form:input path="state" value="${userDetails.state}" /></td>
+<td><form:errors path="state" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="emailid">Email Id</form:label></td>
 <td><form:input path="emailid" value="${userDetails.emailid}" /></td>
+<td><form:errors path="emailid" style="color:red"/></td>
 </tr>
 
 <tr>

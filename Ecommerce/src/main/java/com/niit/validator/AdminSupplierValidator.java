@@ -26,16 +26,16 @@ public class AdminSupplierValidator {
 		   String name = supplier.getName();
 		   String description = supplier.getDescription();
 		  
-		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "error.id", "id is required.");
-		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "error.name", "name is required.");
-		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "error.description", "description is required.");
+		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "id", "error.id", "Id is required.");
+		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "error.name", "Name is required.");
+		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "error.description", "Description is required.");
 		  
 		  // Additional validations on length and type. 
 		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
 		  
-		  if(notAlphaNumeric.matcher(id).find() || id.length()<3 || id.length()>10) errors.rejectValue("id", "id.incorrect","id should be Alpha Numeric and 3-10 characters.");		
-		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","name should be Alpha Numeric.");
-		  if(notAlphaNumeric.matcher(description).find()) errors.rejectValue("description", "description.incorrect","description should be Alpha Numeric.");
+		  if(notAlphaNumeric.matcher(id).find() || id.length()<3 || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric and 3-10 characters.");		
+		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","Name should be Alpha Numeric.");
+		  if(notAlphaNumeric.matcher(description).find()) errors.rejectValue("description", "description.incorrect","Description should be Alpha Numeric.");
 		  	 
 	   }
 	

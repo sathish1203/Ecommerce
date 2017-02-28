@@ -7,7 +7,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
 import com.portal.models.Category;
-import com.portal.models.Client;
  
 
 
@@ -37,10 +36,10 @@ public class AdminCategoryValidator {
 		  // Additional validations on length and type. 
 		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
 		  
-		  if(notAlphaNumeric.matcher(id).find() || id.length()<3 || id.length()>10) errors.rejectValue("id", "id.incorrect","id should be Alpha Numeric and 3-10 characters.");		
-		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","name should be Alpha Numeric.");
-		  if(notAlphaNumeric.matcher(subcategory).find()) errors.rejectValue("subcategory", "subcategory.incorrect","subcategory should be Alpha Numeric.");
-		  if(notAlphaNumeric.matcher(description).find()) errors.rejectValue("description", "description.incorrect","description should be Alpha Numeric.");
+		  if(notAlphaNumeric.matcher(id).find() || id.length()<3 || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric and 3-10 characters.");		
+		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","Name should be Alpha Numeric.");
+		  if(notAlphaNumeric.matcher(subcategory).find()) errors.rejectValue("subcategory", "subcategory.incorrect","Subcategory should be Alpha Numeric.");
+		  if(notAlphaNumeric.matcher(description).find()) errors.rejectValue("description", "description.incorrect","Description should be Alpha Numeric.");
 		   
 	   }
 	

@@ -27,20 +27,20 @@ public class AddressValidator {
 		  String emailid = customer.getEmailid();
 		  String state = customer.getState();
 		   
-		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressline1", "error.addressline1", "User name name is required.");
-		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressline2", "error.addressline2", "First name is required.");
-		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "emailid", "error.emailid", "Last name is required.");
-		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state", "error.state", "Middle name is required.");
+		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressline1", "error.addressline1", "Addressline 1 is required.");
+		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "addressline2", "error.addressline2", "Addressline 1 is required.");
+		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "emailid", "error.emailid", "Email Id is required.");
+		  ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state", "error.state", "State is required.");
 		
 		           
 		  // Additional validations on length and type. 
 		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
 		  Pattern email = Pattern.compile(EMAIL_PATTERN);
 		  
-		  if(notAlphaNumeric.matcher(addressline1).find() || addressline1.length()<3 || addressline1.length()>20) errors.rejectValue("addressline1", "addressline1.incorrect","addressline1 should be Alpha Numeric and 3-20 characters.");		
-		  if(notAlphaNumeric.matcher(addressline2).find()) errors.rejectValue("addressline2", "addressline2.incorrect","addressline2 should be Alpha Numeric.");
-		  if(!email.matcher(emailid).find()) errors.rejectValue("emailid", "emailid.incorrect","emailid should be a valid email address.");
-		  if(notAlphaNumeric.matcher(state).find()) errors.rejectValue("state", "state.incorrect","state should be Alpha Numeric.");
+		  if(notAlphaNumeric.matcher(addressline1).find() || addressline1.length()<3 || addressline1.length()>20) errors.rejectValue("addressline1", "addressline1.incorrect","Address Line 1 should be Alpha Numeric and 3-20 characters.");		
+		  if(notAlphaNumeric.matcher(addressline2).find()) errors.rejectValue("addressline2", "addressline2.incorrect","Address Line 2 should be Alpha Numeric.");
+		  if(!email.matcher(emailid).find()) errors.rejectValue("emailid", "emailid.incorrect","Email Id should be a valid email address.");
+		  if(notAlphaNumeric.matcher(state).find()) errors.rejectValue("state", "state.incorrect","State should be Alpha Numeric.");
 		 	 
 	   }
 	

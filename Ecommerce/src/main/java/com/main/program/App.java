@@ -23,7 +23,6 @@ public class App {
 	static SupplierDAOImpl supplierDAOImpl  = (SupplierDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("supplierDAOImpl");	
 	static CartDAOImpl cartDAOImpl  = (CartDAOImpl) new ClassPathXmlApplicationContext("spring_beans.xml").getBean("cartDAOImpl");	
 	  
-	
 	public static void main(String[] args) {
 		System.out.println("In app.java");
 		System.out.println(clientDAOImpl);
