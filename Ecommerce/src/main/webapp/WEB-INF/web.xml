@@ -18,6 +18,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
    <servlet-mapping>
       <servlet-name>HelloWeb</servlet-name>
       <url-pattern>/</url-pattern>
+      <url-pattern>*.flow</url-pattern>
    </servlet-mapping>
 
 <!-- Spring Context Config Location -->
@@ -43,5 +44,5 @@ org.springframework.web.filter.DelegatingFilterProxy
  <filter-mapping>
     <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/*</url-pattern>
-  </filter-mapping>
+</filter-mapping>
 </web-app>

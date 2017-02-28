@@ -1,7 +1,7 @@
 package com.niit.controllers;
 
 import java.util.HashMap;
-import java.util.Iterator;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.validator.AddressValidator;
-import com.portal.models.Cart;
-import com.portal.models.CartProduct;
+
 import com.portal.models.Client;
-import com.portal.models.Product;
+
 
 
 /**
