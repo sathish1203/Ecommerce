@@ -27,10 +27,10 @@ public class BasicController {
 
 public ClientDAOImpl clientDAOImpl = (ClientDAOImpl) application_context.getBean("clientDAOImpl");
 String productPath = "C:\\Users\\Sathish1203\\git\\Ecommerce\\Ecommerce\\src\\main\\webapp\\WEB-INF\\images\\products";
-CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) application_context.getBean("categoryDAOImpl");
-ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("productDAOImpl");
-SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
-CartDAOImpl cartDAOImpl = (CartDAOImpl)application_context.getBean("cartDAOImpl");
+public CategoryDAOImpl categoryDAOImpl = (CategoryDAOImpl) application_context.getBean("categoryDAOImpl");
+public ProductDAOImpl productDAOImpl = (ProductDAOImpl) application_context.getBean("productDAOImpl");
+public SupplierDAOImpl supplierDAOImpl = (SupplierDAOImpl)application_context.getBean("supplierDAOImpl");
+public CartDAOImpl cartDAOImpl = (CartDAOImpl)application_context.getBean("cartDAOImpl");
 public static ClassPathXmlApplicationContext application_context = new ClassPathXmlApplicationContext("spring_beans.xml");
 
 @Autowired

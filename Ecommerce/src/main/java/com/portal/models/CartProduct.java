@@ -1,8 +1,13 @@
 package com.portal.models;
 
+import java.io.Serializable;
 
-public class CartProduct {
-    private Cart Cart;    
+public class CartProduct implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Cart Cart;    
     private String productId;
     private String quantity;
     private String productName;

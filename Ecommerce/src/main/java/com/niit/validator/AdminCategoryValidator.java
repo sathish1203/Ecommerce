@@ -5,13 +5,14 @@ import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
 import com.portal.models.Category;
  
 
 
 @Component
-public class AdminCategoryValidator {
+public class AdminCategoryValidator implements Validator{
 
 	   public boolean supports(Class<?> clazz) {
 	        return Category.class.isAssignableFrom(clazz);

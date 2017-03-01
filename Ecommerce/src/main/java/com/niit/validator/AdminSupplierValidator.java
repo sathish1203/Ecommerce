@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
 
 import com.portal.models.Client;
 import com.portal.models.Supplier;
@@ -12,7 +13,7 @@ import com.portal.models.Supplier;
 
 
 @Component
-public class AdminSupplierValidator {
+public class AdminSupplierValidator implements Validator {
 
 	   public boolean supports(Class<?> clazz) {
 	        return Client.class.isAssignableFrom(clazz);

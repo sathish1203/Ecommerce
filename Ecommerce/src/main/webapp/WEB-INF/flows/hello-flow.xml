@@ -2,12 +2,28 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
         xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">  
       
-      
         <var name="userDetails" class="com.portal.models.Client"/>
+        <var name="model" class="java.util.HashMap"/>
+        
+        <view-state id="checkout" view = "checkout.jsp" model="flowScope.model">
+        <on-entry>
+        <evaluate expression="flow_action_helper.initializeMapModel()"  result="flowScope.model"/>
+        <evaluate expression="flow_action_helper.populateDataCheckoutPage(flow_action_helper.get_current_user(),flowScope.model)" result="flowScope.model" />
+        </on-entry>
+        <transition to="ValidateAddressDetails" on="user_save_check_out" /> 
+        </view-state>  
       
-        <on-start>
-        <evaluate expression="flow_action_helper.clientDAOImpl.getUserByUsername(flow_action_helper.get_current_user())" result="flowScope.userDetails" />
-        </on-start>
-        <view-state id="checkout" model="userDetails"/>  
+      <action-state id="ValidateAddressDetails">
+       <evaluate expression="formAction.bindAndValidate()"/>
+    	<transition on="success" to="checkout_confirmed"/> <!-- To the success state -->
+		<transition on="error" to="checkout"/> <!-- To the error state -->
+	 </action-state>
+	
+        <view-state id="checkout_confirmed" view = "checkout_confirmed.jsp" model="flowScope.userDetails">
+       
+      
+        </view-state>
+      
+        
       
 </flow> 

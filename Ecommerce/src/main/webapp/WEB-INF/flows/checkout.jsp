@@ -13,7 +13,7 @@
 
 	  <!-- ****************Start of the Table to list**********************-->
 <div class="col-sm-12">
-<c:if test= "${!empty cartpdts}">
+<c:if test= "${!empty model.cartpdts}">
 <h2>Product Cart for the User</h2>
 <table class = "table">
 <tr>
@@ -21,7 +21,7 @@
 	<th>Quantity</th>
 	<th>Total Cost</th>
 </tr>
-<c:forEach items="${cartpdts}" var="cart_pdt">
+<c:forEach items="${model.cartpdts}" var="cart_pdt">
 <tr>
 <td><c:out value="${cart_pdt.value.productName}" /></td>
 <td><c:out value="${cart_pdt.value.quantity}" /></td>
@@ -36,27 +36,27 @@
   <!-- ****************End of the table to list**********************-->
 <div class="col-md-6">
 <h2>Add To Cart Data</h2>
-<form:form method="POST" action="${flowExecutionUrl}&_eventId=user_save_check_out">
+<form:form method="POST" modelAttribute = "userDetails">
 <table>
 <tr>
 <td><form:label path="addressline1">User AddressLine1</form:label></td>
-<td><form:input path="addressline1" value="${userDetails.addressline1}"></form:input></td>
+<td><form:input path="addressline1" value="${model.userDetails.addressline1}"></form:input></td>
 <td><form:errors path="addressline1" style="color:red"/></td>
 
 </tr>
 <tr>
 <td><form:label path="addressline2">User AddressLine2</form:label></td>
-<td><form:input path="addressline2" value="${userDetails.addressline2}" /></td>
+<td><form:input path="addressline2" value="${model.userDetails.addressline2}" /></td>
 <td><form:errors path="addressline2" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="state">State</form:label></td>
-<td><form:input path="state" value="${userDetails.state}" /></td>
+<td><form:input path="state" value="${model.userDetails.state}" /></td>
 <td><form:errors path="state" style="color:red"/></td>
 </tr>
 <tr>
 <td><form:label path="emailid">Email Id</form:label></td>
-<td><form:input path="emailid" value="${userDetails.emailid}" /></td>
+<td><form:input path="emailid" value="${model.userDetails.emailid}" /></td>
 <td><form:errors path="emailid" style="color:red"/></td>
 </tr>
 
@@ -65,7 +65,8 @@
 <a href="/Ecommerce/all_landing"><button class = "button">Cancel Purchase</button></a>
 </td>
 <td>
-<a href="${flowExecutionUrl}&_eventId=user_save_check_out"><button class = "button">Confirm and Checkout</button></a>
+<button type="submit" name="_eventId_user_save_check_out">Confirm</button>
+<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
 </td>
 </tr>
 </table>

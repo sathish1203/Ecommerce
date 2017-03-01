@@ -15,6 +15,7 @@
 	</bean>
 
 
+
 	<bean id="categoryDAOImpl" class="com.portal.daos.CategoryDAOImpl" scope="singleton">
 		<property name="categorySessionFactory" ref="class_config" />
 	</bean>
@@ -33,5 +34,13 @@
 		<property name="cartSessionFactory" ref="class_config" />
 	</bean>
 	
+	<bean id="formAction" class="org.springframework.webflow.action.FormAction">
+	<property name="formObjectName"><value>user</value></property>
+	<property name="formObjectClass"><value>com.portal.models.Client</value></property>
+
+	<property name="validator">
+		<bean class="com.niit.validator.AddressValidator"/>
+	</property>
+</bean>
 
 </beans>
