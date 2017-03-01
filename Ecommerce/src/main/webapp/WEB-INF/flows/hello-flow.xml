@@ -2,6 +2,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
         xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">  
       
-    <view-state id="hellowebflow" />  
+      
+        <var name="userDetails" class="com.portal.models.Client"/>
+      
+        <on-start>
+        <evaluate expression="flow_action_helper.clientDAOImpl.getUserByUsername(flow_action_helper.get_current_user())" result="flowScope.userDetails" />
+        </on-start>
+        <view-state id="checkout" model="userDetails"/>  
       
 </flow> 
