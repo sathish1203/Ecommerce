@@ -3,7 +3,73 @@
 <%@include file = "header.jsp"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<script>
 
+
+
+function validateform(){
+	var addressLine1=document.userAddressForm.addressline1.value;  
+	var addressLine2=document.userAddressForm.addressline2.value;  
+	var emailId=document.userAddressForm.emailid.value;  
+	console.log(addressLine1);
+	console.log(document.userAddressForm);
+	var state=document.userAddressForm.state.value;  
+	document.getElementById("error_addressline1").innerHTML = ""
+	document.getElementById("error_addressline2").innerHTML = ""
+	document.getElementById("error_state").innerHTML = ""
+	document.getElementById("error_emailid").innerHTML = ""
+	
+	if (addressLine1==null || addressLine1=="" || /[^a-zA-Z0-9]/.test( addressLine1 )){  
+		  document.getElementById("error_addressline1").innerHTML = "Address Line 1 should be Present and be alphanumeric!";
+		  return false;  
+		  }
+	 if (addressLine1.length < 5  || addressLine1.length > 20){
+		 document.getElementById("error_addressline1").innerHTML = "Address Line 1 should be 5-20 Characters.!";
+		  return false;  
+		 
+	 }
+	 
+	 if (addressLine2==null || addressLine2=="" || /[^a-zA-Z0-9]/.test( addressLine2 )){  
+		  document.getElementById("error_addressline2").innerHTML = "Address Line 2 should be Present and be alphanumeric!";
+		  return false;  
+		  }
+	 if (addressLine1.length < 5  || addressLine1.length > 20){
+		 document.getElementById("error_addressline2").innerHTML = "Address Line 2 should be 5-20 Characters.!";
+		  return false;  
+		 
+	 }
+	 
+	 
+	 if (state==null || state=="" || /[^a-zA-Z]/.test( state )){  
+		  document.getElementById("error_state").innerHTML = "State should be Present and be alphabets!";
+		  return false;  
+		  }
+	 
+	 if (state.length < 3  || state.length > 10){
+		 document.getElementById("error_state").innerHTML = "State should be 3-10 Characters.!";
+		  return false;  
+		 
+	 }
+	 
+	 
+	 if (!(/^\w+([\.-]?\ w+)*@\w+([\.-]?\ w+)*(\.\w{2,3})+$/.test(emailId))){
+		 document.getElementById("error_emailid").innerHTML = "Please Enter a Valid email Address.!";
+		  return false; 
+		 
+	 }
+	
+	
+
+	
+}
+
+</script>
+
+
+</head>
+
+<body>
 <!-- ****************Start of the container**********************-->
 
 <div class="container">
@@ -13,7 +79,7 @@
 
 	  <!-- ****************Start of the Table to list**********************-->
 <div class="col-sm-12">
-<c:if test= "${!empty model.cartpdts}">
+<c:if test= "${!empty modelbind.model.cartpdts}">
 <h2>Product Cart for the User</h2>
 <table class = "table">
 <tr>
@@ -21,7 +87,7 @@
 	<th>Quantity</th>
 	<th>Total Cost</th>
 </tr>
-<c:forEach items="${model.cartpdts}" var="cart_pdt">
+<c:forEach items="${modelbind.model.cartpdts}" var="cart_pdt">
 <tr>
 <td><c:out value="${cart_pdt.value.productName}" /></td>
 <td><c:out value="${cart_pdt.value.quantity}" /></td>
@@ -34,30 +100,34 @@
 </div>
 <div class = "row">
   <!-- ****************End of the table to list**********************-->
-<div class="col-md-6">
+<div class="col-md-12">
 <h2>Add To Cart Data</h2>
-<form:form method="POST" modelAttribute = "userDetails">
+<form:form name = "userAddressForm" method="POST" modelAttribute = "modelbind" action = "${flowExecutionUrl}&_eventId=user_save_check_out" onsubmit="return validateform()">
 <table>
 <tr>
-<td><form:label path="addressline1">User AddressLine1</form:label></td>
-<td><form:input path="addressline1" value="${model.userDetails.addressline1}"></form:input></td>
-<td><form:errors path="addressline1" style="color:red"/></td>
+<td><form:label path="userDetails">User AddressLine1</form:label></td>
+<td><form:input name ="addressline1" path="userDetails" value="${userDetails.addressline1}"></form:input></td>
+<td><label name ="error_addressline1" id = "error_addressline1" style="color:red" ></label></td>
+
 
 </tr>
 <tr>
-<td><form:label path="addressline2">User AddressLine2</form:label></td>
-<td><form:input path="addressline2" value="${model.userDetails.addressline2}" /></td>
-<td><form:errors path="addressline2" style="color:red"/></td>
+<td><form:label path="userDetails">User AddressLine2</form:label></td>
+<td><form:input name ="addressline2" path="userDetails" value="${userDetails.addressline2}" /></td>
+<td><label name ="error_addressline2" id = "error_addressline2" style="color:red" ></label></td>
+
 </tr>
 <tr>
-<td><form:label path="state">State</form:label></td>
-<td><form:input path="state" value="${model.userDetails.state}" /></td>
-<td><form:errors path="state" style="color:red"/></td>
+<td><form:label path="userDetails">State</form:label></td>
+<td><form:input  name ="state" path="userDetails" value="${userDetails.state}" /></td>
+<td><label name ="error_state" id = "error_state" style="color:red" ></label></td>
+
 </tr>
 <tr>
-<td><form:label path="emailid">Email Id</form:label></td>
-<td><form:input path="emailid" value="${model.userDetails.emailid}" /></td>
-<td><form:errors path="emailid" style="color:red"/></td>
+<td><form:label path="userDetails">Email Id</form:label></td>
+<td><form:input  name ="emailid" path="userDetails" value="${userDetails.emailid}" /></td>
+<td><label name ="error_emailid" id = "error_emailid" style="color:red" ></label></td>
+
 </tr>
 
 <tr>
@@ -65,8 +135,8 @@
 <a href="/Ecommerce/all_landing"><button class = "button">Cancel Purchase</button></a>
 </td>
 <td>
-<button type="submit" name="_eventId_user_save_check_out">Confirm</button>
-<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
+<input type="submit" value="Confirm">
+
 </td>
 </tr>
 </table>

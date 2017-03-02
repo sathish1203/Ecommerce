@@ -99,7 +99,7 @@ color: black;
 <div class="jumbotron text-center">
 <h1>Welcome to Stuff Spot.</h1>
 <p>Your Economy Supermarket at your convenience.<br />
-Hello! Dear ${model.currentUser}.
+Hello! Dear ${modelbind.model.currentUser}.
 </p> 
 <p color = "blue">${msg}</p>
 </div>
@@ -127,11 +127,11 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <ul class = "nav navbar-nav">
   
 <!-- A drop down list to have various sub elements in it.  -->       	
-<c:if test="${!empty model.category1}">
+<c:if test="${!empty modelbind.model.category1}">
 <li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${model.category1Name}" /> <b class = "caret"></b>   </a>
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${modelbind.model.category1Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
-<c:forEach items="${model.category1}" var="categoryOne">
+<c:forEach items="${modelbind.model.category1}" var="categoryOne">
 <li><a href = "/Ecommerce/all_show_sub_category?id=${categoryOne.id}"><c:out value="${categoryOne.subcategory}" /></a></li>
 </c:forEach>
 </ul>
@@ -140,11 +140,11 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 
 
 <!-- A drop down list to have various sub elements in it.  -->       	
-<c:if test="${!empty model.category2}">
+<c:if test="${!empty modelbind.model.category2}">
 <li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${model.category2Name}" /> <b class = "caret"></b>   </a>
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${modelbind.model.category2Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
-<c:forEach items="${model.category2}" var="categoryTwo">
+<c:forEach items="${modelbind.model.category2}" var="categoryTwo">
 <li><a href = "/Ecommerce/all_show_sub_category?id=${categoryTwo.id}"><c:out value="${categoryTwo.subcategory}" /></a></li>
 </c:forEach>
 </ul>
@@ -152,11 +152,11 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 </c:if>
 		
 <!-- A drop down list to have various sub elements in it.  -->       	
-<c:if test="${!empty model.category3}">
+<c:if test="${!empty modelbind.model.category3}">
 <li class = "dropdown">
-<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${model.category3Name}" /> <b class = "caret"></b>   </a>
+<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <c:out value="${modelbind.model.category3Name}" /> <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
-<c:forEach items="${model.category3}" var="categoryThree">
+<c:forEach items="${modelbind.model.category3}" var="categoryThree">
 <li><a href = "/Ecommerce/all_show_sub_category?id=${categoryThree.id}"><c:out value="${categoryThree.subcategory}" /></a></li>
 </c:forEach>
 </ul>
@@ -164,11 +164,11 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 </c:if>
 			
 <!-- A drop down list to have various sub elements in it.  -->       	
-<c:if test="${!empty othercategory}">
+<c:if test="${!empty modelbind.model.othercategory}">
 <li class = "dropdown">
 <a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> OTHER CATEGORIES <b class = "caret"></b>   </a>
 <ul class = "dropdown-menu">
-<c:forEach items="${model.othercategory}" var="categoryOther">
+<c:forEach items="${modelbind.model.othercategory}" var="categoryOther">
 <li>  <c:out value="${categoryOther.key}" /></li>
 <c:forEach items="${categoryOther.value}" var="category_sub">
 <li><a href = "/Ecommerce/all_show_sub_category?id=${category_sub.id}"><c:out value="${category_sub.subcategory}" /></a></li>

@@ -177,7 +177,6 @@ public Map<String, Object> addProductDetailsToCart(Map<String, Object> model,Has
     	
 	}
 	model.put("cartpdts",cartpdts);
-	
 	return model;
 } 
 	 
