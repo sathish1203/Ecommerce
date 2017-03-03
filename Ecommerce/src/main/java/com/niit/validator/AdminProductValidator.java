@@ -44,10 +44,10 @@ public class AdminProductValidator implements Validator{
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "image_upload_path", "error.image_upload_path", "Image_upload_path is required.");
 		             
 		  // Additional validations on length and type. 
-		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
+		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
 		  Pattern notNumber = Pattern.compile("[^0-9]");
 		  
-		  if(notAlphaNumeric.matcher(id).find() || id.length()<3 || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric and 3-10 characters.");		
+		  if(notAlphaNumeric.matcher(id).find() || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric  less than 10 characters.");		
 		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","Name should be Alpha Numeric.");
 		  if(notAlphaNumeric.matcher(description).find()) errors.rejectValue("description", "description.incorrect","Description should be Alpha Numeric.");
 		  if(notNumber.matcher(mrp).find()) errors.rejectValue("mrp", "mrp.incorrect","Mrp should be Numeric.");

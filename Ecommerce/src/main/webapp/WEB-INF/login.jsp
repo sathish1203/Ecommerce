@@ -34,16 +34,16 @@ Your login attempt was not successful due to <br/><br/>
 <table cellpadding = "10">
 <tr><th></th></tr>
 <tr>
-<td>Username:</td>
+<td><span class="glyphicon glyphicon-user"></span>Username:</td>
 <td><input type='text' name='username'></td>
 </tr>
 <tr>
-<td>Password:</td>
+<td><span class="glyphicon glyphicon-envelope"></span>Password:</td>
 <td><input type='password' name='password' /></td>
 </tr>
 <tr>
-<td colspan="2">
-<input type="submit" value="Submit"/>
+<td>
+<input class = "pull-right" type="submit" value="Submit"/>
 </td>
 </tr>
 </table>    

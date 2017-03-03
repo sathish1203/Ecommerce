@@ -40,7 +40,7 @@ SignupFormValidator signupFormValidator;
  * @return -- String value, user name of the user. 
  */
 public String get_current_user(){
-	   String user = "";
+	String user = "";
    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
    System.out.println("principal"+principal);
    user = principal.toString();

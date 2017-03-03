@@ -7,6 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+
 import com.portal.models.Client;
 import com.portal.models.Supplier;
  
@@ -31,8 +32,10 @@ public class AdminSupplierValidator implements Validator {
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "error.name", "Name is required.");
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "error.description", "Description is required.");
 		  
+		   
 		  // Additional validations on length and type. 
 		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
+		  
 		  
 		  if(notAlphaNumeric.matcher(id).find() || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric less than 10 characters.");		
 		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","Name should be Alpha Numeric.");

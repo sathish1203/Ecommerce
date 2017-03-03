@@ -7,6 +7,20 @@
 <html>
 
 
+<script>
+function validateform(){
+
+	var productImage=document.getElementById("productImage").value;  
+	document.getElementById("error_productImage").innerHTML = ""
+
+	
+	if (productImage==null || productImage==""){  
+		  document.getElementById("error_productImage").innerHTML = "No File uploaded!";
+		  return false;  
+		  }
+}
+
+</script>
 
 
 <!-- The body tag. This tag starts with the welcome message.-->
@@ -22,7 +36,7 @@
 <!-- ****************Start of the form**********************-->
 <div class="col-md-11">
 <h2>Add Product Data</h2>
-<form:form method="POST" action="/Ecommerce/admin_save_product"  enctype="multipart/form-data">
+<form:form method="POST" action="/Ecommerce/admin_save_product"  enctype="multipart/form-data" onsubmit = "return validateform(this);">
 <table>
 <tr> 
 <td><form:label path="id">Product ID:</form:label></td>
@@ -67,7 +81,7 @@
 <tr>
 <td><form:label path="imagepath">Image Upload</form:label></td>
 <td><input name = "productImage" type = "file" id="productImage" path = "imagepath" /></td>
-<td><form:errors path="image_upload_path" style="color:red"/></td>
+<td><label name ="error_productImage" id = "error_productImage" style="color:red" ></td>
 </tr>
 <tr>
 <td colspan="2"><input type="submit" value="Submit" /></td>
