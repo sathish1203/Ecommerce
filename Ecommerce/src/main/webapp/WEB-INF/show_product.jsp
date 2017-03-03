@@ -7,7 +7,7 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-4">
-<img src = "images\products\<c:out value="${product.id}" />.jpg" alt = "${product.name}">
+<img class = img-responsive src = "images\products\<c:out value="${product.id}" />.jpg" alt = "${product.name}">
 <table class = "table">
 <tbody>
 <tr>
