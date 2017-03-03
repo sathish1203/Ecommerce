@@ -34,7 +34,6 @@ public class Flow_action_helper extends BasicController{
 	}
 	
 	public ViewData populateDataCheckoutConfirmedPage(String userName,ViewData viewData){
-		
 		Client user_db = clientDAOImpl.getUserByUsername(userName);
 		viewData.model.put("userDetails",user_db);
 		viewData.model = addProductDetailsToCart(viewData.model,cartDAOImpl.parse_product_cart(userName));

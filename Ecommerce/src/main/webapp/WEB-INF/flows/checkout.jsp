@@ -106,28 +106,24 @@ function validateform(){
 <table>
 <tr>
 <td><form:label path="userDetails">User AddressLine1</form:label></td>
-<td><form:input name ="addressline1" path="userDetails" value="${userDetails.addressline1}"></form:input></td>
+<td><form:input name ="addressline1" path="userDetails.addressline1" value="${userDetails.addressline1}"></form:input></td>
 <td><label name ="error_addressline1" id = "error_addressline1" style="color:red" ></label></td>
-
-
 </tr>
 <tr>
 <td><form:label path="userDetails">User AddressLine2</form:label></td>
-<td><form:input name ="addressline2" path="userDetails" value="${userDetails.addressline2}" /></td>
+<td><form:input name ="addressline2" path="userDetails.addressline2" value="${userDetails.addressline2}" /></td>
 <td><label name ="error_addressline2" id = "error_addressline2" style="color:red" ></label></td>
 
 </tr>
 <tr>
 <td><form:label path="userDetails">State</form:label></td>
-<td><form:input  name ="state" path="userDetails" value="${userDetails.state}" /></td>
+<td><form:input  name ="state" path="userDetails.state" value="${userDetails.state}" /></td>
 <td><label name ="error_state" id = "error_state" style="color:red" ></label></td>
-
 </tr>
 <tr>
 <td><form:label path="userDetails">Email Id</form:label></td>
-<td><form:input  name ="emailid" path="userDetails" value="${userDetails.emailid}" /></td>
+<td><form:input  name ="emailid" path="userDetails.emailid" value="${userDetails.emailid}" /></td>
 <td><label name ="error_emailid" id = "error_emailid" style="color:red" ></label></td>
-
 </tr>
 
 <tr>
@@ -136,7 +132,6 @@ function validateform(){
 </td>
 <td>
 <input type="submit" value="Confirm">
-
 </td>
 </tr>
 </table>

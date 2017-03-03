@@ -14,7 +14,7 @@
 
 	  <!-- ****************Start of the Table to list**********************-->
 <div class="col-sm-12">
-<c:if test= "${!empty cartpdts}">
+<c:if test= "${!empty modelbind.model.cartpdts}">
 <h2>Product Cart for the User</h2>
 <table class = "table">
 <tr>
@@ -22,7 +22,7 @@
 	<th>Quantity</th>
 	<th>Total Cost</th>
 </tr>
-<c:forEach items="${cartpdts}" var="cart_pdt">
+<c:forEach items="${modelbind.model.cartpdts}" var="cart_pdt">
 <tr>
 <td><c:out value="${cart_pdt.value.productName}" /></td>
 <td><c:out value="${cart_pdt.value.quantity}" /></td>
@@ -31,7 +31,7 @@
 </c:forEach>
 </table>
 </c:if>
-<c:if test= "${!empty userDetails}">
+<c:if test= "${!empty modelbind.userDetails}">
 <h2>Delivery Address for the User</h2>
 <table class = "table">
 <tr>
@@ -43,12 +43,12 @@
 	<th>Phone Number</th>
 </tr>
 <tr>
-<td><c:out value="${userDetails.uname}" /></td>
-<td><c:out value="${userDetails.addressline1}" /></td>
-<td><c:out value="${userDetails.addressline2}" /></td>
-<td><c:out value="${userDetails.state}" /></td>
-<td><c:out value="${userDetails.emailid}" /></td>
-<td><c:out value="${userDetails.personalphone}" /></td>
+<td><c:out value="${modelbind.userDetails.uname}" /></td>
+<td><c:out value="${modelbind.userDetails.addressline1}" /></td>
+<td><c:out value="${modelbind.userDetails.addressline2}" /></td>
+<td><c:out value="${modelbind.userDetails.state}" /></td>
+<td><c:out value="${modelbind.userDetails.emailid}" /></td>
+<td><c:out value="${modelbind.userDetails.personalphone}" /></td>
 
 </tr>
 </table>
