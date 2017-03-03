@@ -128,6 +128,26 @@ public class Client implements Serializable {
 		this.enabled = enabled;
 	}
 	
+
+public String toString(){
+	String ret = "  Client, ";
+	ret = ret + "  username = "+ uname;
+	ret = ret + "  firstname = "+ firstname;
+	ret = ret + "  middlename = "+ middlename;
+	ret = ret + "  lastname = "+ lastname;
+	ret = ret + "  sex = "+ sex;
+	ret = ret + "  personalphone = "+ personalphone;
+	ret = ret + "  addressline1 = "+ addressline1;
+	ret = ret + "  addressline2 = "+ addressline2;
+	ret = ret + "  state = "+ state;
+	ret = ret + "  emailid = "+ emailid;
+	ret = ret + "  workphone = "+ workphone;
+	ret = ret + "  enabled = "+ enabled;
+	ret = ret + "  admin = "+ admin;
+	return ret;
+
+	
+}
 	
 	
 }

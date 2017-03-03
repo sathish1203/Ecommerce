@@ -16,7 +16,10 @@ public class Flow_action_helper extends BasicController{
 	public ViewData populateDataCheckoutPage(String userName,ViewData viewData){
 		viewData.model = addProductDetailsToCart(viewData.model,cartDAOImpl.parse_product_cart(userName));
 		Client user = clientDAOImpl.getUserByUsername(userName);
+		System.out.println("populateDataCheckoutPage");
+		System.out.println("user details are" + user.toString());
 		viewData.setUserDetails(user);
+		System.out.println("user details in viewData are" + viewData.getUserDetails().toString());
 		viewData.model = getCategoriesForLanding(viewData.model);
 		viewData.model.put("currentUser", get_current_user());
 		return viewData;
@@ -24,13 +27,10 @@ public class Flow_action_helper extends BasicController{
 	
 	public void saveDataCheckoutPage(String userName,ViewData viewData){
 		Client user = viewData.getUserDetails();
-		System.out.println("user is "+user);
-		Client user_db = clientDAOImpl.getUserByUsername(userName);
-		user_db.setAddressline1(user.getAddressline1());
-		user_db.setAddressline1(user.getAddressline2());
-		user_db.setState(user.getState());
-		user_db.setEmailid(user.getEmailid());
-		clientDAOImpl.addUser(user_db);
+		System.out.println("saveDataCheckoutPage");
+		System.out.println("user from view is "+user.toString());
+		System.out.println("userName is "+userName);
+		clientDAOImpl.addUser(user);
 	}
 	
 	public ViewData populateDataCheckoutConfirmedPage(String userName,ViewData viewData){

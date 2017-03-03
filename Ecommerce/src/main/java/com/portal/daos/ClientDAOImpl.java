@@ -77,7 +77,7 @@ public boolean addUser(Client u){
 	try{
 	Session session = clientSessionFactory.openSession();
     session.beginTransaction();
-    session.save(u);
+    session.saveOrUpdate(u);
     session.getTransaction().commit();
     session.close();
     commit = true;

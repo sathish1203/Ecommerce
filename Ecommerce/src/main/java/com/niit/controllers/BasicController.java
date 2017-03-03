@@ -154,7 +154,10 @@ public  Map<String, Object> getCategoriesForLanding( Map<String, Object> model){
  * @return
  */
 public Map<String, Object> addProductDetailsToCart(Map<String, Object> model,HashMap<String,String> cartMap){
-	int cost =0;
+	int totalcost =0;
+	int cost = 0;
+	int totalQty = 0;
+	int qty= 0;
 	Map<String,CartProduct> cartpdts = new HashMap<String,CartProduct>();
 	String ProductId;
 	CartProduct cart_pdt = null;
@@ -170,13 +173,17 @@ public Map<String, Object> addProductDetailsToCart(Map<String, Object> model,Has
     	cart_pdt.setProductName(pdt.getName());
     	cart_pdt.setProductPrice(pdt.getOfferprice());
     	cart_pdt.setQuantity(cartMap.get(ProductId));
-    	cost = cost + (Integer.parseInt(pdt.getOfferprice())*Integer.parseInt(cartMap.get(ProductId)));
+    	qty = Integer.parseInt(cartMap.get(ProductId));
+    	cost = (Integer.parseInt(pdt.getOfferprice())*qty);
     	cart_pdt.setTotalCost(String.valueOf(cost));
     	System.out.println("Cost is "+ cost);
     	cartpdts.put(ProductId,cart_pdt);
-    	
+    	totalcost = totalcost+cost;
+    	totalQty = totalQty + qty;
 	}
 	model.put("cartpdts",cartpdts);
+	model.put("cartpdts_qty",totalQty);
+	model.put("cartpdts_cost",totalcost);
 	return model;
 } 
 	 

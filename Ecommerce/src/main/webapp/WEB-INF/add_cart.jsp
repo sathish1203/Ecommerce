@@ -17,8 +17,9 @@
 	<form:form method="POST" action="/Ecommerce/user_save_cart">
 <table>
 <tr>
-<td><form:label path="productId">Product Id:</form:label></td>
-<td><form:input path="productId" value="${cartpdt.productId}" readonly = "true"></form:input></td>
+<td><form:label path="productName">Product Name:</form:label></td>
+<td><form:input path="productName" value="${cartpdt.productName}" readonly = "true"></form:input></td>
+<form:input path="productId" value="${cartpdt.productId}" type = "hidden"></form:input>
 </tr>
 
 
@@ -74,8 +75,14 @@
 </tr>
 </c:forEach>
 <tr>
+	<td><c:out value="Total Quantity" /></td>
+	<td><c:out value="${cartpdts_qty}" /></td>
+    <td><c:out value="Total Cost" /></td>
+	<td><c:out value="${cartpdts_cost}" /></td>
+    </tr>
+<tr>
 	<td colspan="2"><a href = "/Ecommerce/all_landing"><button type="button" class="btn btn-default">Continue Shopping</button></a></td>
-	<td colspan="2"><a href = "/Ecommerce/user_check_out"><button type="button" class="btn btn-default">Checkout</button></a></td>
+	<td colspan="2"><a href = "/Ecommerce/hello.flow"><button type="button" class="btn btn-default">Checkout</button></a></td>
 </tr>
 </table>
 </c:if>

@@ -13,6 +13,7 @@ import com.portal.models.CartProduct;
 import com.portal.models.Product;
 
 
+
 /**
  * This controller class will hold all the request methods for the CRUD
  * operations on the supplier.
@@ -39,13 +40,13 @@ public class CartController extends BasicController {
 		String userName = get_current_user();
 		cart_pdt.setCart(prepareEmptyCart(userName));
 		cart_pdt.setQuantity(cartDAOImpl.parse_product_cart(userName).get(cart_pdt.getProductId()));
-		
+		Product pdt_to_cart = productDAOImpl.getProductById(cart_pdt.getProductId());
+		cart_pdt.setProductName(pdt_to_cart.getName());
 		model.put("currentUser", userName);
 		model.put("cartpdt", cart_pdt);
 		model = getCategoriesForLanding(model);
 		model.put("currentUser", get_current_user());
 		model.put("isAdmin", isAdmin());
-		
 		pdt_id = cartDAOImpl.parse_product_cart(userName);
 	    model = addProductDetailsToCart(model,pdt_id);
 	    return new ModelAndView("add_cart", model);
@@ -93,7 +94,7 @@ public class CartController extends BasicController {
 	    System.out.println(cart_new);
 	    cart.setCart(cart_new);
 	    cartDAOImpl.addCart(cart);
-	    return new ModelAndView("redirect:/user_add_cart");
+	    return new ModelAndView("redirect:/user_add_cart?productId="+cart_pdt.getProductId());
 	}
 
 	

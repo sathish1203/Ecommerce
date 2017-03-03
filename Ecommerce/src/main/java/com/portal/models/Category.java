@@ -13,6 +13,10 @@ public class Category implements Serializable{
 	private String subcategory;
 	private String description;
 
+	public String getCategorySubcategory() {
+		return (subcategory+" in "+name);
+	}
+	
 	public String getSubcategory() {
 		return subcategory;
 	}

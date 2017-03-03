@@ -41,7 +41,7 @@
 </tr>
 <tr>
 <td><form:label path="categoryid">Product Category:</form:label></td>
-<td><form:select path="categoryid" items="${categories}" itemValue="id" itemLabel="subcategory" /></td>
+<td><form:select path="categoryid" items="${categories}" itemValue="id" itemLabel="categorySubcategory" /></td>
 <td><form:errors path="categoryid" style="color:red"/></td>
 </tr>
 <tr>

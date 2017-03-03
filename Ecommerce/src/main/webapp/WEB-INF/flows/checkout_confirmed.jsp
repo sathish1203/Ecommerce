@@ -29,6 +29,11 @@
 <td><c:out value="${cart_pdt.value.totalCost}" /></td>
 </tr>
 </c:forEach>
+<tr>
+	<td><c:out value="Total" /></td>
+	<td><c:out value="${modelbind.model.cartpdts_qty}" /></td>
+    <td><c:out value="${modelbind.model.cartpdts_cost}" /></td>
+    </tr>
 </table>
 </c:if>
 <c:if test= "${!empty modelbind.userDetails}">
