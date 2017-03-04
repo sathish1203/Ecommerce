@@ -8,16 +8,16 @@
 <class name="com.portal.models.Supplier" table="SUPPLIER">  
 
 <id name="id" type = "string">
-<column name = "ID" length = "15"/>  
+<column name = "ID" length = "255"/>  
 <generator class="assigned"/>  
 </id>  
 
 <property name="name" type = "string">
-<column name = "NAME" length = "20" />
+<column name = "NAME" length = "255" />
 </property>  
           
 <property name = "description" type = "string">
-<column name = "DESCRIPTION" length = "20"/>
+<column name = "DESCRIPTION" length = "255"/>
 </property>
 
 

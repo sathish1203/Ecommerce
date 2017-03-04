@@ -51,6 +51,7 @@ public class helloController extends BasicController {
 			model.put("msg", "Kindly Rectify Errors and try again!!!!");
 			return new ModelAndView("signup", model);
 		}
+	
 		System.out.println("user is " + client);
 		model = getProductsLanding(model);
 		model = getCategoriesForLanding(model);

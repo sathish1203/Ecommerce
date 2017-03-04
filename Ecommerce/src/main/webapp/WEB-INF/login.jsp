@@ -8,6 +8,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
+<script>
+function validateform(){
+
+	var productImage=document.getElementById("username").value;  
+	document.getElementById("error_productImage").innerHTML = ""
+
+	
+	if (productImage==null || productImage==""){  
+		  document.getElementById("error_username").innerHTML = "Username Cannot be empty.";
+		  return false;  
+		  }
+}
+
+</script>
+
 <body class = "header"  bgcolor = "#000000" >
   
 <div style="text-align:center">
@@ -20,6 +35,7 @@ and open the template in the editor.
 <font color="red">
 Your login attempt was not successful due to <br/><br/>
 <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+<label name ="error_username" id = "error_username" style="color:red" >
 </font>
 </c:if>
 
@@ -35,7 +51,7 @@ Your login attempt was not successful due to <br/><br/>
 <tr><th></th></tr>
 <tr>
 <td><span class="glyphicon glyphicon-user"></span>Username:</td>
-<td><input type='text' name='username'></td>
+<td><input type='text' name='username' id = 'username'></td>
 </tr>
 <tr>
 <td><span class="glyphicon glyphicon-envelope"></span>Password:</td>

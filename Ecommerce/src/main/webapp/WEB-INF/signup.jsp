@@ -54,7 +54,8 @@ and open the template in the editor.
 
 <tr>
 <td><form:label path="sex">SEX</form:label></td>
-<td><form:input path="sex" id = "_isex"/></td>
+<td><form:radiobutton path="sex" value="Male" checked="checked"/>Male
+<form:radiobutton path="sex" value="Female"/>Female</td>
 <td><form:errors path="sex" style="color:red"/></td>
 </tr>
 
@@ -87,7 +88,7 @@ and open the template in the editor.
 </form:form>
    
 </div>	
-<div class = "col-sm-3"></div> 
+
     
 </div>
 </div>

@@ -15,9 +15,9 @@
 <form:form method="POST" action="/Ecommerce/admin_save_category">
 <table>
 <tr>
-<td><form:label path="id">Category ID:</form:label></td>
-<td><form:input path="id" value="${category.id}" /></td>
-<td><form:errors path="id" style="color:red"/></td>
+<td><form:label path="id">Category ID: </form:label></td>
+<td><c:out value="${category.id}" /></td>
+<td><form:errors path="id" style="color:red"/><form:hidden path="id" value="${category.id}"/></td>
 </tr>
 <tr>
 <td><form:label path="name">Category Name:</form:label></td>

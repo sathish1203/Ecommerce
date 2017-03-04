@@ -48,8 +48,8 @@ public class AdminProductValidator implements Validator{
 		  Pattern notNumber = Pattern.compile("[^0-9]");
 		  
 		  if(notAlphaNumeric.matcher(id).find() || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric  less than 10 characters.");		
-		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","Name should be Alpha Numeric.");
-		  if(notAlphaNumeric.matcher(description).find()) errors.rejectValue("description", "description.incorrect","Description should be Alpha Numeric.");
+		  if(name.length()>30 || name.length()<3) errors.rejectValue("name", "name.incorrect","Name should be 3 - 30 characters.");
+		  if(description.length()>200 || description.length()<10) errors.rejectValue("description", "description.incorrect","Description should be 10 - 200 characters.");
 		  if(notNumber.matcher(mrp).find()) errors.rejectValue("mrp", "mrp.incorrect","Mrp should be Numeric.");
 		  if(notNumber.matcher(offerprice).find()) errors.rejectValue("offerprice", "offerprice.incorrect","Offerprice should be Numeric.");
 		  if(notNumber.matcher(quantity).find()) errors.rejectValue("quantity", "quantity.incorrect","Quantity should be Numeric.");

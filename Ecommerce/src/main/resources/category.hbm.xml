@@ -8,24 +8,24 @@
 <class name="com.portal.models.Category" table="CATEGORY">  
 
 <id name="id" type = "string">
-<column name = "ID" length = "20"/>  
+<column name = "ID" length = "255"/>  
 <generator class="assigned"/>  
 </id>  
 
 
 
 <property name="subcategory" type = "string">
-<column name = "SUBCATEGORY" length = "30" />
+<column name = "SUBCATEGORY" length = "255" />
 </property>  
      
      
 <property name="name" type = "string">
-<column name = "NAME" length = "30" />
+<column name = "NAME" length = "255" />
 </property> 
 
           
 <property name = "description" type = "string">
-<column name = "DESCRIPTION" length = "200"/>
+<column name = "DESCRIPTION" length = "255"/>
 </property>
 
 </class>  

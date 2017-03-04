@@ -8,7 +8,7 @@
 <class name="com.portal.models.Cart" table="CART">  
 
 <id name="id" type = "string">
-<column name = "ID" length = "20"/>  
+<column name = "ID" length = "255"/>  
 <generator class="assigned"/>  
 </id>  
 
@@ -20,7 +20,7 @@
      
      
 <property name="name" type = "string">
-<column name = "NAME" length = "30" />
+<column name = "NAME" length = "255" />
 </property> 
 
           

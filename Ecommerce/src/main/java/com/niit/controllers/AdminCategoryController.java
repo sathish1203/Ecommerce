@@ -1,6 +1,8 @@
 package com.niit.controllers;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +42,9 @@ public class AdminCategoryController extends BasicController {
 	@RequestMapping(value = "/admin_add_category", method = RequestMethod.GET)
 	public ModelAndView add_category(@ModelAttribute("command") Category category) {
 		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("category",get_category_id(category));
 		model.put("currentUser", get_current_user());
-		model.put("categories", categoryDAOImpl.getCategories());
+		model.put("categories",  categoryDAOImpl.getCategories());
 		return new ModelAndView("add_category", model);
 	}
 
@@ -61,7 +64,8 @@ public class AdminCategoryController extends BasicController {
 		  adminCategoryValidator.validate(category,result);
 			if(result.hasErrors())
 			{   		
-				Map<String, Object> model = new HashMap<String, Object>();
+			Map<String, Object> model = new HashMap<String, Object>();
+			model.put("category",get_category_id(category));
 			model.put("currentUser", get_current_user());
 			model.put("categories", categoryDAOImpl.getCategories());
 			return new ModelAndView("add_category", model);
@@ -105,12 +109,39 @@ public class AdminCategoryController extends BasicController {
 	@RequestMapping(value = "/admin_delete_category", method = RequestMethod.GET)
 	public ModelAndView delete_category(@ModelAttribute("command") Category category) {
 		categoryDAOImpl.RemoveCategory(category);
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("currentUser", get_current_user());
-		model.put("category", null);
-		model.put("categories", categoryDAOImpl.getCategories());
-		return new ModelAndView("add_category", model);
+		return new ModelAndView("redirect:/admin_add_category");
 	}
 
+	
+	public Category get_category_id(Category category){
+		List<Category> category_list = categoryDAOImpl.getCategories();
+		int[] indexes = new int[category_list.size()];
+		int index = 0;
+		System.out.println(category.getId());
+		if(category.getId() == null || category.getId().isEmpty()){
+			for(Category searchIndex : category_list){
+				System.out.println(searchIndex.getId());
+				indexes[index] = Integer.parseInt(searchIndex.getId());
+				index = index + 1;
+			}
+			index = 0;
+			Arrays.sort(indexes);
+			for(int i : indexes){
+				if(index==i){
+					index = index +1;
+					continue;
+				}
+				else{
+					break;
+				}
+				
+			}
+			category.setId(String.valueOf(index));
+		}
+		
+		
+		return category;
+	}
+	
 	
 }// End of the class

@@ -3,7 +3,9 @@ package com.niit.controllers;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.validator.AdminProductValidator;
+import com.portal.models.Category;
 import com.portal.models.Product;
 
 /**
@@ -45,6 +48,7 @@ public class AdminProductController extends BasicController {
 	public ModelAndView add_product(@ModelAttribute("command") Product product) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("currentUser", get_current_user());
+		model.put("product",get_product_with_id(product));
 		model.put("products", productDAOImpl.getProducts());
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		model.put("categories", categoryDAOImpl.getCategories());
@@ -78,8 +82,10 @@ public class AdminProductController extends BasicController {
      
         adminProductValidator.validate(product,result);
 		if(result.hasErrors())
-		{   	Map<String, Object> model = new HashMap<String, Object>();
+		{   	
+		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("currentUser", get_current_user());
+		model.put("product",get_product_with_id(product));
 		model.put("products", productDAOImpl.getProducts());
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		model.put("categories", categoryDAOImpl.getCategories());
@@ -149,12 +155,39 @@ public class AdminProductController extends BasicController {
 	@RequestMapping(value = "/admin_delete_product", method = RequestMethod.GET)
 	public ModelAndView delete_product(@ModelAttribute("command") Product product) {
 		productDAOImpl.RemoveProduct(product);
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("currentUser", get_current_user());
-		model.put("product", null);
-		model.put("products", productDAOImpl.getProducts());
-		return new ModelAndView("add_product", model);
+		return new ModelAndView("redirect:/admin_add_product");
 	}
-
+	
+	
+	
+	
+	public Product get_product_with_id(Product product){
+		List<Product> product_list = productDAOImpl.getProducts();
+		int[] indexes = new int[product_list.size()];
+		int index = 0;
+		System.out.println(product.getId());
+		if(product.getId() == null || product.getId().isEmpty()){
+			for(Product searchIndex : product_list){
+				System.out.println(searchIndex.getId());
+				indexes[index] = Integer.parseInt(searchIndex.getId());
+				index = index + 1;
+			}
+			index = 0;
+			Arrays.sort(indexes);
+			for(int i : indexes){
+				if(index==i){
+					index = index +1;
+					continue;
+				}
+				else{
+					break;
+				}
+				
+			}
+			product.setId(String.valueOf(index));
+		
+		}
+		return product;
+	}
 	
 }// End of the class

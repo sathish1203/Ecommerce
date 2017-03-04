@@ -18,11 +18,11 @@
 <table>
 <tr>
 	<td><form:label path="id">Supplier ID:</form:label></td>
-<td><form:input path="id" value="${supplier.id}" /></td>
-<td><form:errors path="id" style="color:red"/></td>
+<td><c:out value="${supplier.id}" /></td>
+<td><form:errors path="id" style="color:red"/><form:hidden path="id" value="${supplier.id}"/></td>
 </tr>
 <tr>
-	<td><form:label path="name">Supplier Name:</form:label></td>
+<td><form:label path="name">Supplier Name:</form:label></td>
 <td><form:input path="name" value="${supplier.name}" /></td>
 <td><form:errors path="name" style="color:red"/></td>
 </tr>

@@ -1,6 +1,8 @@
 package com.niit.controllers;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.validator.AdminSupplierValidator;
+import com.portal.models.Product;
 import com.portal.models.Supplier;
 
 /**
@@ -41,6 +44,7 @@ public class AdminSupplierController extends BasicController {
 	public ModelAndView add_supplier(@ModelAttribute("command") Supplier supplier) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("currentUser", get_current_user());
+		model.put("supplier", get_supplier_with_id(supplier));
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		return new ModelAndView("add_supplier", model);
 	}
@@ -63,6 +67,7 @@ public class AdminSupplierController extends BasicController {
 		{   	
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("currentUser", get_current_user());
+		model.put("supplier", get_supplier_with_id(supplier));
 		model.put("suppliers", supplierDAOImpl.getSuppliers());
 		return new ModelAndView("add_supplier", model);
 		}
@@ -105,12 +110,40 @@ public class AdminSupplierController extends BasicController {
 	@RequestMapping(value = "/admin_delete_supplier", method = RequestMethod.GET)
 	public ModelAndView delete_supplier(@ModelAttribute("command") Supplier supplier) {
 		supplierDAOImpl.RemoveSupplier(supplier);
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("currentUser", get_current_user());
-		model.put("supplier", null);
-		model.put("suppliers", supplierDAOImpl.getSuppliers());
-		return new ModelAndView("add_supplier", model);
+		return new ModelAndView("redirect:/admin_add_supplier");
 	}
 
+	
+	
+	
+	public Supplier get_supplier_with_id(Supplier supplier){
+		List<Supplier> supplier_list = supplierDAOImpl.getSuppliers();
+		int[] indexes = new int[supplier_list.size()];
+		int index = 0;
+		System.out.println(supplier.getId());
+		if(supplier.getId() == null || supplier.getId().isEmpty()){
+			for(Supplier searchIndex : supplier_list){
+				System.out.println(searchIndex.getId());
+				indexes[index] = Integer.parseInt(searchIndex.getId());
+				index = index + 1;
+			}
+			index = 0;
+			Arrays.sort(indexes);
+			for(int i : indexes){
+				if(index==i){
+					index = index +1;
+					continue;
+				}
+				else{
+					break;
+				}
+				
+			}
+			supplier.setId(String.valueOf(index));
+		
+		}
+		return supplier;
+	}
+	
 	
 }// End of the class

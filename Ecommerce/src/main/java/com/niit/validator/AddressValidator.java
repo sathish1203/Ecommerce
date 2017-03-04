@@ -35,13 +35,13 @@ public class AddressValidator implements Validator{
 		
 		           
 		  // Additional validations on length and type. 
-		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
+	    //  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
 		  Pattern email = Pattern.compile(EMAIL_PATTERN);
 		  
-		  if(notAlphaNumeric.matcher(addressline1).find() || addressline1.length()<3 || addressline1.length()>20) errors.rejectValue("addressline1", "addressline1.incorrect","Address Line 1 should be Alpha Numeric and 3-20 characters.");		
-		  if(notAlphaNumeric.matcher(addressline2).find()) errors.rejectValue("addressline2", "addressline2.incorrect","Address Line 2 should be Alpha Numeric.");
-		  if(!email.matcher(emailid).find()) errors.rejectValue("emailid", "emailid.incorrect","Email Id should be a valid email address.");
-		  if(notAlphaNumeric.matcher(state).find()) errors.rejectValue("state", "state.incorrect","State should be Alpha Numeric.");
+		  if(addressline1.length()<3 || addressline1.length()>50) errors.rejectValue("addressline1", "addressline1.incorrect","Address Line 1 should be  3-50 characters.");		
+		  if(addressline2.length()<3 || addressline2.length()>50) errors.rejectValue("addressline2", "addressline2.incorrect","Address Line 2 should be  3-50 characters.");
+		  if(!email.matcher(emailid).find() || emailid.length()>20) errors.rejectValue("emailid", "emailid.incorrect","Email Id should be a valid email address and less than 20 characters.");
+		  if(state.length()>10 || state.length()<3) errors.rejectValue("state", "state.incorrect","State should be 3 - 10 characters.");
 		 	 
 	   }
 	

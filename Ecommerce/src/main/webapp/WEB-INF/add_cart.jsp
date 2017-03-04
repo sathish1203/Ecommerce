@@ -79,6 +79,7 @@
 	<td><c:out value="${cartpdts_qty}" /></td>
     <td><c:out value="Total Cost" /></td>
 	<td><c:out value="${cartpdts_cost}" /></td>
+	<td></td>
     </tr>
 <tr>
 	<td colspan="2"><a href = "/Ecommerce/all_landing"><button type="button" class="btn btn-default">Continue Shopping</button></a></td>

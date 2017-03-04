@@ -40,8 +40,8 @@ function validateform(){
 <table>
 <tr> 
 <td><form:label path="id">Product ID:</form:label></td>
-<td><form:input path="id" value="${product.id}" /></td>
-<td><form:errors path="id" style="color:red"/></td>
+<td><c:out value="${product.id}" /></td>
+<td><form:errors path="id" style="color:red"/><form:hidden path="id" value="${product.id}"/></td>
 </tr>
 <tr>
 <td><form:label path="name">Product Name:</form:label></td>
