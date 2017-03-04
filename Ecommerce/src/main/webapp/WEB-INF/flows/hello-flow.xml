@@ -10,6 +10,7 @@
         <evaluate expression="flow_action_helper.populateDataCheckoutPage(flow_action_helper.get_current_user(),flowScope.modelbind)" result="flowScope.modelbind" />
         </on-entry>
         <transition to="save_user" on="user_save_check_out" /> 
+          <transition to="redirect_landing" on="cancel_check_out" />
         </view-state>  
         
         <action-state id = "save_user">
@@ -24,5 +25,7 @@
         <evaluate expression="flow_action_helper.populateDataCheckoutConfirmedPage(flow_action_helper.get_current_user(),flowScope.modelbind)" result="flowScope.modelbind" />
         </on-entry>
         </view-state>
+      
+       <view-state id="redirect_landing" view = "externalRedirect:/Ecommerce/all_landing" />
       
 </flow> 

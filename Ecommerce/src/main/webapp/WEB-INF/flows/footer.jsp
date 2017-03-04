@@ -7,9 +7,9 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/Ecommerce/all_help">HELP</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Policies</a></li>
+      <li><a href="/Ecommerce/all_about">About</a></li>
+      <li><a href="/Ecommerce/all_help">Contact</a></li>
+      <li><a href="/Ecommerce/all_policy">Policies</a></li>
     </ul>
     <ul><a class = "navbar-brand pull-right" href="#">@Copyright</a></ul>
   </div>

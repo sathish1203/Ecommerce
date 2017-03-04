@@ -13,14 +13,14 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-4">
-<p> For further details contact the office address.<br/>
-XYZ Office, <br/>
-ABC Premises,<br/>
-ABC Nagar,<br/>
-ABC Area,<br/>
-City,<br/>
-Country,<br/>
-Postal Code(number)<br/>
+<p> Our company had been in the busines for a long time.<br/>
+Detail 1, <br/>
+Detail 2,<br/>
+Detail 3,<br/>
+Detail 4,<br/>
+Detail 5,<br/>
+More Details,<br/>
+More Details<br/>
 contact@ABC.in,<br/>
 123-456-789<br/>
 </p>
@@ -38,9 +38,8 @@ suggestions@ABC.in,<br/>
 </div>
 </div>
 </div>
-
+     
       
    </body>
-        
-  <%@include file = "../footer.jsp"  %>
+   <%@include file = "../footer.jsp"  %>
 </html>

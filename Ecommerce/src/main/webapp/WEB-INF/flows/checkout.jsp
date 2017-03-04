@@ -131,10 +131,7 @@ function validateform(){
 </tr>
 
 <tr>
-<td>
-<a href="/Ecommerce/all_landing"><button class = "button">Cancel Purchase</button></a>
-</td>
-<td>
+<td colspan = "2">
 <input type="submit" value="Confirm">
 </td>
 </tr>

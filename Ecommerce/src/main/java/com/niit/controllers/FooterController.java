@@ -21,9 +21,31 @@ public class FooterController extends BasicController{
 	      Map<String, Object> model = new HashMap<String, Object>();
 	        model = getCategoriesForLanding(model);
 			model.put("currentUser",get_current_user());
+			  model.put("isAdmin", isAdmin());
+		      model.put("message", "");
 		  return new ModelAndView("/misc/help",model);
 	   }
 	 
-   
-   
+	// Mapping for the signup page
+	   @RequestMapping(value = "/all_about",method = RequestMethod.GET)
+	   public ModelAndView triggerAbout() {
+	      Map<String, Object> model = new HashMap<String, Object>();
+	        model = getCategoriesForLanding(model);
+			model.put("currentUser",get_current_user());
+			 model.put("isAdmin", isAdmin());
+		      model.put("message", "");
+		  return new ModelAndView("/misc/about",model);
+	   }
+	 
+	// Mapping for the signup page
+	   @RequestMapping(value = "/all_policy",method = RequestMethod.GET)
+	   public ModelAndView triggerPolicy() {
+	      Map<String, Object> model = new HashMap<String, Object>();
+	        model = getCategoriesForLanding(model);
+			model.put("currentUser",get_current_user());
+			 model.put("isAdmin", isAdmin());
+		      model.put("message", "");
+		  return new ModelAndView("/misc/policy",model);
+	   }
+	 
 }
