@@ -34,7 +34,7 @@ public class AdminSupplierValidator implements Validator {
 		  
 		   
 		  // Additional validations on length and type. 
-		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
+		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
 		  
 		  
 		  if(notAlphaNumeric.matcher(id).find() || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric less than 10 characters.");		

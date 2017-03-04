@@ -35,7 +35,7 @@ public class AddressValidator implements Validator{
 		
 		           
 		  // Additional validations on length and type. 
-		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
+		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
 		  Pattern email = Pattern.compile(EMAIL_PATTERN);
 		  
 		  if(notAlphaNumeric.matcher(addressline1).find() || addressline1.length()<3 || addressline1.length()>20) errors.rejectValue("addressline1", "addressline1.incorrect","Address Line 1 should be Alpha Numeric and 3-20 characters.");		

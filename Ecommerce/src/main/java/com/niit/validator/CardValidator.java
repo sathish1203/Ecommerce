@@ -41,7 +41,7 @@ public class CardValidator implements Validator{
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "error.password", "Password is required.");
 		           
 		  // Additional validations on length and type. 
-		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
+		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
 		  Pattern notNumber = Pattern.compile("[^0-9]");
 		  
 		  if(notAlphaNumeric.matcher(uname).find() || uname.length()<3 || uname.length()>10) errors.rejectValue("uname", "uname.incorrect","Username should be Alpha Numeric and 3-10 characters.");		

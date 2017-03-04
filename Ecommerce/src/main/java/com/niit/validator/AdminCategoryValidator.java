@@ -35,7 +35,7 @@ public class AdminCategoryValidator implements Validator{
 		   ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "error.middlename", "Description is required.");
 		            
 		  // Additional validations on length and type. 
-		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9]");
+		  Pattern notAlphaNumeric = Pattern.compile("[^a-zA-Z0-9\\s]");
 		  
 		  if(notAlphaNumeric.matcher(id).find() || id.length()<3 || id.length()>10) errors.rejectValue("id", "id.incorrect","Id should be Alpha Numeric and 3-10 characters.");		
 		  if(notAlphaNumeric.matcher(name).find()) errors.rejectValue("name", "name.incorrect","Name should be Alpha Numeric.");

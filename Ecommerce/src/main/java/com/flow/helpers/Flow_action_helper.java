@@ -1,12 +1,13 @@
 package com.flow.helpers;
 
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-
 import com.niit.controllers.BasicController;
+import com.portal.models.Cart;
 import com.portal.models.Client;
 import com.portal.models.ViewData;
 
@@ -39,6 +40,12 @@ public class Flow_action_helper extends BasicController{
 		viewData.model = addProductDetailsToCart(viewData.model,cartDAOImpl.parse_product_cart(userName));
 		viewData.model = getCategoriesForLanding(viewData.model);
 		viewData.model.put("currentUser", get_current_user());
+		// Change the cart from user. To user_ordered_Timestamp.
+		Cart ordered_cart = cartDAOImpl.getCartById(userName);
+		String id  = userName + "_ordered_" + System.currentTimeMillis(); 
+		ordered_cart.setId(id);
+		cartDAOImpl.addCart(ordered_cart);
+		cartDAOImpl.RemoveCart(cartDAOImpl.getCartById(userName));
 		return viewData;
 	}
 	
