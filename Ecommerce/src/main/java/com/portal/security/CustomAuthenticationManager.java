@@ -36,6 +36,7 @@ public class CustomAuthenticationManager implements AuthenticationManager {
  
   // Init a database user object
   Client client = null;
+  if(auth.getName() ==null || auth.getName().isEmpty())throw new BadCredentialsException("No User!");
   client = clientDAOImpl.getUserByUsername((auth.getName()));
   if(!(client instanceof Client))
   {
