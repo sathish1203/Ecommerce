@@ -21,11 +21,11 @@
   <context:component-scan base-package="com.flow" />
   <mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
   <mvc:resources mapping="/bootstrap/**" location="/WEB-INF/bootstrap/" />
-  
+  <mvc:resources mapping="/angularjs/**" location="/WEB-INF/angularjs/" />
   <mvc:default-servlet-handler />
   <mvc:annotation-driven />
   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="100000" />
+		<property name="maxUploadSize" value="1000000" />
    </bean>
   
 </beans>

@@ -94,9 +94,22 @@ public Map<String,Object> getProductsLanding(Map<String, Object> model){
 	 System.out.println("productsFeatureList__Id -> "+ disp.getId());
 	 System.out.println("productsFeatureListt__Name -> "+ disp.getName());
 	 }
-	 
 	 return model;
 }
+
+
+/**
+ * This method will get the products list that are needed for the landing page and would send it to the model.
+ * @param model
+ * @return
+ */
+public Map<String,Object> getProductsSearch(Map<String, Object> model){
+	  List<Product> products = productDAOImpl.getProducts();
+	  model.put("products_search", products);
+	  return model;
+}
+
+
 
 
 /**

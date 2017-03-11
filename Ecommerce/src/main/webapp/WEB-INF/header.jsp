@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html>
+<html ng-app='myApp'>
 
 <!-- Head tag stores the title and the relevant libraries that are needed.-->
 <head>
@@ -12,8 +12,28 @@
 <link  rel="stylesheet" type = "text/css" href="/Ecommerce/bootstrap/css/bootstrap.min.css" >
 <script type="text/javascript" src="/Ecommerce/bootstrap/js/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="/Ecommerce/bootstrap/js/bootstrap.min.js"></script>
-
+<script src="/Ecommerce/angularjs/angular.min.js"></script>  
 <!-- Start of style, These classes are for the carousel buttons -->
+<script>
+var myApp = angular.module('myApp', []);
+myApp.controller('MyController',function($scope, $http) {
+        console.log("In angular Js.");
+        $scope.getDataFromServer = function() {
+                $http({
+                        method : 'GET',
+                        url : '/Ecommerce/all_search_pdts'
+                }).success(function(data, status, headers, config) {
+                        $scope.products = data;
+                        if($scope.searchText=="")$scope.products="";
+                }).error(function(data, status, headers, config) {
+                        // called asynchronously if an error occurs
+                        // or server returns response with an error status.
+                });
+
+        };
+});
+</script>
+
 <style>   
 #carouselButtons {
 margin-left: 100px;
@@ -195,11 +215,27 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
 <a class = "navbar-brand pull-right" href = "/Ecommerce/admin_add_supplier">Admin</a>
 </c:if>
 </ul>
-<!-- End of the list -->
-
+<ul>
+<div ng-app="myApp">
+        <div ng-controller="MyController" >
+        <table id="searchTextResults" class = "dropdown pull-right">
+        <tr><td>
+          <button ng-click="getDataFromServer()" class = "dropdown pull-right"> <span class="glyphicon glyphicon-search"></span></button>
+           <label class = "dropdown pull-right">Search: <input ng-model="searchText"></label>
+         </td> 
+         </tr> 
+           <tr ng-repeat="product in products | filter:{$: searchText}">
+           <td><a class = "dropdown-toggle" href="/Ecommerce/all_show_product?id={{product.id}}">{{product.name}}</a></td>
+           </tr>
+           </table>
+        </div>
+</div>
+</ul>
 </div>
 <!-- End of the navigation bar body -->
 
 </nav>
+
+
 </body>
 </html>

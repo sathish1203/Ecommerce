@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file = "header.jsp"  %>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -15,10 +16,10 @@
 <!--  This div will store the image for the latest deals page -->
 <div class="col-sm-4">
 	<h3>Get Started</h3>
-	<p>Get started with the deals that we have to offer.</p>
+	<p>Get started with the deals that we have to offer. <br>Browse the different categories and shop as you wish!!</p>
 	<div class = "carousel-caption">
 	<img class = "img-responsive" src="/Ecommerce/images/offers.png"/>
-	<br /><p><h3>The place for getting the best deals of the season.</h3></p>
+	<br /><p><h3>The website for getting the best deals of the season.</h3></p>
 	</div>
 </div>
 <!--  End of the latest deals div -->
