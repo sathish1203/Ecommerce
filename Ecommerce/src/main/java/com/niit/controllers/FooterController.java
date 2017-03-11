@@ -14,8 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class FooterController extends BasicController{
 
 	
-
-	// Mapping for the signup page
+/**
+ * This method would be called for the temp screen. 
+ * @return
+ *       -- Model with the data stored in it.
+ */
 	   @RequestMapping(value = "/all_help",method = RequestMethod.GET)
 	   public ModelAndView triggerSignup() {
 	      Map<String, Object> model = new HashMap<String, Object>();
@@ -26,7 +29,12 @@ public class FooterController extends BasicController{
 		  return new ModelAndView("/misc/help",model);
 	   }
 	 
-	// Mapping for the signup page
+	   /**
+	    * This method would be called for the about screen. 
+	    * @return
+	    *       -- Model with the data stored in it.
+	    */
+	
 	   @RequestMapping(value = "/all_about",method = RequestMethod.GET)
 	   public ModelAndView triggerAbout() {
 	      Map<String, Object> model = new HashMap<String, Object>();
@@ -37,7 +45,12 @@ public class FooterController extends BasicController{
 		  return new ModelAndView("/misc/about",model);
 	   }
 	 
-	// Mapping for the signup page
+	   /**
+	    * This method would be called for the policy screen. 
+	    * @return
+	    *       -- Model with the data stored in it.
+	    */
+
 	   @RequestMapping(value = "/all_policy",method = RequestMethod.GET)
 	   public ModelAndView triggerPolicy() {
 	      Map<String, Object> model = new HashMap<String, Object>();

@@ -13,7 +13,15 @@ import com.portal.models.ViewData;
 
 @Component
 public class Flow_action_helper extends BasicController{
-	
+	/**
+	 * This method will populate all the needed data for the checkout page.
+	 * @param userName
+	 *    -- Username
+	 * @param viewData
+	 *    -- The model to be passed
+	 * @return
+	 *    -- The populated model received as parameter. 
+	 */
 	public ViewData populateDataCheckoutPage(String userName,ViewData viewData){
 		viewData.model = addProductDetailsToCart(viewData.model,cartDAOImpl.parse_product_cart(userName));
 		Client user = clientDAOImpl.getUserByUsername(userName);
@@ -26,6 +34,13 @@ public class Flow_action_helper extends BasicController{
 		return viewData;
 	}
 	
+	/**
+	 * This method would save data sent to it.
+	 * @param userName
+	 *             -- User name
+	 * @param viewData
+	 *             -- Model data that has to be saved.
+	 */
 	public void saveDataCheckoutPage(String userName,ViewData viewData){
 		Client user = viewData.getUserDetails();
 		System.out.println("saveDataCheckoutPage");
@@ -34,6 +49,15 @@ public class Flow_action_helper extends BasicController{
 		clientDAOImpl.addUser(user);
 	}
 	
+	/**
+	 * Populate the data for checkout confirmed page.
+	 * @param userName
+	 *          -- User name 
+	 * @param viewData
+	 *          -- Model data that has to be loaded with
+	 * @return
+	 *          -- Model that is loaded with data
+	 */
 	public ViewData populateDataCheckoutConfirmedPage(String userName,ViewData viewData){
 		Client user_db = clientDAOImpl.getUserByUsername(userName);
 		viewData.model.put("userDetails",user_db);
@@ -49,6 +73,11 @@ public class Flow_action_helper extends BasicController{
 		return viewData;
 	}
 	
+	/**
+	 * Return a initialized hash map
+	 * @return
+	 *    -- The hash map
+	 */
 	public Map<String, Object> initializeMapModel(){
 		Map<String, Object> model = new HashMap<String,Object>();
 		return model ;

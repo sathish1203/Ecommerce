@@ -160,7 +160,13 @@ public class AdminProductController extends BasicController {
 	
 	
 	
-	
+	/**
+	 * This method will set the product id for the web page.
+	 * @param product
+	 *          -- The model to be sent
+	 * @return
+	 *          -- The model with id populated
+	 */
 	public Product get_product_with_id(Product product){
 		List<Product> product_list = productDAOImpl.getProducts();
 		int[] indexes = new int[product_list.size()];

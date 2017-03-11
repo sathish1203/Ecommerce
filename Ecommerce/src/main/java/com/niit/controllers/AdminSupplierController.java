@@ -115,7 +115,13 @@ public class AdminSupplierController extends BasicController {
 
 	
 	
-	
+	/**
+	 * This method would set the supplier id for the web page.
+	 * @param supplier
+	 *           -- The model
+	 * @return
+	 *           -- The model with id set,
+	 */
 	public Supplier get_supplier_with_id(Supplier supplier){
 		List<Supplier> supplier_list = supplierDAOImpl.getSuppliers();
 		int[] indexes = new int[supplier_list.size()];

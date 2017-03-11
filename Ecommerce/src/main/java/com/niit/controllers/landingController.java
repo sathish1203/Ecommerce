@@ -21,7 +21,12 @@ import com.portal.models.Product;
 public class landingController extends BasicController{
 
     
-	
+	/**
+	 * This method would be called for the landing screen. 
+	 * @return
+	 *       -- Model with the data stored in it.
+	 */
+
 	 @RequestMapping(value = "/all_landing", method = RequestMethod.GET)
 	   public ModelAndView printLanding() {
 	      Map<String, Object> model = new  HashMap<String, Object>();
@@ -34,6 +39,12 @@ public class landingController extends BasicController{
 	      return new ModelAndView("landing", model);
 	   }
 	
+	 /**
+	  * This method would be called for landing screen. It is a get request for products. 
+	  * @return
+	  *       -- Model with the data stored in it.
+	  */
+
 	 @RequestMapping(value = "/all_search_pdts", method = RequestMethod.GET)
 	   public @ResponseBody String get_products_search_landing() {
 		 String ret_val = "[";

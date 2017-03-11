@@ -225,7 +225,7 @@ data-toggle = "collapse" data-target = "#example-navbar-collapse">
          </td> 
          </tr> 
            <tr ng-repeat="product in products | filter:{$: searchText}">
-           <td><a class = "dropdown-toggle" href="/Ecommerce/all_show_product?id={{product.id}}">{{product.name}}</a></td>
+           <td ><a class = "dropdown-toggle" href="/Ecommerce/all_show_product?id={{product.id}}"><p style="color:gray;">{{product.name}}</p></a></td>
            </tr>
            </table>
         </div>

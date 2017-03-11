@@ -16,8 +16,11 @@ import com.portal.models.Client;
 
 @Controller
 public class helloController extends BasicController {
-	
-	// Mapping for the login page
+	/**
+	 * This method would be called for the login screen. 
+	 * @return
+	 *       -- Model with the data stored in it.
+	 */
 	@RequestMapping(value = "/all_login", method = RequestMethod.GET)
 	public ModelAndView triggerLogin() {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -28,7 +31,12 @@ public class helloController extends BasicController {
 	}
 
 	
-	// Mapping for the signup page
+	/**
+	 * This method would be called for the signup screen. 
+	 * @return
+	 *       -- Model with the data stored in it.
+	 */
+
 	@RequestMapping(value = "/all_signup", method = RequestMethod.GET)
 	public ModelAndView triggerSignup(@ModelAttribute("command") Client client) {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -38,7 +46,12 @@ public class helloController extends BasicController {
 		return new ModelAndView("signup", model);
 	}
 
-	// Mapping for the addition of user
+	/**
+	 * This method would be called for the saving user from signup. 
+	 * @return
+	 *       -- Model with the data stored in it.
+	 */
+
 	@RequestMapping(value = "/all_addUser", method = RequestMethod.POST)
 	public ModelAndView addSignup(@ModelAttribute("command") Client client,BindingResult result, SessionStatus status) {
 		Map<String, Object> model = new HashMap<String, Object>();
@@ -61,7 +74,13 @@ public class helloController extends BasicController {
 		return new ModelAndView("landing", model);
 	}
 
-	// Mapping for the logged in user
+	/**
+	 * This method would be called for the logged screen. 
+	 * @return
+	 *       -- Model with the data stored in it.
+	 * @deprecated
+	 */
+
 	@RequestMapping(value = "/user_logged", method = RequestMethod.GET)
 	public ModelAndView triggerLogged() {
 		System.out.println("In printLanding");
@@ -74,78 +93,3 @@ public class helloController extends BasicController {
 	
 	
 	
-	
-	
-	/*
-	 * 
-	 * List<Client> clients = new ArrayList<Client>();
-	clients = clientDAOImpl.getClients();
-	System.out.println("User is" + clients);
-	for (Client user_l : clients) {
-		System.out.println("User is " + user_l.getFirstname());
-		System.out.println("Last name is " + user_l.getLastname());
-
-	}*
-	*
-	/
-	/*
-	 * // Mapping for the login page
-	 * 
-	 * @RequestMapping(value = "/hello",method = RequestMethod.GET) public void
-	 * triggerHello(ModelMap model) {
-	 * System.out.println("In triggerHello method");
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * //Mapping for adding a new user
-	 * 
-	 * @RequestMapping(value = "/user", method = RequestMethod.GET) public
-	 * ModelAndView student() { System.out.println("In User"); return new
-	 * ModelAndView("user", "command", new Client()); }
-	 * 
-	 */
-
-	/*
-	 * // Mapping for the landing page
-	 * 
-	 * @RequestMapping(value = "/landing",method = RequestMethod.GET) public
-	 * String printLanding(ModelMap model) {
-	 * System.out.println("In printLanding"); model.addAttribute("message",
-	 * "Hello Spring MVC Framework!"); return "landing2"; }
-	 * 
-	 * 
-	 * @RequestMapping(value = "/addUser", method = RequestMethod.POST) public
-	 * String addStudent(@ModelAttribute("SpringWeb")Client client, ModelMap
-	 * model) { System.out.println("In addUsert"); client.setUname("12345");
-	 * clientDAOImpl.addUser(client); List<Client> clients = new
-	 * ArrayList<Client>(); clients= clientDAOImpl.getClients();
-	 * System.out.println("User is"+clients); for (Client user_l:clients) {
-	 * System.out.println("User is "+ user_l.getFirstname());
-	 * System.out.println("Last name is "+ user_l.getLastname());
-	 * 
-	 * } model.addAttribute("firstname", client.getFirstname());
-	 * model.addAttribute("lastname", client.getLastname());
-	 * model.addAttribute("password", client.getPassword()); return "result"; }
-	 * 
-	 */
-	// Mapping for validating a login request
-		/*@RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-		public ModelAndView loginUser(@ModelAttribute("SpringWeb") Client client, ModelMap model) {
-			String view = "error";
-			boolean foundUser = clientDAOImpl.checkUsernamePassword(client.getUname(), client.getPassword());
-			if (foundUser) {
-				view = "landing2";
-				model.addAttribute("user", client.getUname());
-			
-				System.out.println("User validated");
-			} else {
-				view = "login";
-				model.addAttribute("user", "guest");
-				model.addAttribute("msg", "Credentials Invalid. Either username or password is wrong.");
-				System.out.println("User null");
-			}
-			return new ModelAndView(view, "command", new Client());
-		}
-*/

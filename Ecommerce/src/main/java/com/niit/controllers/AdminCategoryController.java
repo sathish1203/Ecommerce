@@ -112,7 +112,13 @@ public class AdminCategoryController extends BasicController {
 		return new ModelAndView("redirect:/admin_add_category");
 	}
 
-	
+	/**
+	 * This method would get the array index that has to be updated in the web site.
+	 * @param category
+	 *        -- Category model
+	 * @return
+	 *        -- Category with id assigned
+	 */
 	public Category get_category_id(Category category){
 		List<Category> category_list = categoryDAOImpl.getCategories();
 		int[] indexes = new int[category_list.size()];
