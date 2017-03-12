@@ -30,6 +30,10 @@ org.springframework.web.filter.DelegatingFilterProxy
    <servlet-mapping>
       <servlet-name>HelloWeb</servlet-name>
       <url-pattern>/</url-pattern>
+   </servlet-mapping>
+
+   <servlet-mapping>
+      <servlet-name>HelloWeb</servlet-name>
       <url-pattern>*.flow</url-pattern>
    </servlet-mapping>
 

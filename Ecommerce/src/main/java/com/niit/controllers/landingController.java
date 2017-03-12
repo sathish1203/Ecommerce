@@ -34,8 +34,7 @@ public class landingController extends BasicController{
 	      model = getProductsLanding(model);
 	      model.put("currentUser", get_current_user());
 		  model.put("isAdmin", isAdmin());
-		  model = getProductsSearch(model);
-	      model.put("message", "Hello Spring MVC Framework!");
+		  model.put("message", "Hello Spring MVC Framework!");
 	      return new ModelAndView("landing", model);
 	   }
 	
